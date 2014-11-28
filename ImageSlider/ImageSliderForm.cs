@@ -43,6 +43,9 @@ namespace ImageSlider
             // GoogleImageSearchAPIを追加
             imageSearchAPIs.Add(new GoogleImageSearchAPI.GoogleImageSearchAPI());
 
+            // PixivAPIの追加
+            imageSearchAPIs.Add(new PixivImageSearchAPI.PixivImageSearchAPI());
+
             // 設定の読み込み
             {
                 // カレントAPIを設定
@@ -152,6 +155,7 @@ namespace ImageSlider
         {
             searching = false;
             neutral = true;
+            pictureBox_showImage.Image = Properties.Resources.close;
         }
 
         #endregion

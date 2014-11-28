@@ -113,6 +113,10 @@
       <Project>{d8563aae-779d-4bb4-95b8-f70da3bc34b0}</Project>
       <Name>ImageSearchAPILib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PixivImageSearchAPI\PixivImageSearchAPI.csproj">
+      <Project>{5b6b0d0e-37fd-4fab-aa5c-121bd7daa197}</Project>
+      <Name>PixivImageSearchAPI</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Search2.png" />
