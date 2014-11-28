@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ImageSlider.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SearchAPI" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GoogleImageSearchAPI</Value>
+    </Setting>
+    <Setting Name="SlideTime" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="MenuColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">255, 192, 128</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
