@@ -11,5 +11,8 @@
     <Setting Name="MenuColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">255, 192, 128</Value>
     </Setting>
+    <Setting Name="SmoothSlide" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

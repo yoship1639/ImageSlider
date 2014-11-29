@@ -30,6 +30,8 @@ namespace ImageSlider
 
         int tickTime = 10;
 
+        bool smoothSlide = false;
+
         List<IImageSearchAPI> imageSearchAPIs = new List<IImageSearchAPI>();
         IImageSearchAPI currentAPI;
 
@@ -59,6 +61,8 @@ namespace ImageSlider
                 // メニュー色
                 panel_menu.BackColor = Properties.Settings.Default.MenuColor;
 
+                // 滑らかに切り替え
+                smoothSlide = Properties.Settings.Default.SmoothSlide;
             }
 
             TimerCallback timerDelegate = new TimerCallback(Tick);
@@ -67,6 +71,8 @@ namespace ImageSlider
 
         int slideCount = 0;
         int slideTime = 5;
+
+        int smoothCount = 0;
 
         public void Tick(object o)
         {
@@ -103,14 +109,33 @@ namespace ImageSlider
 
             if (!searching && !neutral)
             {
-                if (slideCount > slideTime * 1000 / tickTime)
+                if (!smoothSlide)
                 {
-                    slideCount = 0;
-                    if (currentAPI.ImageCount - 1 > showImageNo)
+                    if (slideCount > slideTime * 1000 / tickTime)
                     {
-                        showImageNo++;
-                        if (showImageNo >= currentAPI.ImageCount) showImageNo = 0;
-                        pictureBox_showImage.Image = currentAPI.GetImageData(showImageNo).Bitmap;
+                        slideCount = 0;
+                        if (currentAPI.ImageCount - 1 > showImageNo)
+                        {
+                            showImageNo++;
+                            if (showImageNo >= currentAPI.ImageCount) showImageNo = 0;
+                            pictureBox_showImage.Image = currentAPI.GetImageData(showImageNo).Bitmap;
+                        }
+                    }
+                }
+                else
+                {
+                    if (smoothCount < 50) smoothCount++;
+
+                    if (slideCount > slideTime * 1000 / tickTime)
+                    {
+                        slideCount = 0;
+                        smoothCount = 0;
+                        if (currentAPI.ImageCount - 1 > showImageNo)
+                        {
+                            showImageNo++;
+                            if (showImageNo >= currentAPI.ImageCount) showImageNo = 0;
+                            pictureBox_showImage.Image = currentAPI.GetImageData(showImageNo).Bitmap;
+                        }
                     }
                 }
             }
@@ -209,6 +234,8 @@ namespace ImageSlider
             if (sizeFlag)
             {
                 Size = new Size(Size.Width + e.Location.X, Size.Height + e.Location.Y);
+                pictureBox_showImage.Size = Size;
+                pictureBox1.Size = Size;
             }
         }
 
@@ -235,6 +262,7 @@ namespace ImageSlider
             Properties.Settings.Default.SearchAPI = currentAPI.APIName;
             Properties.Settings.Default.SlideTime = slideTime;
             Properties.Settings.Default.MenuColor = panel_menu.BackColor;
+            Properties.Settings.Default.SmoothSlide = smoothSlide;
             Properties.Settings.Default.Save();
         }
 
@@ -247,10 +275,12 @@ namespace ImageSlider
             {
                 SlideTime = slideTime,
                 MenuColor = panel_menu.BackColor,
+                SmoothSlide = smoothSlide,
             };
             config.ShowDialog(this);
             slideTime = config.SlideTime;
             panel_menu.BackColor = config.MenuColor;
+            smoothSlide = config.SmoothSlide;
             if (config.APIName != currentAPI.APIName)
             {
                 setCurrentAPI(imageSearchAPIs.Find((api)=>api.APIName == config.APIName));

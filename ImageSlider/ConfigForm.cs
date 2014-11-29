@@ -31,6 +31,12 @@ namespace ImageSlider
             set { button_colorSelect.BackColor = value; }
         }
 
+        public bool SmoothSlide
+        {
+            get { return checkBox1.Checked; }
+            set { checkBox1.Checked = value; }
+        }
+
         IImageSearchAPI[] APIs;
 
         public ConfigForm(IImageSearchAPI[] apis, IImageSearchAPI current)

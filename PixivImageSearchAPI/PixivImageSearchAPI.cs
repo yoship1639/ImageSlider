@@ -21,9 +21,6 @@ namespace PixivImageSearchAPI
     {
         List<ImageData> images = new List<ImageData>();
 
-        //private string sessionID = "4227133_2632147d74e8f925ab01c65e5fb5f2a4";
-        //private string sessionID = "0";
-
         public PixivImageSearchAPI()
         {
             InitializeComponent();
@@ -210,10 +207,6 @@ namespace PixivImageSearchAPI
                 {
                     datas.Add("");
                     seek++;
-                }
-                if (seek % 300 == 0)
-                {
-                    int a = 0;
                 }
             } 
             var count = datas.Count / elemNum;
