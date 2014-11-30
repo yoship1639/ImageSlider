@@ -12,12 +12,27 @@ using ImageSearchAPILib;
 
 namespace ImageSlider
 {
-    public partial class SlideImage : UserControl
+    public partial class slideImage : UserControl
     {
-        public float Rate { get; set; }
-        public List<ImageData> ImageDatas { get; set; }
+        /// <summary>
+        /// 表示する画像の位置のレート
+        /// </summary>
+        private float rate;
+        public float Rate
+        {
+            get { return rate; }
+            set
+            {
+                var prev = rate;
+                rate = value;
+                if (prev != rate) Invalidate();
+            }
+        }
 
-        public SlideImage()
+        public List<ImageData> ImageDatas { get; set; }
+        public Image ForceImage { get; set; }
+
+        public slideImage()
         {
             InitializeComponent();
 
@@ -30,7 +45,21 @@ namespace ImageSlider
 
             g.Clear(Color.Transparent);
 
+            // 強制的に描画する画像がある場合
+            if (ForceImage != null)
+            {
+               
+            }
 
+            // サイズ合わせ処理
+            int no1 = (int)rate;
+            int no2 = (int)rate + 1;
+
+
+            if (no1 < 0 || no1 >= ImageDatas.Count)
+            {
+                
+            }
         }
     }
 }

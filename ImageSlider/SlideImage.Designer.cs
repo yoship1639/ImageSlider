@@ -1,6 +1,6 @@
 ﻿namespace ImageSlider
 {
-    partial class SlideImage
+    partial class slideImage
     {
         /// <summary> 
         /// 必要なデザイナー変数です。
@@ -30,12 +30,12 @@
         {
             this.SuspendLayout();
             // 
-            // SlideImage
+            // slideImage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Name = "SlideImage";
+            this.Name = "slideImage";
             this.ResumeLayout(false);
 
         }

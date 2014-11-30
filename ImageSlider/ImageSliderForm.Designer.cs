@@ -35,12 +35,10 @@
             this.textBox_search = new System.Windows.Forms.TextBox();
             this.pictureBox_sizeChange = new System.Windows.Forms.PictureBox();
             this.pictureBox_showImage = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_search)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_sizeChange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_showImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_menu
@@ -106,7 +104,7 @@
             // 
             // textBox_search
             // 
-            this.textBox_search.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBox_search.Font = new System.Drawing.Font("Meiryo", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBox_search.Location = new System.Drawing.Point(39, 4);
             this.textBox_search.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_search.Name = "textBox_search";
@@ -144,16 +142,6 @@
             this.pictureBox_showImage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouseMove);
             this.pictureBox_showImage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouseUp);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(480, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(480, 480);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
             // ImageSliderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
@@ -163,8 +151,7 @@
             this.Controls.Add(this.pictureBox_sizeChange);
             this.Controls.Add(this.panel_menu);
             this.Controls.Add(this.pictureBox_showImage);
-            this.Controls.Add(this.pictureBox1);
-            this.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Font = new System.Drawing.Font("Meiryo", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
@@ -179,7 +166,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_search)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_sizeChange)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_showImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -193,7 +179,6 @@
         private System.Windows.Forms.PictureBox pictureBox_showImage;
         private System.Windows.Forms.Button button_close;
         private System.Windows.Forms.Button button_config;
-        private System.Windows.Forms.PictureBox pictureBox1;
 
     }
 }
