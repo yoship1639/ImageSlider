@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel_menu = new System.Windows.Forms.Panel();
+            this.button_windowStateChange = new System.Windows.Forms.Button();
             this.button_config = new System.Windows.Forms.Button();
             this.button_close = new System.Windows.Forms.Button();
             this.pictureBox_search = new System.Windows.Forms.PictureBox();
@@ -44,6 +45,7 @@
             // panel_menu
             // 
             this.panel_menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.panel_menu.Controls.Add(this.button_windowStateChange);
             this.panel_menu.Controls.Add(this.button_config);
             this.panel_menu.Controls.Add(this.button_close);
             this.panel_menu.Controls.Add(this.pictureBox_search);
@@ -58,6 +60,22 @@
             this.panel_menu.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouseMove);
             this.panel_menu.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouseUp);
             // 
+            // button_windowStateChange
+            // 
+            this.button_windowStateChange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_windowStateChange.BackColor = System.Drawing.Color.Transparent;
+            this.button_windowStateChange.BackgroundImage = global::ImageSlider.Properties.Resources.maximize;
+            this.button_windowStateChange.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button_windowStateChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_windowStateChange.ForeColor = System.Drawing.Color.Transparent;
+            this.button_windowStateChange.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button_windowStateChange.Location = new System.Drawing.Point(394, 5);
+            this.button_windowStateChange.Name = "button_windowStateChange";
+            this.button_windowStateChange.Size = new System.Drawing.Size(34, 23);
+            this.button_windowStateChange.TabIndex = 4;
+            this.button_windowStateChange.UseVisualStyleBackColor = false;
+            this.button_windowStateChange.Click += new System.EventHandler(this.button_windowStateChange_Click);
+            // 
             // button_config
             // 
             this.button_config.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -67,7 +85,7 @@
             this.button_config.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_config.ForeColor = System.Drawing.Color.Transparent;
             this.button_config.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button_config.Location = new System.Drawing.Point(394, 5);
+            this.button_config.Location = new System.Drawing.Point(354, 5);
             this.button_config.Name = "button_config";
             this.button_config.Size = new System.Drawing.Size(34, 23);
             this.button_config.TabIndex = 3;
@@ -179,6 +197,7 @@
         private System.Windows.Forms.PictureBox pictureBox_showImage;
         private System.Windows.Forms.Button button_close;
         private System.Windows.Forms.Button button_config;
+        private System.Windows.Forms.Button button_windowStateChange;
 
     }
 }

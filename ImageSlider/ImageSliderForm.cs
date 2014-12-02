@@ -80,7 +80,7 @@ namespace ImageSlider
             var up = 0.2;
             var prevRate = rate;
 
-            if (Bounds.Contains(MousePosition) && Form.ActiveForm == this)
+            if ((Bounds.Contains(MousePosition) || pictureBox_showImage.Image == null) && Form.ActiveForm == this)
             {
                 if (rate < 1)
                 {
@@ -235,7 +235,6 @@ namespace ImageSlider
             {
                 Size = new Size(Size.Width + e.Location.X, Size.Height + e.Location.Y);
                 pictureBox_showImage.Size = Size;
-                pictureBox1.Size = Size;
             }
         }
 
@@ -285,6 +284,30 @@ namespace ImageSlider
             {
                 setCurrentAPI(imageSearchAPIs.Find((api)=>api.APIName == config.APIName));
             }
+        }
+
+        /// <summary>
+        /// ウィンドウの状態を変更
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button_windowStateChange_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+            {
+                button_windowStateChange.BackgroundImage = Properties.Resources.normal;
+                WindowState = FormWindowState.Maximized;
+                pictureBox_sizeChange.Enabled = false;
+                pictureBox_sizeChange.Visible = false;
+            }
+            else if (WindowState == FormWindowState.Maximized)
+            {
+                button_windowStateChange.BackgroundImage = Properties.Resources.maximize;
+                WindowState = FormWindowState.Normal;
+                pictureBox_sizeChange.Enabled = true;
+                pictureBox_sizeChange.Visible = true;
+            }
+            pictureBox_showImage.Size = Size;
         }
     }
 }
