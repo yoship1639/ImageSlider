@@ -126,6 +126,8 @@ namespace ImageSlider
         {
             var g = e.Graphics;
 
+            const float maxRate = 0.997f;
+
             g.Clear(BackColor);
             g.SetClip(new Rectangle(0, 0, Width, Height));
 
@@ -153,18 +155,24 @@ namespace ImageSlider
             else if (slideMode == ImageSlideMode.Slide_Right)       // 右にスライド
             {
                 float r = rate - no1;
+                
                 if (no1 >= 0 && no1 < imageDatas.Length)
                 {
                     var image1 = imageDatas[no1].Bitmap;
                     int px1 = (int)(Width * r);
-                    g.SetClip(new Rectangle(px1, 0, Width, Height));
-                    g.DrawImage(image1, getImageDrawRect(image1, px1, 0));
-
-                    if (no2 == imageDatas.Length) no2 = 0;
-                    var image2 = imageDatas[no2].Bitmap;
-                    var px2 = px1 - Width;
-                    g.SetClip(new Rectangle(px2, 0, Width, Height));
-                    g.DrawImage(image2, getImageDrawRect(image2, px2, 0));
+                    if (r < maxRate)
+                    {
+                        g.SetClip(new Rectangle(px1, 0, Width, Height));
+                        g.DrawImage(image1, getImageDrawRect(image1, px1, 0));
+                    }
+                    if (r > 1 - maxRate)
+                    {
+                        if (no2 == imageDatas.Length) no2 = 0;
+                        var image2 = imageDatas[no2].Bitmap;
+                        var px2 = px1 - Width;
+                        g.SetClip(new Rectangle(px2, 0, Width, Height));
+                        g.DrawImage(image2, getImageDrawRect(image2, px2, 0));
+                    }
                 }
             }
             else if (slideMode == ImageSlideMode.Slide_Left)       // 左にスライド
@@ -174,14 +182,19 @@ namespace ImageSlider
                 {
                     var image1 = imageDatas[no1].Bitmap;
                     int px1 = -(int)(Width * r);
-                    g.SetClip(new Rectangle(px1, 0, Width, Height));
-                    g.DrawImage(image1, getImageDrawRect(image1, px1, 0));
-
-                    if (no2 == imageDatas.Length) no2 = 0;
-                    var image2 = imageDatas[no2].Bitmap;
-                    var px2 = px1 + Width;
-                    g.SetClip(new Rectangle(px2, 0, Width, Height));
-                    g.DrawImage(image2, getImageDrawRect(image2, px2, 0));
+                    if (r < maxRate)
+                    {
+                        //g.SetClip(new Rectangle(px1, 0, Width, Height));
+                        g.DrawImage(image1, getImageDrawRect(image1, px1, 0));
+                    }
+                    if (r > 1 - maxRate)
+                    {
+                        if (no2 == imageDatas.Length) no2 = 0;
+                        var image2 = imageDatas[no2].Bitmap;
+                        var px2 = px1 + Width;
+                        //g.SetClip(new Rectangle(px2, 0, Width, Height));
+                        g.DrawImage(image2, getImageDrawRect(image2, px2, 0));
+                    }
                 }
             }
         }

@@ -35,12 +35,11 @@
             this.pictureBox_search = new System.Windows.Forms.PictureBox();
             this.textBox_search = new System.Windows.Forms.TextBox();
             this.pictureBox_sizeChange = new System.Windows.Forms.PictureBox();
-            this.pictureBox_showImage = new System.Windows.Forms.PictureBox();
+            this.button_startStop = new System.Windows.Forms.Button();
             this.slideImage1 = new ImageSlider.slideImage();
             this.panel_menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_search)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_sizeChange)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_showImage)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_menu
@@ -148,20 +147,18 @@
             this.pictureBox_sizeChange.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_sizeChange_MouseMove);
             this.pictureBox_sizeChange.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox_sizeChange_MouseUp);
             // 
-            // pictureBox_showImage
+            // button_startStop
             // 
-            this.pictureBox_showImage.Enabled = false;
-            this.pictureBox_showImage.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox_showImage.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox_showImage.Name = "pictureBox_showImage";
-            this.pictureBox_showImage.Size = new System.Drawing.Size(480, 480);
-            this.pictureBox_showImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_showImage.TabIndex = 2;
-            this.pictureBox_showImage.TabStop = false;
-            this.pictureBox_showImage.Visible = false;
-            this.pictureBox_showImage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouseDown);
-            this.pictureBox_showImage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouseMove);
-            this.pictureBox_showImage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouseUp);
+            this.button_startStop.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button_startStop.BackgroundImage = global::ImageSlider.Properties.Resources.stop3;
+            this.button_startStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button_startStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_startStop.Location = new System.Drawing.Point(211, 480);
+            this.button_startStop.Name = "button_startStop";
+            this.button_startStop.Size = new System.Drawing.Size(42, 35);
+            this.button_startStop.TabIndex = 4;
+            this.button_startStop.UseVisualStyleBackColor = true;
+            this.button_startStop.Click += new System.EventHandler(this.button_startStop_Click);
             // 
             // slideImage1
             // 
@@ -176,9 +173,12 @@
             this.slideImage1.Name = "slideImage1";
             this.slideImage1.Rate = 0F;
             this.slideImage1.Size = new System.Drawing.Size(480, 480);
-            this.slideImage1.SizeMode = ImageSlider.slideImage.ImageSizeMode.Fit;
+            this.slideImage1.SizeMode = ImageSlider.slideImage.ImageSizeMode.Zoom;
             this.slideImage1.SlideMode = ImageSlider.slideImage.ImageSlideMode.Slide_Left;
             this.slideImage1.TabIndex = 3;
+            this.slideImage1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouseDown);
+            this.slideImage1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouseMove);
+            this.slideImage1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouseUp);
             // 
             // ImageSliderForm
             // 
@@ -186,9 +186,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(480, 480);
+            this.Controls.Add(this.button_startStop);
             this.Controls.Add(this.pictureBox_sizeChange);
             this.Controls.Add(this.panel_menu);
-            this.Controls.Add(this.pictureBox_showImage);
             this.Controls.Add(this.slideImage1);
             this.Font = new System.Drawing.Font("Meiryo", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -204,7 +204,6 @@
             this.panel_menu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_search)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_sizeChange)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_showImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -218,8 +217,8 @@
         private System.Windows.Forms.Button button_close;
         private System.Windows.Forms.Button button_config;
         private System.Windows.Forms.Button button_windowStateChange;
-        private System.Windows.Forms.PictureBox pictureBox_showImage;
         private slideImage slideImage1;
+        private System.Windows.Forms.Button button_startStop;
 
     }
 }
