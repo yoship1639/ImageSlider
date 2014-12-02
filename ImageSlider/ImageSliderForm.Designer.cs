@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel_menu = new System.Windows.Forms.Panel();
+            this.label_imageCount = new System.Windows.Forms.Label();
             this.button_windowStateChange = new System.Windows.Forms.Button();
             this.button_config = new System.Windows.Forms.Button();
             this.button_close = new System.Windows.Forms.Button();
@@ -36,6 +37,7 @@
             this.textBox_search = new System.Windows.Forms.TextBox();
             this.pictureBox_sizeChange = new System.Windows.Forms.PictureBox();
             this.button_startStop = new System.Windows.Forms.Button();
+            this.button_download = new System.Windows.Forms.Button();
             this.slideImage1 = new ImageSlider.slideImage();
             this.panel_menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_search)).BeginInit();
@@ -45,6 +47,7 @@
             // panel_menu
             // 
             this.panel_menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.panel_menu.Controls.Add(this.label_imageCount);
             this.panel_menu.Controls.Add(this.button_windowStateChange);
             this.panel_menu.Controls.Add(this.button_config);
             this.panel_menu.Controls.Add(this.button_close);
@@ -59,6 +62,14 @@
             this.panel_menu.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouseDown);
             this.panel_menu.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouseMove);
             this.panel_menu.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouseUp);
+            // 
+            // label_imageCount
+            // 
+            this.label_imageCount.AutoSize = true;
+            this.label_imageCount.Location = new System.Drawing.Point(214, 7);
+            this.label_imageCount.Name = "label_imageCount";
+            this.label_imageCount.Size = new System.Drawing.Size(0, 18);
+            this.label_imageCount.TabIndex = 5;
             // 
             // button_windowStateChange
             // 
@@ -150,15 +161,30 @@
             // button_startStop
             // 
             this.button_startStop.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button_startStop.BackColor = System.Drawing.Color.White;
             this.button_startStop.BackgroundImage = global::ImageSlider.Properties.Resources.stop3;
             this.button_startStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button_startStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_startStop.Location = new System.Drawing.Point(211, 480);
+            this.button_startStop.Location = new System.Drawing.Point(10000, 10000);
             this.button_startStop.Name = "button_startStop";
             this.button_startStop.Size = new System.Drawing.Size(42, 35);
             this.button_startStop.TabIndex = 4;
-            this.button_startStop.UseVisualStyleBackColor = true;
+            this.button_startStop.UseVisualStyleBackColor = false;
             this.button_startStop.Click += new System.EventHandler(this.button_startStop_Click);
+            // 
+            // button_download
+            // 
+            this.button_download.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button_download.BackColor = System.Drawing.Color.White;
+            this.button_download.BackgroundImage = global::ImageSlider.Properties.Resources.download;
+            this.button_download.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button_download.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_download.Location = new System.Drawing.Point(10000, 10000);
+            this.button_download.Name = "button_download";
+            this.button_download.Size = new System.Drawing.Size(42, 35);
+            this.button_download.TabIndex = 5;
+            this.button_download.UseVisualStyleBackColor = false;
+            this.button_download.Click += new System.EventHandler(this.button_download_Click);
             // 
             // slideImage1
             // 
@@ -186,6 +212,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(480, 480);
+            this.Controls.Add(this.button_download);
             this.Controls.Add(this.button_startStop);
             this.Controls.Add(this.pictureBox_sizeChange);
             this.Controls.Add(this.panel_menu);
@@ -195,7 +222,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(360, 240);
+            this.MinimumSize = new System.Drawing.Size(400, 240);
             this.Name = "ImageSliderForm";
             this.ShowIcon = false;
             this.Text = "ImageSlider";
@@ -219,6 +246,8 @@
         private System.Windows.Forms.Button button_windowStateChange;
         private slideImage slideImage1;
         private System.Windows.Forms.Button button_startStop;
+        private System.Windows.Forms.Label label_imageCount;
+        private System.Windows.Forms.Button button_download;
 
     }
 }

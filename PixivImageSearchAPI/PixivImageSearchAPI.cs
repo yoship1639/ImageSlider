@@ -129,6 +129,7 @@ namespace PixivImageSearchAPI
                             {
                                 Bitmap = new System.Drawing.Bitmap(stream),
                                 FileName = datas[j].Title + "." + datas[j].Extension,
+                                SourceURL = "http://www.pixiv.net/member_illust.php?mode=medium&illust_id=" + datas[j].IllustID,
                             };
                             lock (images)
                             {

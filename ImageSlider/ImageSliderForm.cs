@@ -37,6 +37,7 @@ namespace ImageSlider
         IImageSearchAPI currentAPI;
 
         new delegate void SetBounds(int x, int y, int width, int height);
+        delegate void voidDelegate();
 
         public ImageSliderForm()
         {
@@ -73,8 +74,6 @@ namespace ImageSlider
         int slideCount = 0;
         int slideTime = 5;
 
-        int smoothCount = 0;
-
         public void Tick(object o)
         {
             slideCount++;
@@ -108,15 +107,11 @@ namespace ImageSlider
                     Size.Height - (int)(pictureBox_sizeChange.Size.Height * rate),
                     pictureBox_sizeChange.Size.Width,
                     pictureBox_sizeChange.Size.Height);
+
+                // ボタン
                 if (!searching && !neutral)
                 {
-                    // スタートストップ
-                    Invoke(
-                        new SetBounds(button_startStop.SetBounds),
-                        (Size.Width - button_startStop.Width) >> 1,
-                        Size.Height - (int)(50 * rate),
-                        button_startStop.Width,
-                        button_startStop.Height);
+                    setButtonsBounds(true);
                 }
             }
 
@@ -129,7 +124,8 @@ namespace ImageSlider
                     if (showImageNo >= slideImage1.ImageDatas.Length)
                     {
                         showImageNo = 0;
-                    } 
+                    }
+                    Invoke(new voidDelegate(showImageCountLabel));
                 }
 
                 if (showImageNo - slideImage1.Rate > 0.001f)
@@ -147,6 +143,7 @@ namespace ImageSlider
                 e.SuppressKeyPress = true;
                 searching = true;
                 neutral = false;
+                showImageNo = 0;
 
                 slideImage1.ForceImage = Properties.Resources.loader;
 
@@ -175,6 +172,12 @@ namespace ImageSlider
             searching = false;
             slideImage1.ForceImage = null;
             slideImage1.ImageDatas = currentAPI.ImageDatas;
+            if (e.Index == 0)
+            {
+                // ボタン
+                setButtonsBounds(true);
+            }
+            Invoke(new voidDelegate(showImageCountLabel));
         }
 
         void currentAPI_SearchError(object sender, EventArgs e)
@@ -182,6 +185,8 @@ namespace ImageSlider
             searching = false;
             neutral = true;
             slideImage1.ForceImage = Properties.Resources.close;
+            // ボタン
+            setButtonsBounds(false);
         }
 
         #endregion
@@ -317,6 +322,54 @@ namespace ImageSlider
 
             if (start) button_startStop.BackgroundImage = Properties.Resources.stop3;
             else button_startStop.BackgroundImage = Properties.Resources.play;
+        }
+
+        private void showImageCountLabel()
+        {
+            label_imageCount.Text = showImageNo+1 + "/" + slideImage1.ImageDatas.Length;
+        }
+
+        private void setButtonsBounds(bool show)
+        {
+            if (show)
+            {
+                // スタートストップ
+                Invoke(
+                        new SetBounds(button_startStop.SetBounds),
+                        ((Size.Width - button_startStop.Width) >> 1) - 25,
+                        Size.Height - (int)(50 * rate),
+                        button_startStop.Width,
+                        button_startStop.Height);
+
+                // ダウンロード
+                Invoke(
+                        new SetBounds(button_download.SetBounds),
+                        ((Size.Width - button_download.Width) >> 1) + 25,
+                        Size.Height - (int)(50 * rate),
+                        button_download.Width,
+                        button_download.Height);
+            }
+            else
+            {
+                // スタートストップ
+                Invoke(
+                        new SetBounds(button_startStop.SetBounds),
+                        10000, 10000,
+                        button_startStop.Width,
+                        button_startStop.Height);
+
+                // ダウンロード
+                Invoke(
+                        new SetBounds(button_download.SetBounds),
+                        10000, 10000,
+                        button_download.Width,
+                        button_download.Height);
+            }
+        }
+
+        private void button_download_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

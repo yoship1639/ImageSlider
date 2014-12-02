@@ -26,6 +26,7 @@ namespace ImageSearchAPILib
     {
         public Bitmap Bitmap { get; set; }
         public string FileName { get; set; }
+        public string SourceURL { get; set; }
     }
 
     public delegate void ImageLoadedEventHandler(object sender, ImageLoadedEventArgs e);

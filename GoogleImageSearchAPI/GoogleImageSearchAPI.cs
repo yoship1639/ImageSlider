@@ -137,6 +137,7 @@ namespace GoogleImageSearchAPI
                                 {
                                     Bitmap = new System.Drawing.Bitmap(stream),
                                     FileName = data.responseData.results[j].title,
+                                    SourceURL = data.responseData.results[j].originalContextUrl,
                                 };
                                 lock (images)
                                 {
