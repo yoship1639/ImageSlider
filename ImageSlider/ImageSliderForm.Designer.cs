@@ -36,6 +36,7 @@
             this.textBox_search = new System.Windows.Forms.TextBox();
             this.pictureBox_sizeChange = new System.Windows.Forms.PictureBox();
             this.pictureBox_showImage = new System.Windows.Forms.PictureBox();
+            this.slideImage1 = new ImageSlider.slideImage();
             this.panel_menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_search)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_sizeChange)).BeginInit();
@@ -149,6 +150,7 @@
             // 
             // pictureBox_showImage
             // 
+            this.pictureBox_showImage.Enabled = false;
             this.pictureBox_showImage.Location = new System.Drawing.Point(0, 0);
             this.pictureBox_showImage.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox_showImage.Name = "pictureBox_showImage";
@@ -156,9 +158,27 @@
             this.pictureBox_showImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox_showImage.TabIndex = 2;
             this.pictureBox_showImage.TabStop = false;
+            this.pictureBox_showImage.Visible = false;
             this.pictureBox_showImage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouseDown);
             this.pictureBox_showImage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouseMove);
             this.pictureBox_showImage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouseUp);
+            // 
+            // slideImage1
+            // 
+            this.slideImage1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.slideImage1.BackColor = System.Drawing.SystemColors.Control;
+            this.slideImage1.ForceImage = null;
+            this.slideImage1.ImageDatas = null;
+            this.slideImage1.Location = new System.Drawing.Point(0, 0);
+            this.slideImage1.Margin = new System.Windows.Forms.Padding(0);
+            this.slideImage1.Name = "slideImage1";
+            this.slideImage1.Rate = 0F;
+            this.slideImage1.Size = new System.Drawing.Size(480, 480);
+            this.slideImage1.SizeMode = ImageSlider.slideImage.ImageSizeMode.Fit;
+            this.slideImage1.SlideMode = ImageSlider.slideImage.ImageSlideMode.Slide_Left;
+            this.slideImage1.TabIndex = 3;
             // 
             // ImageSliderForm
             // 
@@ -169,6 +189,7 @@
             this.Controls.Add(this.pictureBox_sizeChange);
             this.Controls.Add(this.panel_menu);
             this.Controls.Add(this.pictureBox_showImage);
+            this.Controls.Add(this.slideImage1);
             this.Font = new System.Drawing.Font("Meiryo", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -194,10 +215,11 @@
         private System.Windows.Forms.TextBox textBox_search;
         private System.Windows.Forms.PictureBox pictureBox_search;
         private System.Windows.Forms.PictureBox pictureBox_sizeChange;
-        private System.Windows.Forms.PictureBox pictureBox_showImage;
         private System.Windows.Forms.Button button_close;
         private System.Windows.Forms.Button button_config;
         private System.Windows.Forms.Button button_windowStateChange;
+        private System.Windows.Forms.PictureBox pictureBox_showImage;
+        private slideImage slideImage1;
 
     }
 }

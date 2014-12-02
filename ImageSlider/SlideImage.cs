@@ -38,9 +38,9 @@ namespace ImageSlider
             get { return imageDatas; }
             set
             {
-                var prev = imageDatas;
+                //var prev = imageDatas;
                 imageDatas = value;
-                if (prev != value) Invalidate();
+                //if (prev != value) Invalidate();
             }
         }
 
@@ -116,16 +116,24 @@ namespace ImageSlider
             InitializeComponent();
         }
 
+        protected override void OnResize(EventArgs e)
+        {
+            Invalidate();
+            base.OnResize(e);
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             var g = e.Graphics;
 
-            g.Clear(Color.Transparent);
+            g.Clear(BackColor);
+            g.SetClip(new Rectangle(0, 0, Width, Height));
 
             // 強制的に描画する画像がある場合
             if (ForceImage != null)
             {
                 g.DrawImage(ForceImage, getImageDrawRect(ForceImage, 0, 0));
+                return;
             }
 
             // 画像データが無かったらリターン
@@ -159,6 +167,23 @@ namespace ImageSlider
                     g.DrawImage(image2, getImageDrawRect(image2, px2, 0));
                 }
             }
+            else if (slideMode == ImageSlideMode.Slide_Left)       // 左にスライド
+            {
+                float r = rate - no1;
+                if (no1 >= 0 && no1 < imageDatas.Length)
+                {
+                    var image1 = imageDatas[no1].Bitmap;
+                    int px1 = -(int)(Width * r);
+                    g.SetClip(new Rectangle(px1, 0, Width, Height));
+                    g.DrawImage(image1, getImageDrawRect(image1, px1, 0));
+
+                    if (no2 == imageDatas.Length) no2 = 0;
+                    var image2 = imageDatas[no2].Bitmap;
+                    var px2 = px1 + Width;
+                    g.SetClip(new Rectangle(px2, 0, Width, Height));
+                    g.DrawImage(image2, getImageDrawRect(image2, px2, 0));
+                }
+            }
         }
         
         /// <summary>
@@ -182,7 +207,7 @@ namespace ImageSlider
             {
                 var px = (Width - image.Width) >> 1;
                 var py = (Height - image.Height) >> 1;
-                return new Rectangle(px, py, image.Width, image.Height);
+                return new Rectangle(x + px, y + py, image.Width, image.Height);
             }
             else if (sizeMode == ImageSizeMode.Zoom)        // ズーム
             {
@@ -191,11 +216,15 @@ namespace ImageSlider
 
                 if (imgR > ctrR)
                 {
-
+                    var wr = Width / (float)image.Width;
+                    var h = image.Height * wr;
+                    return new Rectangle(x, y + ((Height - (int)h) >> 1), Width, (int)h);
                 }
                 else if (imgR < ctrR)
                 {
-
+                    var hr = Height / (float)image.Height;
+                    var w = image.Width * hr;
+                    return new Rectangle(x + ((Width - (int)w) >> 1), y, (int)w, Height);
                 }
                 else
                 {
@@ -204,9 +233,38 @@ namespace ImageSlider
             }
             else                                            // フィット
             {
-                return new Rectangle();
+                float imgR = image.Width / (float)image.Height;
+                float ctrR = Width / (float)Height;
+
+                if (imgR > ctrR)
+                {
+                    if (image.Width < Width)
+                    {
+                        var px = (Width - image.Width) >> 1;
+                        var py = (Height - image.Height) >> 1;
+                        return new Rectangle(x + px, y + py, image.Width, image.Height);
+                    }
+                    var wr = Width / (float)image.Width;
+                    var h = image.Height * wr;
+                    return new Rectangle(x, y + ((Height - (int)h) >> 1), Width, (int)h);
+                }
+                else if (imgR < ctrR)
+                {
+                    if (image.Height < Height)
+                    {
+                        var px = (Width - image.Width) >> 1;
+                        var py = (Height - image.Height) >> 1;
+                        return new Rectangle(x + px, y + py, image.Width, image.Height);
+                    }
+                    var hr = Height / (float)image.Height;
+                    var w = image.Width * hr;
+                    return new Rectangle(x + ((Width - (int)w) >> 1), y, (int)w, Height);
+                }
+                else
+                {
+                    return new Rectangle(0, 0, Width, Height);
+                }
             }
-            return new Rectangle(x, y, image.Width, image.Height);
         }
 
 
