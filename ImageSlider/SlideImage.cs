@@ -65,7 +65,8 @@ namespace ImageSlider
         public enum ImageSlideMode
         {
             Normal,
-            Slide,
+            Slide_Right,
+            Slide_Left,
         }
 
         /// <summary>
@@ -124,7 +125,7 @@ namespace ImageSlider
             // 強制的に描画する画像がある場合
             if (ForceImage != null)
             {
-                g.DrawImageUnscaled(ForceImage, getImageDrawRect(ForceImage, 0, 0));
+                g.DrawImage(ForceImage, getImageDrawRect(ForceImage, 0, 0));
             }
 
             // 画像データが無かったらリターン
@@ -135,13 +136,38 @@ namespace ImageSlider
             int no2 = (int)rate + 1;
 
             // 描画
-            if (slideMode == ImageSlideMode.Normal)         // 通常切り替え
+            if (slideMode == ImageSlideMode.Normal)                 // 通常切り替え
             {
-                
+                if (no1 < 0 || no1 >= imageDatas.Length) return;
+                var image = imageDatas[no1].Bitmap;
+                g.DrawImage(image, getImageDrawRect(image, 0, 0));
             }
+            else if (slideMode == ImageSlideMode.Slide_Right)       // 右にスライド
+            {
+                float r = rate - no1;
+                if (no1 >= 0 && no1 < imageDatas.Length)
+                {
+                    var image1 = imageDatas[no1].Bitmap;
+                    int px1 = (int)(Width * r);
+                    g.SetClip(new Rectangle(px1, 0, Width, Height));
+                    g.DrawImage(image1, getImageDrawRect(image1, px1, 0));
 
+                    if (no2 == imageDatas.Length) no2 = 0;
+                    var image2 = imageDatas[no2].Bitmap;
+                    var px2 = px1 - Width;
+                    g.SetClip(new Rectangle(px2, 0, Width, Height));
+                    g.DrawImage(image2, getImageDrawRect(image2, px2, 0));
+                }
+            }
         }
         
+        /// <summary>
+        /// 画像の描画領域を取得する
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         Rectangle getImageDrawRect(Image image, int x, int y)
         {
             if (sizeMode == ImageSizeMode.Normal)           // 通常
