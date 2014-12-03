@@ -64,6 +64,7 @@ namespace ImageSlider
 
                 // 滑らかに切り替え
                 smoothSlide = Properties.Settings.Default.SmoothSlide;
+                slideImage1.SlideMode = smoothSlide ? slideImage.ImageSlideMode.Slide_Left : slideImage.ImageSlideMode.Normal;
 
                 // 保存場所
                 downloadFolder = Properties.Settings.Default.DownloadFolder;
@@ -303,6 +304,9 @@ namespace ImageSlider
             smoothSlide = config.SmoothSlide;
             downloadFolder = config.DowloadFolder;
             createSubFolder = config.CreateSubFolder;
+
+            slideImage1.SlideMode = smoothSlide ? slideImage.ImageSlideMode.Slide_Left : slideImage.ImageSlideMode.Normal;
+            
             if (config.APIName != currentAPI.APIName)
             {
                 setCurrentAPI(imageSearchAPIs.Find((api) => api.APIName == config.APIName));
@@ -512,6 +516,7 @@ namespace ImageSlider
             {
                 showImageNo = 0;
             }
+            if (!smoothSlide) slideImage1.Rate = showImageNo;
         }
 
         private void prevImage()
