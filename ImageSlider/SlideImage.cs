@@ -141,59 +141,62 @@ namespace ImageSlider
             // 画像データが無かったらリターン
             if (imageDatas == null) return;
 
-            // 描画する画像を選択
-            int no1 = (int)rate;
-            int no2 = (int)rate + 1;
+            lock (imageDatas)
+            {
+                // 描画する画像を選択
+                int no1 = (int)rate;
+                int no2 = (int)rate + 1;
 
-            // 描画
-            if (slideMode == ImageSlideMode.Normal)                 // 通常切り替え
-            {
-                if (no1 < 0 || no1 >= imageDatas.Length) return;
-                var image = imageDatas[no1].Bitmap;
-                g.DrawImage(image, getImageDrawRect(image, 0, 0));
-            }
-            else if (slideMode == ImageSlideMode.Slide_Right)       // 右にスライド
-            {
-                float r = rate - no1;
-                
-                if (no1 >= 0 && no1 < imageDatas.Length)
+                // 描画
+                if (slideMode == ImageSlideMode.Normal)                 // 通常切り替え
                 {
-                    var image1 = imageDatas[no1].Bitmap;
-                    int px1 = (int)(Width * r);
-                    if (r < maxRate)
+                    if (no1 < 0 || no1 >= imageDatas.Length) return;
+                    var image = imageDatas[no1].Bitmap;
+                    g.DrawImage(image, getImageDrawRect(image, 0, 0));
+                }
+                else if (slideMode == ImageSlideMode.Slide_Right)       // 右にスライド
+                {
+                    float r = rate - no1;
+
+                    if (no1 >= 0 && no1 < imageDatas.Length)
                     {
-                        //g.SetClip(new Rectangle(px1, 0, Width, Height));
-                        g.DrawImage(image1, getImageDrawRect(image1, px1, 0));
-                    }
-                    if (r > 1 - maxRate)
-                    {
-                        if (no2 == imageDatas.Length) no2 = 0;
-                        var image2 = imageDatas[no2].Bitmap;
-                        var px2 = px1 - Width;
-                        //g.SetClip(new Rectangle(px2, 0, Width, Height));
-                        g.DrawImage(image2, getImageDrawRect(image2, px2, 0));
+                        var image1 = imageDatas[no1].Bitmap;
+                        int px1 = (int)(Width * r);
+                        if (r < maxRate)
+                        {
+                            //g.SetClip(new Rectangle(px1, 0, Width, Height));
+                            g.DrawImage(image1, getImageDrawRect(image1, px1, 0));
+                        }
+                        if (r > 1 - maxRate)
+                        {
+                            if (no2 == imageDatas.Length) no2 = 0;
+                            var image2 = imageDatas[no2].Bitmap;
+                            var px2 = px1 - Width;
+                            //g.SetClip(new Rectangle(px2, 0, Width, Height));
+                            g.DrawImage(image2, getImageDrawRect(image2, px2, 0));
+                        }
                     }
                 }
-            }
-            else if (slideMode == ImageSlideMode.Slide_Left)       // 左にスライド
-            {
-                float r = rate - no1;
-                if (no1 >= 0 && no1 < imageDatas.Length)
+                else if (slideMode == ImageSlideMode.Slide_Left)       // 左にスライド
                 {
-                    var image1 = imageDatas[no1].Bitmap;
-                    int px1 = -(int)(Width * r);
-                    if (r < maxRate)
+                    float r = rate - no1;
+                    if (no1 >= 0 && no1 < imageDatas.Length)
                     {
-                        //g.SetClip(new Rectangle(px1, 0, Width, Height));
-                        g.DrawImage(image1, getImageDrawRect(image1, px1, 0));
-                    }
-                    if (r > 1 - maxRate)
-                    {
-                        if (no2 == imageDatas.Length) no2 = 0;
-                        var image2 = imageDatas[no2].Bitmap;
-                        var px2 = px1 + Width;
-                        //g.SetClip(new Rectangle(px2, 0, Width, Height));
-                        g.DrawImage(image2, getImageDrawRect(image2, px2, 0));
+                        var image1 = imageDatas[no1].Bitmap;
+                        int px1 = -(int)(Width * r);
+                        if (r < maxRate)
+                        {
+                            //g.SetClip(new Rectangle(px1, 0, Width, Height));
+                            g.DrawImage(image1, getImageDrawRect(image1, px1, 0));
+                        }
+                        if (r > 1 - maxRate)
+                        {
+                            if (no2 == imageDatas.Length) no2 = 0;
+                            var image2 = imageDatas[no2].Bitmap;
+                            var px2 = px1 + Width;
+                            //g.SetClip(new Rectangle(px2, 0, Width, Height));
+                            g.DrawImage(image2, getImageDrawRect(image2, px2, 0));
+                        }
                     }
                 }
             }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImageSliderForm));
             this.panel_menu = new System.Windows.Forms.Panel();
             this.label_imageCount = new System.Windows.Forms.Label();
             this.button_windowStateChange = new System.Windows.Forms.Button();
@@ -40,8 +41,8 @@
             this.button_download = new System.Windows.Forms.Button();
             this.button_right = new System.Windows.Forms.Button();
             this.button_left = new System.Windows.Forms.Button();
-            this.slideImage1 = new ImageSlider.slideImage();
             this.button_moveSite = new System.Windows.Forms.Button();
+            this.slideImage1 = new ImageSlider.slideImage();
             this.panel_menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_search)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_sizeChange)).BeginInit();
@@ -192,7 +193,7 @@
             this.button_download.Location = new System.Drawing.Point(10000, 10000);
             this.button_download.Name = "button_download";
             this.button_download.Size = new System.Drawing.Size(42, 35);
-            this.button_download.TabIndex = 5;
+            this.button_download.TabIndex = 3;
             this.button_download.UseVisualStyleBackColor = false;
             this.button_download.Click += new System.EventHandler(this.button_download_Click);
             this.button_download.KeyDown += new System.Windows.Forms.KeyEventHandler(this.slideImage1_KeyDown);
@@ -225,6 +226,20 @@
             this.button_left.UseVisualStyleBackColor = false;
             this.button_left.Click += new System.EventHandler(this.button_left_Click);
             // 
+            // button_moveSite
+            // 
+            this.button_moveSite.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button_moveSite.BackColor = System.Drawing.Color.White;
+            this.button_moveSite.BackgroundImage = global::ImageSlider.Properties.Resources.move;
+            this.button_moveSite.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button_moveSite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_moveSite.Location = new System.Drawing.Point(10000, 10000);
+            this.button_moveSite.Name = "button_moveSite";
+            this.button_moveSite.Size = new System.Drawing.Size(42, 35);
+            this.button_moveSite.TabIndex = 8;
+            this.button_moveSite.UseVisualStyleBackColor = false;
+            this.button_moveSite.Click += new System.EventHandler(this.button_moveSite_Click);
+            // 
             // slideImage1
             // 
             this.slideImage1.BackColor = System.Drawing.SystemColors.Control;
@@ -244,20 +259,6 @@
             this.slideImage1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouseMove);
             this.slideImage1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouseUp);
             // 
-            // button_moveSite
-            // 
-            this.button_moveSite.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button_moveSite.BackColor = System.Drawing.Color.White;
-            this.button_moveSite.BackgroundImage = global::ImageSlider.Properties.Resources.move;
-            this.button_moveSite.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button_moveSite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_moveSite.Location = new System.Drawing.Point(10000, 10000);
-            this.button_moveSite.Name = "button_moveSite";
-            this.button_moveSite.Size = new System.Drawing.Size(42, 35);
-            this.button_moveSite.TabIndex = 8;
-            this.button_moveSite.UseVisualStyleBackColor = false;
-            this.button_moveSite.Click += new System.EventHandler(this.button_moveSite_Click);
-            // 
             // ImageSliderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
@@ -274,6 +275,7 @@
             this.Controls.Add(this.slideImage1);
             this.Font = new System.Drawing.Font("Meiryo", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

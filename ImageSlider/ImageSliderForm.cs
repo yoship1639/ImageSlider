@@ -498,7 +498,7 @@ namespace ImageSlider
                 prevImage();
                 showImageCountLabel();
             }
-            else if (e.Control && e.KeyCode.HasFlag(Keys.O))
+            else if (e.Control && e.KeyCode.HasFlag(Keys.O))    // サイトに飛ぶ
             {
                 moveToSite();
             }
