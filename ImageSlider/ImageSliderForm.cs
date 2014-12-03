@@ -49,6 +49,9 @@ namespace ImageSlider
             // PixivAPIの追加
             imageSearchAPIs.Add(new PixivImageSearchAPI.PixivImageSearchAPI());
 
+            // TwitterAPIの追加
+            imageSearchAPIs.Add(new TwitterImageSearchAPI.TwitterImageSearchAPI());
+
             // 設定の読み込み
             {
                 // カレントAPIを設定

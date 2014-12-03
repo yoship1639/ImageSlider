@@ -144,12 +144,6 @@ namespace PixivImageSearchAPI
             });
         }
 
-        public ImageData GetImageData(int index)
-        {
-            if (index < 0 || index >= images.Count) return null;
-            return images[index];
-        }
-
         #region 無理やりログイン
         /*
         private void login(string id, string password)

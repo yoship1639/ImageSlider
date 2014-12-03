@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using ImageSearchAPILib;
+using System.Runtime.InteropServices;
+using System.Web;
+using System.IO;
 
 namespace TwitterImageSearchAPI
 {
@@ -16,7 +19,7 @@ namespace TwitterImageSearchAPI
         UserControl,
         IImageSearchAPI
     {
-        List<ImageData> imageDatas = new List<ImageData>();
+        List<ImageData> images = new List<ImageData>();
 
         public TwitterImageSearchAPI()
         {
@@ -29,27 +32,27 @@ namespace TwitterImageSearchAPI
         {
             get
             {
-                throw new NotImplementedException();
+                return null;
             }
             set
             {
-                throw new NotImplementedException();
+                
             }
         }
 
         public object[] DefaultParams
         {
-            get { throw new NotImplementedException(); }
+            get { return null; }
         }
 
         public ImageData[] ImageDatas
         {
-            get { return imageDatas.ToArray(); }
+            get { return images.ToArray(); }
         }
 
         public int ImageCount
         {
-            get { return imageDatas.Count; }
+            get { return images.Count; }
         }
 
         public event EventHandler SearchError = delegate { };
@@ -60,7 +63,7 @@ namespace TwitterImageSearchAPI
 
         public void Search(string query)
         {
-            imageDatas.Clear();
+            images.Clear();
             Task.Factory.StartNew(() =>
             {
                 // トークンを取得
@@ -80,22 +83,57 @@ namespace TwitterImageSearchAPI
                     }
                 }
 
+                // Httpエンコード
+                var word = HttpUtility.HtmlEncode(query);
+
                 // 検索し、結果を取得
                 var result = tokens.Search.Tweets(new Dictionary<string, object>()
                 {
-                    {"q", "filter:images http " + query},
+                    {"q", "filter:images " + word},
                     {"include_entities", true},
                     {"count", 100},
+                    {"locale", "ja"},
                 });
+                if (result == null)
+                {
+                    SearchError(this, EventArgs.Empty);
+                    return;
+                }
+
+                Parallel.For(0, result.Count, i =>
+                {
+                    try
+                    {
+                        var res = result[i];
+                        if (res.Entities.Media != null)
+                        {
+                            foreach (var m in res.Entities.Media)
+                            {
+                                var idx = m.MediaUrl.LocalPath.LastIndexOf('/');
+                                if(idx < 0) idx = 0;
+                                var sub = m.MediaUrl.LocalPath.Substring(idx);
+
+                                var wc = new System.Net.WebClient();
+                                Stream stream = wc.OpenRead(m.MediaUrl.AbsoluteUri);
+                                var image = new ImageData()
+                                {
+                                    Bitmap = new System.Drawing.Bitmap(stream),
+                                    FileName = sub,
+                                    SourceURL = m.ExpandedUrl.AbsoluteUri,
+                                };
+                                lock (images)
+                                {
+                                    images.Add(image);
+                                    ImageLoaded(this, new ImageLoadedEventArgs() { Index = images.Count - 1, ImageData = image });
+                                }
+                                stream.Close();
+                            }
+                        }
+                    }
+                    catch { }
+                });
+                SearchFinished(this, EventArgs.Empty);
             });
-            
-
-            
-        }
-
-        public ImageData GetImageData(int index)
-        {
-            throw new NotImplementedException();
         }
     }
 }

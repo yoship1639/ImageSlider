@@ -75,7 +75,7 @@
             this.Controls.Add(this.label4);
             this.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Name = "PixivImageSearchAPI";
-            this.Size = new System.Drawing.Size(523, 290);
+            this.Size = new System.Drawing.Size(304, 290);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -19,7 +19,6 @@ namespace ImageSearchAPILib
         event ImageLoadedEventHandler ImageLoaded;
 
         void Search(string query);
-        ImageData GetImageData(int index);
     }
 
     public class ImageData

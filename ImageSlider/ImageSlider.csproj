@@ -132,6 +132,10 @@
       <Project>{5b6b0d0e-37fd-4fab-aa5c-121bd7daa197}</Project>
       <Name>PixivImageSearchAPI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TwitterImageSearchAPI\TwitterImageSearchAPI.csproj">
+      <Project>{672afa99-26cd-488e-b633-7f6d394b7d45}</Project>
+      <Name>TwitterImageSearchAPI</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Search2.png" />

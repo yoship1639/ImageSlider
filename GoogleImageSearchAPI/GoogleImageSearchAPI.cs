@@ -155,12 +155,6 @@ namespace GoogleImageSearchAPI
             });
         }
 
-        public ImageData GetImageData(int index)
-        {
-            if (index < 0 || index >= images.Count) return null;
-            return images[index];
-        }
-
         private GoogleImageSearchAPIJsonData search(string query, int start)
         {
             query = query.Replace("　", " ");
