@@ -199,7 +199,7 @@
             this.slideImage1.Name = "slideImage1";
             this.slideImage1.Rate = 0F;
             this.slideImage1.Size = new System.Drawing.Size(480, 480);
-            this.slideImage1.SizeMode = ImageSlider.slideImage.ImageSizeMode.Zoom;
+            this.slideImage1.SizeMode = ImageSlider.slideImage.ImageSizeMode.Normal;
             this.slideImage1.SlideMode = ImageSlider.slideImage.ImageSlideMode.Slide_Left;
             this.slideImage1.TabIndex = 3;
             this.slideImage1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouseDown);

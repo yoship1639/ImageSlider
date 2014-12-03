@@ -129,7 +129,7 @@ namespace ImageSlider
             const float maxRate = 0.997f;
 
             g.Clear(BackColor);
-            g.SetClip(new Rectangle(0, 0, Width, Height));
+            //g.SetClip(new Rectangle(0, 0, Width, Height));
 
             // 強制的に描画する画像がある場合
             if (ForceImage != null)
@@ -162,7 +162,7 @@ namespace ImageSlider
                     int px1 = (int)(Width * r);
                     if (r < maxRate)
                     {
-                        g.SetClip(new Rectangle(px1, 0, Width, Height));
+                        //g.SetClip(new Rectangle(px1, 0, Width, Height));
                         g.DrawImage(image1, getImageDrawRect(image1, px1, 0));
                     }
                     if (r > 1 - maxRate)
@@ -170,7 +170,7 @@ namespace ImageSlider
                         if (no2 == imageDatas.Length) no2 = 0;
                         var image2 = imageDatas[no2].Bitmap;
                         var px2 = px1 - Width;
-                        g.SetClip(new Rectangle(px2, 0, Width, Height));
+                        //g.SetClip(new Rectangle(px2, 0, Width, Height));
                         g.DrawImage(image2, getImageDrawRect(image2, px2, 0));
                     }
                 }
