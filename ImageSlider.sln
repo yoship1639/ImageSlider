@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixivImageSearchAPI", "Pixi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NicoSeigaImageSearchAPI", "NicoSeigaImageSearchAPI\NicoSeigaImageSearchAPI.csproj", "{AC92AA91-8110-4530-9E5F-374BEB14B24E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterImageSearchAPI", "TwitterImageSearchAPI\TwitterImageSearchAPI.csproj", "{672AFA99-26CD-488E-B633-7F6D394B7D45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{AC92AA91-8110-4530-9E5F-374BEB14B24E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC92AA91-8110-4530-9E5F-374BEB14B24E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC92AA91-8110-4530-9E5F-374BEB14B24E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{672AFA99-26CD-488E-B633-7F6D394B7D45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{672AFA99-26CD-488E-B633-7F6D394B7D45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{672AFA99-26CD-488E-B633-7F6D394B7D45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{672AFA99-26CD-488E-B633-7F6D394B7D45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
