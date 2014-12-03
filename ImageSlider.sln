@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleImageSearchAPI", "Goo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixivImageSearchAPI", "PixivImageSearchAPI\PixivImageSearchAPI.csproj", "{5B6B0D0E-37FD-4FAB-AA5C-121BD7DAA197}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NicoSeigaImageSearchAPI", "NicoSeigaImageSearchAPI\NicoSeigaImageSearchAPI.csproj", "{AC92AA91-8110-4530-9E5F-374BEB14B24E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{5B6B0D0E-37FD-4FAB-AA5C-121BD7DAA197}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B6B0D0E-37FD-4FAB-AA5C-121BD7DAA197}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B6B0D0E-37FD-4FAB-AA5C-121BD7DAA197}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC92AA91-8110-4530-9E5F-374BEB14B24E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC92AA91-8110-4530-9E5F-374BEB14B24E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC92AA91-8110-4530-9E5F-374BEB14B24E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC92AA91-8110-4530-9E5F-374BEB14B24E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
