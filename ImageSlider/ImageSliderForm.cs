@@ -26,12 +26,11 @@ namespace ImageSlider
         bool neutral = true;
         bool searching = false;
         bool start = true;
-
         int showImageNo = 0;
-
         int tickTime = 10;
-
         bool smoothSlide = false;
+        string downloadFolder;
+        bool createSubFolder;
 
         List<IImageSearchAPI> imageSearchAPIs = new List<IImageSearchAPI>();
         IImageSearchAPI currentAPI;
@@ -65,6 +64,16 @@ namespace ImageSlider
 
                 // 滑らかに切り替え
                 smoothSlide = Properties.Settings.Default.SmoothSlide;
+
+                // 保存場所
+                downloadFolder = Properties.Settings.Default.DownloadFolder;
+                if (!Directory.Exists(downloadFolder))
+                {
+                    downloadFolder = System.Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+                }
+
+                // サブフォルダ
+                createSubFolder = Properties.Settings.Default.CreateSubFolder;
             }
 
             TimerCallback timerDelegate = new TimerCallback(Tick);
@@ -120,17 +129,13 @@ namespace ImageSlider
                 if (start && slideCount > slideTime * 1000 / tickTime)
                 {
                     slideCount = 0;
-                    showImageNo++;
-                    if (showImageNo >= slideImage1.ImageDatas.Length)
-                    {
-                        showImageNo = 0;
-                    }
+                    nextImage();
                     Invoke(new voidDelegate(showImageCountLabel));
                 }
-
-                if (showImageNo - slideImage1.Rate > 0.001f)
+                var r = showImageNo - slideImage1.Rate;
+                if (Math.Abs(r) > 0.001f)
                 {
-                    slideImage1.Rate += (showImageNo - slideImage1.Rate) * 0.1f;
+                    slideImage1.Rate += (showImageNo - slideImage1.Rate) * 0.15f;
                 }
                 else slideImage1.Rate = showImageNo;
             }
@@ -151,6 +156,7 @@ namespace ImageSlider
 
                 return;
             }
+            slideImage1_KeyDown(null, e);
         }
 
         #region カレントAPI関連
@@ -268,11 +274,18 @@ namespace ImageSlider
             Properties.Settings.Default.SlideTime = slideTime;
             Properties.Settings.Default.MenuColor = panel_menu.BackColor;
             Properties.Settings.Default.SmoothSlide = smoothSlide;
+            Properties.Settings.Default.DownloadFolder = downloadFolder;
+            Properties.Settings.Default.CreateSubFolder = createSubFolder;
             Properties.Settings.Default.Save();
         }
 
         #endregion
 
+        /// <summary>
+        /// 設定フォーム表示
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_config_Click(object sender, EventArgs e)
         {
             // 設定フォームの作成
@@ -281,11 +294,15 @@ namespace ImageSlider
                 SlideTime = slideTime,
                 MenuColor = panel_menu.BackColor,
                 SmoothSlide = smoothSlide,
+                DowloadFolder = downloadFolder,
+                CreateSubFolder = createSubFolder,
             };
             config.ShowDialog(this);
             slideTime = config.SlideTime;
             panel_menu.BackColor = config.MenuColor;
             smoothSlide = config.SmoothSlide;
+            downloadFolder = config.DowloadFolder;
+            createSubFolder = config.CreateSubFolder;
             if (config.APIName != currentAPI.APIName)
             {
                 setCurrentAPI(imageSearchAPIs.Find((api) => api.APIName == config.APIName));
@@ -326,6 +343,7 @@ namespace ImageSlider
 
         private void showImageCountLabel()
         {
+            if (slideImage1.ImageDatas == null) return;
             label_imageCount.Text = showImageNo+1 + "/" + slideImage1.ImageDatas.Length;
         }
 
@@ -336,7 +354,7 @@ namespace ImageSlider
                 // スタートストップ
                 Invoke(
                         new SetBounds(button_startStop.SetBounds),
-                        ((Size.Width - button_startStop.Width) >> 1) - 25,
+                        ((Size.Width - button_startStop.Width) >> 1) - 64,
                         Size.Height - (int)(50 * rate),
                         button_startStop.Width,
                         button_startStop.Height);
@@ -344,10 +362,34 @@ namespace ImageSlider
                 // ダウンロード
                 Invoke(
                         new SetBounds(button_download.SetBounds),
-                        ((Size.Width - button_download.Width) >> 1) + 25,
+                        ((Size.Width - button_download.Width) >> 1),
                         Size.Height - (int)(50 * rate),
                         button_download.Width,
                         button_download.Height);
+
+                // サイトに飛ぶ
+                Invoke(
+                        new SetBounds(button_moveSite.SetBounds),
+                        ((Size.Width - button_moveSite.Width) >> 1) + 64,
+                        Size.Height - (int)(50 * rate),
+                        button_moveSite.Width,
+                        button_moveSite.Height);
+
+                // 次へ
+                Invoke(
+                        new SetBounds(button_right.SetBounds),
+                        (Width - button_right.Width - 10) + (int)(50 * (1.0f - rate)),
+                        (Height - button_right.Height) >> 1,
+                        button_right.Width,
+                        button_right.Height);
+
+                // 戻る
+                Invoke(
+                        new SetBounds(button_left.SetBounds),
+                        10 - (int)(50 * (1.0f - rate)),
+                        (Height - button_left.Height) >> 1,
+                        button_left.Width,
+                        button_left.Height);
             }
             else
             {
@@ -364,12 +406,150 @@ namespace ImageSlider
                         10000, 10000,
                         button_download.Width,
                         button_download.Height);
+
+                // サイトに飛ぶ
+                Invoke(
+                        new SetBounds(button_moveSite.SetBounds),
+                        10000, 10000,
+                        button_moveSite.Width,
+                        button_moveSite.Height);
+
+                // 次へ
+                Invoke(
+                        new SetBounds(button_right.SetBounds),
+                        10000, 10000,
+                        button_right.Width,
+                        button_right.Height);
+
+                // 戻る
+                Invoke(
+                        new SetBounds(button_left.SetBounds),
+                        10000, 10000,
+                        button_left.Width,
+                        button_left.Height);
             }
         }
 
+        /// <summary>
+        /// ダウンロードボタンを押したとき
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_download_Click(object sender, EventArgs e)
         {
+            Task.Factory.StartNew(() =>
+            {
+                saveImage();
+            });
+            
+        }
 
+        private bool saveImage()
+        {
+            try
+            {
+                // ダウンロードする画像の番号を計算
+                var no = (int)Math.Round(slideImage1.Rate);
+                var datas = slideImage1.ImageDatas;
+                var image = datas[no].Bitmap;
+                // 保存パス
+                var path = downloadFolder + "\\";
+                if (createSubFolder)
+                {
+                    path += textBox_search.Text;
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    path += "\\";
+                } 
+                path += datas[no].FileName;
+
+                image.Save(path);
+                System.Diagnostics.Debug.WriteLine(path);
+            }
+            catch
+            {
+                System.Diagnostics.Debug.WriteLine("ダウンロードできません!");
+                return false;
+            }
+            return true;
+        }
+
+        private void slideImage1_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Ctrl + Sで保存
+            if (e.Control && e.KeyCode.HasFlag(Keys.S))
+            {
+                Task.Factory.StartNew(() =>
+                {
+                    saveImage();
+                });
+            }
+            else if (e.KeyCode == Keys.D)       // 進む
+            {
+                slideCount = 0;
+                nextImage();
+                showImageCountLabel();
+            }
+            else if (e.KeyCode == Keys.A)       // 戻る
+            {
+                slideCount = 0;
+                prevImage();
+                showImageCountLabel();
+            }
+            else if (e.Control && e.KeyCode.HasFlag(Keys.O))
+            {
+                moveToSite();
+            }
+        }
+
+        private void nextImage()
+        {
+            if (slideImage1.ImageDatas == null) return;
+            showImageNo++;
+            if (showImageNo >= slideImage1.ImageDatas.Length)
+            {
+                showImageNo = 0;
+            }
+        }
+
+        private void prevImage()
+        {
+            if (slideImage1.ImageDatas == null) return;
+            showImageNo--;
+            if (showImageNo < 0) 
+            {
+                showImageNo = slideImage1.ImageDatas.Length - 1;
+            }
+        }
+
+        private void button_right_Click(object sender, EventArgs e)
+        {
+            slideCount = 0;
+            nextImage();
+            showImageCountLabel();
+        }
+
+        private void button_left_Click(object sender, EventArgs e)
+        {
+            slideCount = 0;
+            prevImage();
+            showImageCountLabel();
+        }
+
+        private void button_moveSite_Click(object sender, EventArgs e)
+        {
+            moveToSite();
+        }
+
+        private void moveToSite()
+        {
+            var datas = slideImage1.ImageDatas;
+            var no = (int)Math.Round(slideImage1.Rate);
+            if (no < 0 || no >= datas.Length) return;
+
+            System.Diagnostics.Process.Start(datas[no].SourceURL);
         }
     }
 }

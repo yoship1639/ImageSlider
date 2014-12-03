@@ -241,7 +241,7 @@ namespace ImageSlider
                 }
                 else
                 {
-                    return new Rectangle(0, 0, Width, Height);
+                    return new Rectangle(x, y, Width, Height);
                 }
             }
             else                                            // フィット
@@ -275,7 +275,7 @@ namespace ImageSlider
                 }
                 else
                 {
-                    return new Rectangle(0, 0, Width, Height);
+                    return new Rectangle(x, y, Width, Height);
                 }
             }
         }

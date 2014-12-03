@@ -38,7 +38,10 @@
             this.pictureBox_sizeChange = new System.Windows.Forms.PictureBox();
             this.button_startStop = new System.Windows.Forms.Button();
             this.button_download = new System.Windows.Forms.Button();
+            this.button_right = new System.Windows.Forms.Button();
+            this.button_left = new System.Windows.Forms.Button();
             this.slideImage1 = new ImageSlider.slideImage();
+            this.button_moveSite = new System.Windows.Forms.Button();
             this.panel_menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_search)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_sizeChange)).BeginInit();
@@ -70,6 +73,9 @@
             this.label_imageCount.Name = "label_imageCount";
             this.label_imageCount.Size = new System.Drawing.Size(0, 18);
             this.label_imageCount.TabIndex = 5;
+            this.label_imageCount.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouseDown);
+            this.label_imageCount.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouseMove);
+            this.label_imageCount.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouseUp);
             // 
             // button_windowStateChange
             // 
@@ -130,6 +136,9 @@
             this.pictureBox_search.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox_search.TabIndex = 1;
             this.pictureBox_search.TabStop = false;
+            this.pictureBox_search.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouseDown);
+            this.pictureBox_search.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouseMove);
+            this.pictureBox_search.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouseUp);
             // 
             // textBox_search
             // 
@@ -171,6 +180,7 @@
             this.button_startStop.TabIndex = 4;
             this.button_startStop.UseVisualStyleBackColor = false;
             this.button_startStop.Click += new System.EventHandler(this.button_startStop_Click);
+            this.button_startStop.KeyDown += new System.Windows.Forms.KeyEventHandler(this.slideImage1_KeyDown);
             // 
             // button_download
             // 
@@ -185,13 +195,40 @@
             this.button_download.TabIndex = 5;
             this.button_download.UseVisualStyleBackColor = false;
             this.button_download.Click += new System.EventHandler(this.button_download_Click);
+            this.button_download.KeyDown += new System.Windows.Forms.KeyEventHandler(this.slideImage1_KeyDown);
+            // 
+            // button_right
+            // 
+            this.button_right.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.button_right.BackColor = System.Drawing.Color.White;
+            this.button_right.BackgroundImage = global::ImageSlider.Properties.Resources.right;
+            this.button_right.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button_right.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_right.Location = new System.Drawing.Point(10000, 10000);
+            this.button_right.Name = "button_right";
+            this.button_right.Size = new System.Drawing.Size(33, 43);
+            this.button_right.TabIndex = 6;
+            this.button_right.UseVisualStyleBackColor = false;
+            this.button_right.Click += new System.EventHandler(this.button_right_Click);
+            // 
+            // button_left
+            // 
+            this.button_left.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button_left.BackColor = System.Drawing.Color.White;
+            this.button_left.BackgroundImage = global::ImageSlider.Properties.Resources.left;
+            this.button_left.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button_left.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_left.Location = new System.Drawing.Point(10000, 10000);
+            this.button_left.Name = "button_left";
+            this.button_left.Size = new System.Drawing.Size(33, 43);
+            this.button_left.TabIndex = 7;
+            this.button_left.UseVisualStyleBackColor = false;
+            this.button_left.Click += new System.EventHandler(this.button_left_Click);
             // 
             // slideImage1
             // 
-            this.slideImage1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.slideImage1.BackColor = System.Drawing.SystemColors.Control;
+            this.slideImage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.slideImage1.ForceImage = null;
             this.slideImage1.ImageDatas = null;
             this.slideImage1.Location = new System.Drawing.Point(0, 0);
@@ -199,12 +236,27 @@
             this.slideImage1.Name = "slideImage1";
             this.slideImage1.Rate = 0F;
             this.slideImage1.Size = new System.Drawing.Size(480, 480);
-            this.slideImage1.SizeMode = ImageSlider.slideImage.ImageSizeMode.Normal;
+            this.slideImage1.SizeMode = ImageSlider.slideImage.ImageSizeMode.Zoom;
             this.slideImage1.SlideMode = ImageSlider.slideImage.ImageSlideMode.Slide_Left;
             this.slideImage1.TabIndex = 3;
+            this.slideImage1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.slideImage1_KeyDown);
             this.slideImage1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouseDown);
             this.slideImage1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouseMove);
             this.slideImage1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouseUp);
+            // 
+            // button_moveSite
+            // 
+            this.button_moveSite.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button_moveSite.BackColor = System.Drawing.Color.White;
+            this.button_moveSite.BackgroundImage = global::ImageSlider.Properties.Resources.move;
+            this.button_moveSite.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button_moveSite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_moveSite.Location = new System.Drawing.Point(10000, 10000);
+            this.button_moveSite.Name = "button_moveSite";
+            this.button_moveSite.Size = new System.Drawing.Size(42, 35);
+            this.button_moveSite.TabIndex = 8;
+            this.button_moveSite.UseVisualStyleBackColor = false;
+            this.button_moveSite.Click += new System.EventHandler(this.button_moveSite_Click);
             // 
             // ImageSliderForm
             // 
@@ -212,6 +264,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(480, 480);
+            this.Controls.Add(this.button_moveSite);
+            this.Controls.Add(this.button_left);
+            this.Controls.Add(this.button_right);
             this.Controls.Add(this.button_download);
             this.Controls.Add(this.button_startStop);
             this.Controls.Add(this.pictureBox_sizeChange);
@@ -248,6 +303,9 @@
         private System.Windows.Forms.Button button_startStop;
         private System.Windows.Forms.Label label_imageCount;
         private System.Windows.Forms.Button button_download;
+        private System.Windows.Forms.Button button_right;
+        private System.Windows.Forms.Button button_left;
+        private System.Windows.Forms.Button button_moveSite;
 
     }
 }
