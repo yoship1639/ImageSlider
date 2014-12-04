@@ -13,6 +13,7 @@ using System.Runtime.Serialization.Json;
 using System.IO;
 
 using ImageSearchAPILib;
+using System.Drawing.Imaging;
 
 namespace GoogleImageSearchAPI
 {
@@ -164,6 +165,24 @@ namespace GoogleImageSearchAPI
                 });
                 SearchFinished(this, EventArgs.Empty);
             });
+        }
+
+        public static string GetFileFormat(Image img)
+        {
+            try
+            {
+                foreach (ImageCodecInfo ici in ImageCodecInfo.GetImageDecoders())
+                {
+                    if (ici.FormatID == img.RawFormat.Guid)
+                        //該当するFormatDescriptionを返します。
+                        return ici.FormatDescription;
+                }
+                return string.Empty;
+            }
+            catch
+            {
+                return string.Empty;
+            }
         }
 
         private GoogleImageSearchAPIJsonData search(string query, int start)

@@ -210,78 +210,83 @@ namespace ImageSlider
         /// <returns></returns>
         Rectangle getImageDrawRect(Image image, int x, int y)
         {
-            if (sizeMode == ImageSizeMode.Normal)           // 通常
+            try
             {
-                return new Rectangle(x, y, image.Width, image.Height);
+                if (sizeMode == ImageSizeMode.Normal)           // 通常
+                {
+                    return new Rectangle(x, y, image.Width, image.Height);
+                }
+                else if (sizeMode == ImageSizeMode.Stretch)     // ストレッチ
+                {
+                    return new Rectangle(x, y, Width, Height);
+                }
+                else if (sizeMode == ImageSizeMode.Center)      // センター
+                {
+                    var px = (Width - image.Width) >> 1;
+                    var py = (Height - image.Height) >> 1;
+                    return new Rectangle(x + px, y + py, image.Width, image.Height);
+                }
+                else if (sizeMode == ImageSizeMode.Zoom)        // ズーム
+                {
+                    float imgR = image.Width / (float)image.Height;
+                    float ctrR = Width / (float)Height;
+
+                    if (imgR > ctrR)
+                    {
+                        var wr = Width / (float)image.Width;
+                        var h = image.Height * wr;
+                        return new Rectangle(x, y + ((Height - (int)h) >> 1), Width, (int)h);
+                    }
+                    else if (imgR < ctrR)
+                    {
+                        var hr = Height / (float)image.Height;
+                        var w = image.Width * hr;
+                        return new Rectangle(x + ((Width - (int)w) >> 1), y, (int)w, Height);
+                    }
+                    else
+                    {
+                        return new Rectangle(x, y, Width, Height);
+                    }
+                }
+                else                                            // フィット
+                {
+                    float imgR = image.Width / (float)image.Height;
+                    float ctrR = Width / (float)Height;
+
+                    if (imgR > ctrR)
+                    {
+                        if (image.Width < Width)
+                        {
+                            var px = (Width - image.Width) >> 1;
+                            var py = (Height - image.Height) >> 1;
+                            return new Rectangle(x + px, y + py, image.Width, image.Height);
+                        }
+                        var wr = Width / (float)image.Width;
+                        var h = image.Height * wr;
+                        return new Rectangle(x, y + ((Height - (int)h) >> 1), Width, (int)h);
+                    }
+                    else if (imgR < ctrR)
+                    {
+                        if (image.Height < Height)
+                        {
+                            var px = (Width - image.Width) >> 1;
+                            var py = (Height - image.Height) >> 1;
+                            return new Rectangle(x + px, y + py, image.Width, image.Height);
+                        }
+                        var hr = Height / (float)image.Height;
+                        var w = image.Width * hr;
+                        return new Rectangle(x + ((Width - (int)w) >> 1), y, (int)w, Height);
+                    }
+                    else
+                    {
+                        return new Rectangle(x, y, Width, Height);
+                    }
+                }
             }
-            else if (sizeMode == ImageSizeMode.Stretch)     // ストレッチ
+            catch
             {
                 return new Rectangle(x, y, Width, Height);
             }
-            else if (sizeMode == ImageSizeMode.Center)      // センター
-            {
-                var px = (Width - image.Width) >> 1;
-                var py = (Height - image.Height) >> 1;
-                return new Rectangle(x + px, y + py, image.Width, image.Height);
-            }
-            else if (sizeMode == ImageSizeMode.Zoom)        // ズーム
-            {
-                float imgR = image.Width / (float)image.Height;
-                float ctrR = Width / (float)Height;
-
-                if (imgR > ctrR)
-                {
-                    var wr = Width / (float)image.Width;
-                    var h = image.Height * wr;
-                    return new Rectangle(x, y + ((Height - (int)h) >> 1), Width, (int)h);
-                }
-                else if (imgR < ctrR)
-                {
-                    var hr = Height / (float)image.Height;
-                    var w = image.Width * hr;
-                    return new Rectangle(x + ((Width - (int)w) >> 1), y, (int)w, Height);
-                }
-                else
-                {
-                    return new Rectangle(x, y, Width, Height);
-                }
-            }
-            else                                            // フィット
-            {
-                float imgR = image.Width / (float)image.Height;
-                float ctrR = Width / (float)Height;
-
-                if (imgR > ctrR)
-                {
-                    if (image.Width < Width)
-                    {
-                        var px = (Width - image.Width) >> 1;
-                        var py = (Height - image.Height) >> 1;
-                        return new Rectangle(x + px, y + py, image.Width, image.Height);
-                    }
-                    var wr = Width / (float)image.Width;
-                    var h = image.Height * wr;
-                    return new Rectangle(x, y + ((Height - (int)h) >> 1), Width, (int)h);
-                }
-                else if (imgR < ctrR)
-                {
-                    if (image.Height < Height)
-                    {
-                        var px = (Width - image.Width) >> 1;
-                        var py = (Height - image.Height) >> 1;
-                        return new Rectangle(x + px, y + py, image.Width, image.Height);
-                    }
-                    var hr = Height / (float)image.Height;
-                    var w = image.Width * hr;
-                    return new Rectangle(x + ((Width - (int)w) >> 1), y, (int)w, Height);
-                }
-                else
-                {
-                    return new Rectangle(x, y, Width, Height);
-                }
-            }
         }
-
-
     }
 }
