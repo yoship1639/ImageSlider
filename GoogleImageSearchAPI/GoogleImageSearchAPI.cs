@@ -139,18 +139,31 @@ namespace GoogleImageSearchAPI
                                 if (idx < 0) idx = 0;
                                 var sub = data.responseData.results[j].url.Substring(idx + 1);
 
-                                idx = sub.LastIndexOf(":large");
-                                if(idx > 0)
+                                var idx1 = sub.LastIndexOf(":large");
+                                var idx2 = sub.LastIndexOf("-large");
+                                if(idx1 > 0)
                                 {
-                                    sub = sub.Substring(0, idx);
+                                    sub = sub.Substring(0, idx1);
                                 }
+                                else if (idx2 > 0)
+                                {
+                                    sub = sub.Substring(0, idx2);
+                                }
+                                var bitmap = new System.Drawing.Bitmap(stream);
+                                if (sub.LastIndexOf('.') == -1)
+                                {
+                                    sub += "." + GetFileFormat(bitmap);
+                                }
+
+                                
 
                                 var image = new ImageData()
                                 {
-                                    Bitmap = new System.Drawing.Bitmap(stream),
+                                    Bitmap = bitmap,
                                     FileName = sub,
                                     SourceURL = data.responseData.results[j].originalContextUrl,
                                 };
+                                
                                 lock (images)
                                 {
                                     images.Add(image);
@@ -167,7 +180,7 @@ namespace GoogleImageSearchAPI
             });
         }
 
-        public static string GetFileFormat(Image img)
+        static string GetFileFormat(Image img)
         {
             try
             {
@@ -175,7 +188,12 @@ namespace GoogleImageSearchAPI
                 {
                     if (ici.FormatID == img.RawFormat.Guid)
                         //該当するFormatDescriptionを返します。
-                        return ici.FormatDescription;
+                        if (ici.FormatDescription == "BMP") return "bmp";
+                        else if (ici.FormatDescription == "JPEG") return "jpg";
+                        else if (ici.FormatDescription == "GIF") return "gif";
+                        else if (ici.FormatDescription == "TIFF") return "tif";
+                        else if (ici.FormatDescription == "PNG") return "png";
+                        else return ici.FormatDescription;
                 }
                 return string.Empty;
             }

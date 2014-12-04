@@ -12,6 +12,7 @@ using ImageSearchAPILib;
 using System.Runtime.InteropServices;
 using System.Web;
 using System.IO;
+using System.Drawing.Imaging;
 
 namespace TwitterImageSearchAPI
 {
@@ -178,15 +179,32 @@ namespace TwitterImageSearchAPI
                         {
                             foreach (var m in res.Entities.Media)
                             {
-                                var idx = m.MediaUrl.LocalPath.LastIndexOf('/');
-                                if(idx < 0) idx = 0;
-                                var sub = m.MediaUrl.LocalPath.Substring(idx + 1);
-
                                 var wc = new System.Net.WebClient();
                                 Stream stream = wc.OpenRead(m.MediaUrl.AbsoluteUri);
+
+                                var idx = m.MediaUrl.LocalPath.LastIndexOf('/');
+                                if (idx < 0) idx = 0;
+                                var sub = m.MediaUrl.LocalPath.Substring(idx + 1);
+
+                                var idx1 = sub.LastIndexOf(":large");
+                                var idx2 = sub.LastIndexOf("-large");
+                                if (idx1 > 0)
+                                {
+                                    sub = sub.Substring(0, idx1);
+                                }
+                                else if (idx2 > 0)
+                                {
+                                    sub = sub.Substring(0, idx2);
+                                }
+                                var bitmap = new System.Drawing.Bitmap(stream);
+                                if (sub.LastIndexOf('.') == -1)
+                                {
+                                    sub += "." + GetFileFormat(bitmap);
+                                }
+
                                 var image = new ImageData()
                                 {
-                                    Bitmap = new System.Drawing.Bitmap(stream),
+                                    Bitmap = bitmap,
                                     FileName = sub,
                                     SourceURL = m.ExpandedUrl.AbsoluteUri,
                                 };
@@ -203,6 +221,29 @@ namespace TwitterImageSearchAPI
                 });
                 SearchFinished(this, EventArgs.Empty);
             });
+        }
+
+        static string GetFileFormat(Image img)
+        {
+            try
+            {
+                foreach (ImageCodecInfo ici in ImageCodecInfo.GetImageDecoders())
+                {
+                    if (ici.FormatID == img.RawFormat.Guid)
+                        //該当するFormatDescriptionを返します。
+                        if (ici.FormatDescription == "BMP") return "bmp";
+                        else if (ici.FormatDescription == "JPEG") return "jpg";
+                        else if (ici.FormatDescription == "GIF") return "gif";
+                        else if (ici.FormatDescription == "TIFF") return "tif";
+                        else if (ici.FormatDescription == "PNG") return "png";
+                        else return ici.FormatDescription;
+                }
+                return string.Empty;
+            }
+            catch
+            {
+                return string.Empty;
+            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)

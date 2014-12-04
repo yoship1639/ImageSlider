@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageSlider", "ImageSlider\ImageSlider.csproj", "{47130C07-A6F1-46D4-BACE-3D6555E9C700}"
+	ProjectSection(ProjectDependencies) = postProject
+		{672AFA99-26CD-488E-B633-7F6D394B7D45} = {672AFA99-26CD-488E-B633-7F6D394B7D45}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageSearchAPILib", "ImageSearchAPILib\ImageSearchAPILib.csproj", "{D8563AAE-779D-4BB4-95B8-F70DA3BC34B0}"
 EndProject
