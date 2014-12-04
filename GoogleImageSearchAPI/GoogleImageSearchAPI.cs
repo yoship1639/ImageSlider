@@ -138,6 +138,12 @@ namespace GoogleImageSearchAPI
                                 if (idx < 0) idx = 0;
                                 var sub = data.responseData.results[j].url.Substring(idx + 1);
 
+                                idx = sub.LastIndexOf(":large");
+                                if(idx > 0)
+                                {
+                                    sub = sub.Substring(0, idx);
+                                }
+
                                 var image = new ImageData()
                                 {
                                     Bitmap = new System.Drawing.Bitmap(stream),
