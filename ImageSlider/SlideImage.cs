@@ -129,7 +129,6 @@ namespace ImageSlider
             const float maxRate = 0.997f;
 
             g.Clear(BackColor);
-            //g.SetClip(new Rectangle(0, 0, Width, Height));
 
             // 強制的に描画する画像がある場合
             if (ForceImage != null)

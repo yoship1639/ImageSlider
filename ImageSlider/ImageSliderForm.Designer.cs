@@ -36,16 +36,15 @@
             this.button_close = new System.Windows.Forms.Button();
             this.pictureBox_search = new System.Windows.Forms.PictureBox();
             this.textBox_search = new System.Windows.Forms.TextBox();
-            this.pictureBox_sizeChange = new System.Windows.Forms.PictureBox();
             this.button_startStop = new System.Windows.Forms.Button();
             this.button_download = new System.Windows.Forms.Button();
             this.button_right = new System.Windows.Forms.Button();
             this.button_left = new System.Windows.Forms.Button();
             this.button_moveSite = new System.Windows.Forms.Button();
+            this.sizeChanger1 = new ImageSlider.SizeChanger();
             this.slideImage1 = new ImageSlider.slideImage();
             this.panel_menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_search)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_sizeChange)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_menu
@@ -151,23 +150,6 @@
             this.textBox_search.TabIndex = 0;
             this.textBox_search.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_search_KeyDown);
             // 
-            // pictureBox_sizeChange
-            // 
-            this.pictureBox_sizeChange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox_sizeChange.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox_sizeChange.Cursor = System.Windows.Forms.Cursors.SizeNWSE;
-            this.pictureBox_sizeChange.Image = global::ImageSlider.Properties.Resources.size2;
-            this.pictureBox_sizeChange.Location = new System.Drawing.Point(456, 456);
-            this.pictureBox_sizeChange.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox_sizeChange.Name = "pictureBox_sizeChange";
-            this.pictureBox_sizeChange.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox_sizeChange.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_sizeChange.TabIndex = 1;
-            this.pictureBox_sizeChange.TabStop = false;
-            this.pictureBox_sizeChange.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_sizeChange_MouseDown);
-            this.pictureBox_sizeChange.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_sizeChange_MouseMove);
-            this.pictureBox_sizeChange.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox_sizeChange_MouseUp);
-            // 
             // button_startStop
             // 
             this.button_startStop.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -240,6 +222,20 @@
             this.button_moveSite.UseVisualStyleBackColor = false;
             this.button_moveSite.Click += new System.EventHandler(this.button_moveSite_Click);
             // 
+            // sizeChanger1
+            // 
+            this.sizeChanger1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.sizeChanger1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.sizeChanger1.Cursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.sizeChanger1.Location = new System.Drawing.Point(448, 448);
+            this.sizeChanger1.Margin = new System.Windows.Forms.Padding(0);
+            this.sizeChanger1.Name = "sizeChanger1";
+            this.sizeChanger1.Size = new System.Drawing.Size(32, 32);
+            this.sizeChanger1.TabIndex = 9;
+            this.sizeChanger1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_sizeChange_MouseDown);
+            this.sizeChanger1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_sizeChange_MouseMove);
+            this.sizeChanger1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox_sizeChange_MouseUp);
+            // 
             // slideImage1
             // 
             this.slideImage1.BackColor = System.Drawing.SystemColors.Control;
@@ -265,12 +261,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(480, 480);
+            this.Controls.Add(this.sizeChanger1);
             this.Controls.Add(this.button_moveSite);
             this.Controls.Add(this.button_left);
             this.Controls.Add(this.button_right);
             this.Controls.Add(this.button_download);
             this.Controls.Add(this.button_startStop);
-            this.Controls.Add(this.pictureBox_sizeChange);
             this.Controls.Add(this.panel_menu);
             this.Controls.Add(this.slideImage1);
             this.Font = new System.Drawing.Font("Meiryo", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
@@ -287,7 +283,6 @@
             this.panel_menu.ResumeLayout(false);
             this.panel_menu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_search)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_sizeChange)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -297,7 +292,6 @@
         private System.Windows.Forms.Panel panel_menu;
         private System.Windows.Forms.TextBox textBox_search;
         private System.Windows.Forms.PictureBox pictureBox_search;
-        private System.Windows.Forms.PictureBox pictureBox_sizeChange;
         private System.Windows.Forms.Button button_close;
         private System.Windows.Forms.Button button_config;
         private System.Windows.Forms.Button button_windowStateChange;
@@ -308,6 +302,7 @@
         private System.Windows.Forms.Button button_right;
         private System.Windows.Forms.Button button_left;
         private System.Windows.Forms.Button button_moveSite;
+        private SizeChanger sizeChanger1;
 
     }
 }

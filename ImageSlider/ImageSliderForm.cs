@@ -64,6 +64,7 @@ namespace ImageSlider
 
                 // メニュー色
                 panel_menu.BackColor = Properties.Settings.Default.MenuColor;
+                sizeChanger1.BackColor = panel_menu.BackColor;
 
                 // 滑らかに切り替え
                 smoothSlide = Properties.Settings.Default.SmoothSlide;
@@ -115,11 +116,11 @@ namespace ImageSlider
                 Invoke(new SetBounds(panel_menu.SetBounds), 0, 0, panel_menu.Size.Width, (int)(rate * 32));
                 // サイズ変更パネル
                 Invoke(
-                    new SetBounds(pictureBox_sizeChange.SetBounds),
-                    Size.Width - (int)(pictureBox_sizeChange.Size.Width * rate),
-                    Size.Height - (int)(pictureBox_sizeChange.Size.Height * rate),
-                    pictureBox_sizeChange.Size.Width,
-                    pictureBox_sizeChange.Size.Height);
+                    new SetBounds(sizeChanger1.SetBounds),
+                    Size.Width - (int)(sizeChanger1.Width * rate),
+                    Size.Height - (int)(sizeChanger1.Height * rate),
+                    sizeChanger1.Width,
+                    sizeChanger1.Height);
 
                 // ボタン
                 if (!searching && !neutral)
@@ -249,7 +250,7 @@ namespace ImageSlider
         {
             if (sizeFlag)
             {
-                Size = new Size(Size.Width + e.Location.X, Size.Height + e.Location.Y);
+                Size = new Size(Size.Width + e.Location.X - pivot.X, Size.Height + e.Location.Y - pivot.Y);
                 slideImage1.Size = Size;
             }
         }
@@ -304,6 +305,7 @@ namespace ImageSlider
             config.ShowDialog(this);
             slideTime = config.SlideTime;
             panel_menu.BackColor = config.MenuColor;
+            sizeChanger1.BackColor = panel_menu.BackColor;
             smoothSlide = config.SmoothSlide;
             downloadFolder = config.DowloadFolder;
             createSubFolder = config.CreateSubFolder;
@@ -327,15 +329,19 @@ namespace ImageSlider
             {
                 button_windowStateChange.BackgroundImage = Properties.Resources.normal;
                 WindowState = FormWindowState.Maximized;
-                pictureBox_sizeChange.Enabled = false;
-                pictureBox_sizeChange.Visible = false;
+                sizeChanger1.Enabled = false;
+                sizeChanger1.Visible = false;
+                //pictureBox_sizeChange.Enabled = false;
+                //pictureBox_sizeChange.Visible = false;
             }
             else if (WindowState == FormWindowState.Maximized)
             {
                 button_windowStateChange.BackgroundImage = Properties.Resources.maximize;
                 WindowState = FormWindowState.Normal;
-                pictureBox_sizeChange.Enabled = true;
-                pictureBox_sizeChange.Visible = true;
+                sizeChanger1.Enabled = true;
+                sizeChanger1.Visible = true;
+                //pictureBox_sizeChange.Enabled = true;
+                //pictureBox_sizeChange.Visible = true;
             }
             slideImage1.Size = Size;
         }
