@@ -53,14 +53,22 @@ namespace ImageSlider
             imageSearchAPIs.Add(new TwitterImageSearchAPI.TwitterImageSearchAPI());
 
             // 実行ファイルのディレクトリを取得
-            string path = Path.GetDirectoryName(Application.ExecutablePath);
-            // プラグインを読み込む
-            var plugins = PluginLoader.LoadPlugins<IImageSearchAPI>(path);
-            foreach (var api in plugins) 
+            string[] pathes =
             {
-                if (!imageSearchAPIs.Exists(_api => _api == api))
+                Path.GetDirectoryName(Application.ExecutablePath),
+                Path.GetDirectoryName(Application.ExecutablePath) + "\\dll",
+            };
+            // プラグインを読み込む
+            foreach (var path in pathes)
+            {
+                var plugins = PluginLoader.LoadPlugins<IImageSearchAPI>(path);
+                foreach (var api in plugins)
                 {
-                    imageSearchAPIs.Add(api);
+                    // 同じAPIが無かったら追加
+                    if (!imageSearchAPIs.Exists(_api => _api.APIName == api.APIName))
+                    {
+                        imageSearchAPIs.Add(api);
+                    }
                 }
             }
 

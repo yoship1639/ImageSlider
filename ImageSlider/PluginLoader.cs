@@ -19,6 +19,7 @@ namespace ImageSlider
         public static T[] LoadPlugins<T>(string path)
         {
             List<T> plugins = new List<T>();
+            if (!Directory.Exists(path)) return plugins.ToArray();
             // ディレクトリ内のDLLファイルパスを取得
             foreach (string dll in Directory.GetFiles(path, "*.dll"))
             {
