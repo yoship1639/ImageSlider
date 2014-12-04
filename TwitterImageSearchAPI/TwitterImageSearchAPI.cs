@@ -24,25 +24,81 @@ namespace TwitterImageSearchAPI
         public TwitterImageSearchAPI()
         {
             InitializeComponent();
+
+            Params = DefaultParams;
         }
 
         public string APIName { get { return "TwitterAPI"; } }
+
+        /// <summary>
+        /// 0: int 検索方法 0:mixed 1:recent 2:popular
+        /// 1: int 検索数 count
+        /// 2: bool いつからを使うか
+        /// 3: int いつから（年） YYYY-MM-DD
+        /// 4: int いつから（月）
+        /// 5: int いつから（日）
+        /// 6: bool since_idを使うか
+        /// 7: int since_id
+        /// 8: bool max_idを使うか
+        /// 9: int max_id
+        /// </summary>
+
+        string[] SearchMethods =
+        {
+            "mixed",
+            "recent",
+            "popular",
+        };
 
         public object[] Params
         {
             get
             {
-                return null;
+                return new object[]
+                {
+                    comboBox1.SelectedIndex,
+                    numericUpDown1.Value,
+                    dateTimePicker1.Checked,
+                    dateTimePicker1.Value.Year,
+                    dateTimePicker1.Value.Month,
+                    dateTimePicker1.Value.Day,
+                    checkBox1.Checked,
+                    numericUpDown2.Value,
+                    checkBox2.Checked,
+                    numericUpDown3.Value,
+                };
             }
             set
             {
-                
+                comboBox1.SelectedIndex = (int)value[0];
+                numericUpDown1.Value = (decimal)value[1];
+                dateTimePicker1.Checked = (bool)value[2];
+                dateTimePicker1.Value = new DateTime((int)value[3], (int)value[4], (int)value[5]);
+                checkBox1.Checked = (bool)value[6];
+                numericUpDown2.Value = (decimal)value[7];
+                checkBox2.Checked = (bool)value[8];
+                numericUpDown3.Value = (decimal)value[9];
             }
         }
 
         public object[] DefaultParams
         {
-            get { return null; }
+            get
+            {
+                return new object[]
+                {
+                    0,
+                    (decimal)100,
+                    false,
+                    2007,
+                    1,
+                    1,
+                    false,
+                    (decimal)1,
+                    false,
+                    (decimal)10000,
+                };
+            }
         }
 
         public ImageData[] ImageDatas
@@ -87,13 +143,22 @@ namespace TwitterImageSearchAPI
                 var word = HttpUtility.HtmlEncode(query);
 
                 // 検索し、結果を取得
-                var result = tokens.Search.Tweets(new Dictionary<string, object>()
+                var dic = new Dictionary<string, object>();
+                dic.Add("q", "filter:images " + word);
+                dic.Add("include_entities", true);
+                dic.Add("count", (int)numericUpDown1.Value);
+                if (comboBox1.SelectedIndex > 0)
                 {
-                    {"q", "filter:images " + word},
-                    {"include_entities", true},
-                    {"count", 100},
-                    {"locale", "ja"},
-                });
+                    dic.Add("result_type", SearchMethods[comboBox1.SelectedIndex]);
+                }
+                if (dateTimePicker1.Checked)
+                {
+                    var date = string.Format("{0:0000}-{1:00}-{2:00}", dateTimePicker1.Value.Year, dateTimePicker1.Value.Month, dateTimePicker1.Value.Day);
+                    dic.Add("until", date);
+                }
+                if (checkBox1.Checked) dic.Add("since_id", numericUpDown2.Value);
+                if (checkBox2.Checked) dic.Add("max_id", numericUpDown3.Value);
+                var result = tokens.Search.Tweets(dic);
                 if (result == null)
                 {
                     SearchError(this, EventArgs.Empty);
@@ -134,6 +199,16 @@ namespace TwitterImageSearchAPI
                 });
                 SearchFinished(this, EventArgs.Empty);
             });
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            numericUpDown2.Enabled = checkBox1.Checked;
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            numericUpDown3.Enabled = checkBox2.Checked;
         }
     }
 }
