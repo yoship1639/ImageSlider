@@ -61,13 +61,13 @@ namespace ImageSlider.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool SmoothSlide {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int SlideMode {
             get {
-                return ((bool)(this["SmoothSlide"]));
+                return ((int)(this["SlideMode"]));
             }
             set {
-                this["SmoothSlide"] = value;
+                this["SlideMode"] = value;
             }
         }
         

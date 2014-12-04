@@ -33,12 +33,11 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_slideSecond = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button_colorSelect = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.checkBox_smooth = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_all = new System.Windows.Forms.TabPage();
             this.checkBox_subFolder = new System.Windows.Forms.CheckBox();
@@ -48,8 +47,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage_search = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.comboBox_sizeMode = new System.Windows.Forms.ComboBox();
+            this.comboBox_slideMode = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_slideSecond)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage_all.SuspendLayout();
             this.tabPage_search.SuspendLayout();
@@ -106,23 +106,23 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "画像の切り替わりに掛かる時間";
             // 
-            // numericUpDown1
+            // numericUpDown_slideSecond
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(188, 12);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.numericUpDown_slideSecond.Location = new System.Drawing.Point(188, 12);
+            this.numericUpDown_slideSecond.Maximum = new decimal(new int[] {
             60,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.numericUpDown_slideSecond.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(39, 25);
-            this.numericUpDown1.TabIndex = 5;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.numericUpDown_slideSecond.Name = "numericUpDown_slideSecond";
+            this.numericUpDown_slideSecond.Size = new System.Drawing.Size(39, 25);
+            this.numericUpDown_slideSecond.TabIndex = 5;
+            this.numericUpDown_slideSecond.Value = new decimal(new int[] {
             5,
             0,
             0,
@@ -162,18 +162,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(6, 80);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(104, 18);
+            this.label5.Size = new System.Drawing.Size(80, 18);
             this.label5.TabIndex = 9;
-            this.label5.Text = "滑らかにスライド";
-            // 
-            // checkBox_smooth
-            // 
-            this.checkBox_smooth.AutoSize = true;
-            this.checkBox_smooth.Location = new System.Drawing.Point(188, 83);
-            this.checkBox_smooth.Name = "checkBox_smooth";
-            this.checkBox_smooth.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_smooth.TabIndex = 10;
-            this.checkBox_smooth.UseVisualStyleBackColor = true;
+            this.label5.Text = "スライド方法";
             // 
             // tabControl1
             // 
@@ -193,7 +184,8 @@
             // tabPage_all
             // 
             this.tabPage_all.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage_all.Controls.Add(this.comboBox2);
+            this.tabPage_all.Controls.Add(this.comboBox_slideMode);
+            this.tabPage_all.Controls.Add(this.comboBox_sizeMode);
             this.tabPage_all.Controls.Add(this.label7);
             this.tabPage_all.Controls.Add(this.checkBox_subFolder);
             this.tabPage_all.Controls.Add(this.label12);
@@ -201,8 +193,7 @@
             this.tabPage_all.Controls.Add(this.textBox_downloadFolder);
             this.tabPage_all.Controls.Add(this.label6);
             this.tabPage_all.Controls.Add(this.label2);
-            this.tabPage_all.Controls.Add(this.checkBox_smooth);
-            this.tabPage_all.Controls.Add(this.numericUpDown1);
+            this.tabPage_all.Controls.Add(this.numericUpDown_slideSecond);
             this.tabPage_all.Controls.Add(this.label5);
             this.tabPage_all.Controls.Add(this.label3);
             this.tabPage_all.Controls.Add(this.button_colorSelect);
@@ -281,20 +272,35 @@
             this.label7.TabIndex = 16;
             this.label7.Text = "画像表示のサイズモード";
             // 
-            // comboBox2
+            // comboBox_sizeMode
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.comboBox_sizeMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_sizeMode.FormattingEnabled = true;
+            this.comboBox_sizeMode.Items.AddRange(new object[] {
             "左寄せ",
             "ストレッチ",
             "センター",
             "ズーム",
             "フィット"});
-            this.comboBox2.Location = new System.Drawing.Point(188, 201);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(163, 26);
-            this.comboBox2.TabIndex = 17;
+            this.comboBox_sizeMode.Location = new System.Drawing.Point(188, 201);
+            this.comboBox_sizeMode.Name = "comboBox_sizeMode";
+            this.comboBox_sizeMode.Size = new System.Drawing.Size(163, 26);
+            this.comboBox_sizeMode.TabIndex = 17;
+            // 
+            // comboBox_slideMode
+            // 
+            this.comboBox_slideMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_slideMode.FormattingEnabled = true;
+            this.comboBox_slideMode.Items.AddRange(new object[] {
+            "瞬時",
+            "右にスライド",
+            "左にスライド",
+            "透過",
+            "フロント&サイド"});
+            this.comboBox_slideMode.Location = new System.Drawing.Point(188, 77);
+            this.comboBox_slideMode.Name = "comboBox_slideMode";
+            this.comboBox_slideMode.Size = new System.Drawing.Size(163, 26);
+            this.comboBox_slideMode.TabIndex = 18;
             // 
             // ConfigForm
             // 
@@ -315,7 +321,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "設定";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_slideSecond)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage_all.ResumeLayout(false);
             this.tabPage_all.PerformLayout();
@@ -332,12 +338,11 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericUpDown_slideSecond;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button_colorSelect;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox checkBox_smooth;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage_all;
         private System.Windows.Forms.TabPage tabPage_search;
@@ -346,7 +351,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox checkBox_subFolder;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox_sizeMode;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox comboBox_slideMode;
     }
 }

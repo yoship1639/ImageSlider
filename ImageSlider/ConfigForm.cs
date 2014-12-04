@@ -21,8 +21,8 @@ namespace ImageSlider
 
         public int SlideTime
         { 
-            get { return (int)numericUpDown1.Value; }
-            set { numericUpDown1.Value = value; }
+            get { return (int)numericUpDown_slideSecond.Value; }
+            set { numericUpDown_slideSecond.Value = value; }
         }
 
         public Color MenuColor
@@ -31,10 +31,10 @@ namespace ImageSlider
             set { button_colorSelect.BackColor = value; }
         }
 
-        public bool SmoothSlide
+        public SlideImage.ImageSlideMode SlideMode
         {
-            get { return checkBox_smooth.Checked; }
-            set { checkBox_smooth.Checked = value; }
+            get { return (SlideImage.ImageSlideMode)comboBox_slideMode.SelectedIndex; }
+            set { comboBox_slideMode.SelectedIndex = (int)value; }
         }
 
         public string DowloadFolder 
@@ -49,25 +49,10 @@ namespace ImageSlider
             set { checkBox_subFolder.Checked = value; }
         }
 
-        /*SlideImage.ImageSizeMode[] sizeModes = 
-        {
-            SlideImage.ImageSizeMode.Normal,
-            SlideImage.ImageSizeMode.Stretch,
-            SlideImage.ImageSizeMode.Center,
-            SlideImage.ImageSizeMode.Zoom,
-            SlideImage.ImageSizeMode.Fit
-        };*/
-
         public SlideImage.ImageSizeMode SizeMode
         {
-            get
-            {
-                return (SlideImage.ImageSizeMode)comboBox2.SelectedIndex;
-            }
-            set
-            {
-                comboBox2.SelectedIndex = (int)value;
-            }
+            get { return (SlideImage.ImageSizeMode)comboBox_sizeMode.SelectedIndex; }
+            set { comboBox_sizeMode.SelectedIndex = (int)value; }
         }
 
         IImageSearchAPI[] APIs;

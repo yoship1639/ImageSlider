@@ -28,7 +28,7 @@ namespace ImageSlider
         bool start = true;
         int showImageNo = 0;
         int tickTime = 10;
-        bool smoothSlide = false;
+        //bool smoothSlide = false;
         string downloadFolder;
         bool createSubFolder;
 
@@ -86,9 +86,8 @@ namespace ImageSlider
                 panel_menu.BackColor = Properties.Settings.Default.MenuColor;
                 sizeChanger1.BackColor = panel_menu.BackColor;
 
-                // 滑らかに切り替え
-                smoothSlide = Properties.Settings.Default.SmoothSlide;
-                slideImage1.SlideMode = smoothSlide ? SlideImage.ImageSlideMode.Slide_Left : SlideImage.ImageSlideMode.Normal;
+                // スライド方法
+                slideImage1.SlideMode = (SlideImage.ImageSlideMode)Properties.Settings.Default.SlideMode;
 
                 // 保存場所
                 downloadFolder = Properties.Settings.Default.DownloadFolder;
@@ -301,7 +300,7 @@ namespace ImageSlider
             Properties.Settings.Default.SearchAPI = currentAPI.APIName;
             Properties.Settings.Default.SlideTime = slideTime;
             Properties.Settings.Default.MenuColor = panel_menu.BackColor;
-            Properties.Settings.Default.SmoothSlide = smoothSlide;
+            Properties.Settings.Default.SlideMode = (int)slideImage1.SlideMode;
             Properties.Settings.Default.DownloadFolder = downloadFolder;
             Properties.Settings.Default.CreateSubFolder = createSubFolder;
             Properties.Settings.Default.SizeMode = (int)slideImage1.SizeMode;
@@ -322,7 +321,7 @@ namespace ImageSlider
             {
                 SlideTime = slideTime,
                 MenuColor = panel_menu.BackColor,
-                SmoothSlide = smoothSlide,
+                SlideMode = slideImage1.SlideMode,
                 DowloadFolder = downloadFolder,
                 CreateSubFolder = createSubFolder,
                 SizeMode = slideImage1.SizeMode
@@ -331,11 +330,9 @@ namespace ImageSlider
             slideTime = config.SlideTime;
             panel_menu.BackColor = config.MenuColor;
             sizeChanger1.BackColor = panel_menu.BackColor;
-            smoothSlide = config.SmoothSlide;
+            slideImage1.SlideMode = config.SlideMode;
             downloadFolder = config.DowloadFolder;
             createSubFolder = config.CreateSubFolder;
-
-            slideImage1.SlideMode = smoothSlide ? SlideImage.ImageSlideMode.Slide_Left : SlideImage.ImageSlideMode.Normal;
             slideImage1.SizeMode = config.SizeMode;
             
             if (config.APIName != currentAPI.APIName)
@@ -553,7 +550,7 @@ namespace ImageSlider
             {
                 showImageNo = 0;
             }
-            if (!smoothSlide) slideImage1.Rate = showImageNo;
+            if (slideImage1.SlideMode == SlideImage.ImageSlideMode.Normal) slideImage1.Rate = showImageNo;
         }
 
         private void prevImage()
@@ -564,6 +561,7 @@ namespace ImageSlider
             {
                 showImageNo = slideImage1.ImageDatas.Length - 1;
             }
+            if (slideImage1.SlideMode == SlideImage.ImageSlideMode.Normal) slideImage1.Rate = showImageNo;
         }
 
         private void button_right_Click(object sender, EventArgs e)

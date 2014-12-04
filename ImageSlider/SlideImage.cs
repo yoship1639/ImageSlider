@@ -64,9 +64,11 @@ namespace ImageSlider
         /// </summary>
         public enum ImageSlideMode
         {
-            Normal,
-            Slide_Right,
-            Slide_Left,
+            Normal = 0,
+            Slide_Right = 1,
+            Slide_Left = 2,
+            Alpha = 3,
+            FrontAndSide = 4,
         }
 
         /// <summary>
@@ -124,6 +126,11 @@ namespace ImageSlider
             base.OnResize(e);
         }
 
+        // カラーマトリックス
+        System.Drawing.Imaging.ColorMatrix cm = new System.Drawing.Imaging.ColorMatrix();
+        // イメージ属性
+        System.Drawing.Imaging.ImageAttributes ia = new System.Drawing.Imaging.ImageAttributes();
+
         protected override void OnPaint(PaintEventArgs e)
         {
             var g = e.Graphics;
@@ -165,7 +172,6 @@ namespace ImageSlider
                         int px1 = (int)(Width * r);
                         if (r < maxRate)
                         {
-                            //g.SetClip(new Rectangle(px1, 0, Width, Height));
                             g.DrawImage(image1, getImageDrawRect(image1, px1, 0));
                         }
                         if (r > 1 - maxRate)
@@ -173,7 +179,6 @@ namespace ImageSlider
                             if (no2 == imageDatas.Length) no2 = 0;
                             var image2 = imageDatas[no2].Bitmap;
                             var px2 = px1 - Width;
-                            //g.SetClip(new Rectangle(px2, 0, Width, Height));
                             g.DrawImage(image2, getImageDrawRect(image2, px2, 0));
                         }
                     }
@@ -187,7 +192,6 @@ namespace ImageSlider
                         int px1 = -(int)(Width * r);
                         if (r < maxRate)
                         {
-                            //g.SetClip(new Rectangle(px1, 0, Width, Height));
                             g.DrawImage(image1, getImageDrawRect(image1, px1, 0));
                         }
                         if (r > 1 - maxRate)
@@ -195,9 +199,49 @@ namespace ImageSlider
                             if (no2 == imageDatas.Length) no2 = 0;
                             var image2 = imageDatas[no2].Bitmap;
                             var px2 = px1 + Width;
-                            //g.SetClip(new Rectangle(px2, 0, Width, Height));
                             g.DrawImage(image2, getImageDrawRect(image2, px2, 0));
                         }
+                    }
+                }
+                else if (slideMode == ImageSlideMode.Alpha)             // アルファ切り替え
+                {
+                    float r = rate - no1;
+                    if (no1 >= 0 && no1 < imageDatas.Length)
+                    {
+                        if (r < maxRate)
+                        {
+                            cm.Matrix00 = 1;
+                            cm.Matrix11 = 1;
+                            cm.Matrix22 = 1;
+                            cm.Matrix33 = 1.0f - r;
+                            cm.Matrix44 = 1;
+                            ia.SetColorMatrix(cm);
+
+                            var image1 = imageDatas[no1].Bitmap;
+                            g.DrawImage(image1, getImageDrawRect(image1, 0, 0), 0, 0, image1.Width, image1.Height, GraphicsUnit.Pixel, ia);
+                        }
+                        if (r > 1 - maxRate)
+                        {
+                            if (no2 == imageDatas.Length) no2 = 0;
+                            cm.Matrix00 = 1;
+                            cm.Matrix11 = 1;
+                            cm.Matrix22 = 1;
+                            cm.Matrix33 = r;
+                            cm.Matrix44 = 1;
+                            ia.SetColorMatrix(cm);
+
+                            var image2 = imageDatas[no2].Bitmap;
+                            g.DrawImage(image2, getImageDrawRect(image2, 0, 0), 0, 0, image2.Width, image2.Height, GraphicsUnit.Pixel, ia);
+                        }
+                        
+                    }
+                }
+                else if (slideMode == ImageSlideMode.FrontAndSide)
+                {
+                    float r = rate - no1;
+                    if (no1 >= 0 && no1 < imageDatas.Length)
+                    {
+                        
                     }
                 }
             }
@@ -290,5 +334,6 @@ namespace ImageSlider
                 return new Rectangle(x, y, Width, Height);
             }
         }
+
     }
 }
