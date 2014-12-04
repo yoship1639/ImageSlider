@@ -142,7 +142,7 @@
             // 
             // textBox_search
             // 
-            this.textBox_search.Font = new System.Drawing.Font("Meiryo", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBox_search.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBox_search.Location = new System.Drawing.Point(39, 4);
             this.textBox_search.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_search.Name = "textBox_search";
@@ -230,7 +230,7 @@
             this.sizeChanger1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.sizeChanger1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.sizeChanger1.Cursor = System.Windows.Forms.Cursors.SizeNWSE;
-            this.sizeChanger1.Location = new System.Drawing.Point(448, 448);
+            this.sizeChanger1.Location = new System.Drawing.Point(610, 1008);
             this.sizeChanger1.Margin = new System.Windows.Forms.Padding(0);
             this.sizeChanger1.Name = "sizeChanger1";
             this.sizeChanger1.Size = new System.Drawing.Size(32, 32);
@@ -271,7 +271,7 @@
             this.Controls.Add(this.button_startStop);
             this.Controls.Add(this.panel_menu);
             this.Controls.Add(this.slideImage1);
-            this.Font = new System.Drawing.Font("Meiryo", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
