@@ -193,6 +193,7 @@
             this.button_right.TabIndex = 6;
             this.button_right.UseVisualStyleBackColor = false;
             this.button_right.Click += new System.EventHandler(this.button_right_Click);
+            this.button_right.KeyDown += new System.Windows.Forms.KeyEventHandler(this.slideImage1_KeyDown);
             // 
             // button_left
             // 
@@ -207,6 +208,7 @@
             this.button_left.TabIndex = 7;
             this.button_left.UseVisualStyleBackColor = false;
             this.button_left.Click += new System.EventHandler(this.button_left_Click);
+            this.button_left.KeyDown += new System.Windows.Forms.KeyEventHandler(this.slideImage1_KeyDown);
             // 
             // button_moveSite
             // 
@@ -221,6 +223,7 @@
             this.button_moveSite.TabIndex = 8;
             this.button_moveSite.UseVisualStyleBackColor = false;
             this.button_moveSite.Click += new System.EventHandler(this.button_moveSite_Click);
+            this.button_moveSite.KeyDown += new System.Windows.Forms.KeyEventHandler(this.slideImage1_KeyDown);
             // 
             // sizeChanger1
             // 

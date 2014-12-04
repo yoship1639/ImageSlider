@@ -41,6 +41,7 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -48,7 +49,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(185, 99);
+            this.dateTimePicker1.Location = new System.Drawing.Point(185, 120);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dateTimePicker1.MaxDate = new System.DateTime(2014, 12, 4, 0, 0, 0, 0);
             this.dateTimePicker1.MinDate = new System.DateTime(2007, 1, 1, 0, 0, 0, 0);
@@ -61,7 +62,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 104);
+            this.label1.Location = new System.Drawing.Point(20, 125);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(128, 18);
             this.label1.TabIndex = 1;
@@ -70,7 +71,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 19);
+            this.label2.Location = new System.Drawing.Point(20, 40);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 18);
             this.label2.TabIndex = 2;
@@ -78,7 +79,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(95, 17);
+            this.numericUpDown1.Location = new System.Drawing.Point(95, 38);
             this.numericUpDown1.Minimum = new decimal(new int[] {
             15,
             0,
@@ -96,7 +97,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 58);
+            this.label3.Location = new System.Drawing.Point(20, 79);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 18);
             this.label3.TabIndex = 4;
@@ -110,7 +111,7 @@
             "指定なし",
             "最近",
             "人気"});
-            this.comboBox1.Location = new System.Drawing.Point(95, 55);
+            this.comboBox1.Location = new System.Drawing.Point(95, 76);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 26);
             this.comboBox1.TabIndex = 5;
@@ -118,7 +119,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(23, 172);
+            this.checkBox1.Location = new System.Drawing.Point(23, 193);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 6;
@@ -128,7 +129,7 @@
             // numericUpDown2
             // 
             this.numericUpDown2.Enabled = false;
-            this.numericUpDown2.Location = new System.Drawing.Point(44, 167);
+            this.numericUpDown2.Location = new System.Drawing.Point(44, 188);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -151,7 +152,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(148, 169);
+            this.label4.Location = new System.Drawing.Point(148, 190);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 18);
             this.label4.TabIndex = 8;
@@ -160,7 +161,7 @@
             // numericUpDown3
             // 
             this.numericUpDown3.Enabled = false;
-            this.numericUpDown3.Location = new System.Drawing.Point(204, 167);
+            this.numericUpDown3.Location = new System.Drawing.Point(204, 188);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -183,7 +184,7 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(183, 172);
+            this.checkBox2.Location = new System.Drawing.Point(183, 193);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(15, 14);
             this.checkBox2.TabIndex = 9;
@@ -193,7 +194,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(308, 169);
+            this.label5.Location = new System.Drawing.Point(308, 190);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(32, 18);
             this.label5.TabIndex = 11;
@@ -202,16 +203,27 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(20, 146);
+            this.label6.Location = new System.Drawing.Point(20, 167);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 18);
             this.label6.TabIndex = 12;
             this.label6.Text = "ID指定";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(20, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(236, 18);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "※検索ワードは英数字のみ対応しています";
+            // 
             // TwitterImageSearchAPI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.numericUpDown3);
@@ -252,5 +264,6 @@
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }

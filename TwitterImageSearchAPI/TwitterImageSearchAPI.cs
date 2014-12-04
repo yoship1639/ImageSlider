@@ -158,8 +158,12 @@ namespace TwitterImageSearchAPI
                 }
                 if (checkBox1.Checked) dic.Add("since_id", numericUpDown2.Value);
                 if (checkBox2.Checked) dic.Add("max_id", numericUpDown3.Value);
-                var result = tokens.Search.Tweets(dic);
-                if (result == null)
+                CoreTweet.SearchResult result = null;
+                try
+                {
+                    result = tokens.Search.Tweets(dic);
+                }
+                catch
                 {
                     SearchError(this, EventArgs.Empty);
                     return;

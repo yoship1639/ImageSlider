@@ -52,6 +52,18 @@ namespace ImageSlider
             // TwitterAPIの追加
             imageSearchAPIs.Add(new TwitterImageSearchAPI.TwitterImageSearchAPI());
 
+            // 実行ファイルのディレクトリを取得
+            string path = Path.GetDirectoryName(Application.ExecutablePath);
+            // プラグインを読み込む
+            var plugins = PluginLoader.LoadPlugins<IImageSearchAPI>(path);
+            foreach (var api in plugins) 
+            {
+                if (!imageSearchAPIs.Exists(_api => _api == api))
+                {
+                    imageSearchAPIs.Add(api);
+                }
+            }
+
             // 設定の読み込み
             {
                 // カレントAPIを設定
@@ -195,7 +207,7 @@ namespace ImageSlider
         {
             searching = false;
             neutral = true;
-            slideImage1.ForceImage = Properties.Resources.close;
+            slideImage1.ForceImage = Properties.Resources.searcherror;
             // ボタン
             setButtonsBounds(false);
         }
@@ -331,8 +343,6 @@ namespace ImageSlider
                 WindowState = FormWindowState.Maximized;
                 sizeChanger1.Enabled = false;
                 sizeChanger1.Visible = false;
-                //pictureBox_sizeChange.Enabled = false;
-                //pictureBox_sizeChange.Visible = false;
             }
             else if (WindowState == FormWindowState.Maximized)
             {
@@ -340,8 +350,6 @@ namespace ImageSlider
                 WindowState = FormWindowState.Normal;
                 sizeChanger1.Enabled = true;
                 sizeChanger1.Visible = true;
-                //pictureBox_sizeChange.Enabled = true;
-                //pictureBox_sizeChange.Visible = true;
             }
             slideImage1.Size = Size;
         }
@@ -452,19 +460,22 @@ namespace ImageSlider
         {
             Task.Factory.StartNew(() =>
             {
-                saveImage();
+                var no = (int)Math.Round(slideImage1.Rate);
+                var datas = slideImage1.ImageDatas;
+                var image = datas[no];
+                saveImage(image);
             });
             
         }
 
-        private bool saveImage()
+        /// <summary>
+        /// 画像を保存する
+        /// </summary>
+        /// <returns></returns>
+        private bool saveImage(ImageData image)
         {
             try
             {
-                // ダウンロードする画像の番号を計算
-                var no = (int)Math.Round(slideImage1.Rate);
-                var datas = slideImage1.ImageDatas;
-                var image = datas[no].Bitmap;
                 // 保存パス
                 var path = downloadFolder + "\\";
                 if (createSubFolder)
@@ -476,14 +487,14 @@ namespace ImageSlider
                     }
                     path += "\\";
                 } 
-                path += datas[no].FileName;
+                path += image.FileName;
 
-                image.Save(path);
+                image.Bitmap.Save(path);
                 System.Diagnostics.Debug.WriteLine(path);
             }
             catch
             {
-                System.Diagnostics.Debug.WriteLine("ダウンロードできません!");
+                System.Diagnostics.Debug.WriteLine("保存に失敗しました!");
                 return false;
             }
             return true;
@@ -496,7 +507,10 @@ namespace ImageSlider
             {
                 Task.Factory.StartNew(() =>
                 {
-                    saveImage();
+                    var no = (int)Math.Round(slideImage1.Rate);
+                    var datas = slideImage1.ImageDatas;
+                    var image = datas[no];
+                    saveImage(image);
                 });
             }
             else if (e.KeyCode == Keys.D)       // 進む
