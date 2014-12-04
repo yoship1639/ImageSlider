@@ -111,7 +111,19 @@ namespace ImageSlider
             {
                 var prev = sizeMode;
                 sizeMode = value;
-                if (sizeMode != value) Invalidate();
+                if (prev != value) Invalidate();
+            }
+        }
+
+        private bool focusDownloadImage = false;
+        public bool FocusDownloadImage
+        {
+            get { return focusDownloadImage; }
+            set
+            {
+                var prev = focusDownloadImage;
+                focusDownloadImage = value;
+                if (prev != value) Invalidate();
             }
         }
 
@@ -126,10 +138,17 @@ namespace ImageSlider
             base.OnResize(e);
         }
 
+        public void Repaint()
+        {
+            Invalidate();
+        }
+
         // カラーマトリックス
         System.Drawing.Imaging.ColorMatrix cm = new System.Drawing.Imaging.ColorMatrix();
         // イメージ属性
         System.Drawing.Imaging.ImageAttributes ia = new System.Drawing.Imaging.ImageAttributes();
+
+        Pen downloadFocusPen = new Pen(Color.Red, 3.0f);
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -160,7 +179,10 @@ namespace ImageSlider
                 {
                     if (no1 < 0 || no1 >= imageDatas.Length) return;
                     var image = imageDatas[no1].Bitmap;
-                    g.DrawImage(image, getImageDrawRect(image, 0, 0));
+                    var rect = getImageDrawRect(image, 0, 0);
+                    g.DrawImage(image, rect);
+
+                    if (FocusDownloadImage) g.DrawRectangle(downloadFocusPen, rect.X+1, rect.Y+1, rect.Width -3, rect.Height-3);
                 }
                 else if (slideMode == ImageSlideMode.Slide_Right)       // 右にスライド
                 {
@@ -170,16 +192,33 @@ namespace ImageSlider
                     {
                         var image1 = imageDatas[no1].Bitmap;
                         int px1 = (int)(Width * r);
+                        Rectangle rect1 = Rectangle.Empty;
+                        Rectangle rect2 = Rectangle.Empty;
                         if (r < maxRate)
                         {
-                            g.DrawImage(image1, getImageDrawRect(image1, px1, 0));
+                            rect1 = getImageDrawRect(image1, px1, 0);
+                            g.DrawImage(image1, rect1);
                         }
                         if (r > 1 - maxRate)
                         {
                             if (no2 == imageDatas.Length) no2 = 0;
                             var image2 = imageDatas[no2].Bitmap;
                             var px2 = px1 - Width;
-                            g.DrawImage(image2, getImageDrawRect(image2, px2, 0));
+                            rect2 = getImageDrawRect(image2, px2, 0);
+                            g.DrawImage(image2, rect2);
+                        }
+
+                        if (FocusDownloadImage)
+                        {
+                            var no = Math.Round(r);
+                            if (no == 0)
+                            {
+                                g.DrawRectangle(downloadFocusPen, rect1.X + 1, rect1.Y + 1, rect1.Width - 3, rect1.Height - 3);
+                            }
+                            else
+                            {
+                                g.DrawRectangle(downloadFocusPen, rect2.X + 1, rect2.Y + 1, rect2.Width - 3, rect2.Height - 3);
+                            }
                         }
                     }
                 }
@@ -190,16 +229,32 @@ namespace ImageSlider
                     {
                         var image1 = imageDatas[no1].Bitmap;
                         int px1 = -(int)(Width * r);
+                        Rectangle rect1 = Rectangle.Empty;
+                        Rectangle rect2 = Rectangle.Empty;
                         if (r < maxRate)
                         {
-                            g.DrawImage(image1, getImageDrawRect(image1, px1, 0));
+                            rect1 = getImageDrawRect(image1, px1, 0);
+                            g.DrawImage(image1, rect1);
                         }
                         if (r > 1 - maxRate)
                         {
                             if (no2 == imageDatas.Length) no2 = 0;
                             var image2 = imageDatas[no2].Bitmap;
                             var px2 = px1 + Width;
-                            g.DrawImage(image2, getImageDrawRect(image2, px2, 0));
+                            rect2 = getImageDrawRect(image2, px2, 0);
+                            g.DrawImage(image2, rect2);
+                        }
+                        if (FocusDownloadImage)
+                        {
+                            var no = Math.Round(r);
+                            if (no == 0)
+                            {
+                                g.DrawRectangle(downloadFocusPen, rect1.X + 1, rect1.Y + 1, rect1.Width - 3, rect1.Height - 3);
+                            }
+                            else
+                            {
+                                g.DrawRectangle(downloadFocusPen, rect2.X + 1, rect2.Y + 1, rect2.Width - 3, rect2.Height - 3);
+                            }
                         }
                     }
                 }
@@ -208,6 +263,8 @@ namespace ImageSlider
                     float r = rate - no1;
                     if (no1 >= 0 && no1 < imageDatas.Length)
                     {
+                        Rectangle rect1 = Rectangle.Empty;
+                        Rectangle rect2 = Rectangle.Empty;
                         if (r < maxRate)
                         {
                             cm.Matrix00 = 1;
@@ -218,7 +275,8 @@ namespace ImageSlider
                             ia.SetColorMatrix(cm);
 
                             var image1 = imageDatas[no1].Bitmap;
-                            g.DrawImage(image1, getImageDrawRect(image1, 0, 0), 0, 0, image1.Width, image1.Height, GraphicsUnit.Pixel, ia);
+                            rect1 = getImageDrawRect(image1, 0, 0);
+                            g.DrawImage(image1, rect1, 0, 0, image1.Width, image1.Height, GraphicsUnit.Pixel, ia);
                         }
                         if (r > 1 - maxRate)
                         {
@@ -231,9 +289,21 @@ namespace ImageSlider
                             ia.SetColorMatrix(cm);
 
                             var image2 = imageDatas[no2].Bitmap;
-                            g.DrawImage(image2, getImageDrawRect(image2, 0, 0), 0, 0, image2.Width, image2.Height, GraphicsUnit.Pixel, ia);
+                            rect2 = getImageDrawRect(image2, 0, 0);
+                            g.DrawImage(image2, rect2, 0, 0, image2.Width, image2.Height, GraphicsUnit.Pixel, ia);
                         }
-                        
+                        if (FocusDownloadImage)
+                        {
+                            var no = Math.Round(r);
+                            if (no == 0)
+                            {
+                                g.DrawRectangle(downloadFocusPen, rect1.X + 1, rect1.Y + 1, rect1.Width - 3, rect1.Height - 3);
+                            }
+                            else
+                            {
+                                g.DrawRectangle(downloadFocusPen, rect2.X + 1, rect2.Y + 1, rect2.Width - 3, rect2.Height - 3);
+                            }
+                        }
                     }
                 }
                 else if (slideMode == ImageSlideMode.FrontAndSide)

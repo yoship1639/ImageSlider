@@ -106,5 +106,17 @@ namespace ImageSlider.Properties {
                 this["SizeMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FocusDownloadImage {
+            get {
+                return ((bool)(this["FocusDownloadImage"]));
+            }
+            set {
+                this["FocusDownloadImage"] = value;
+            }
+        }
     }
 }

@@ -179,6 +179,8 @@
             this.button_download.UseVisualStyleBackColor = false;
             this.button_download.Click += new System.EventHandler(this.button_download_Click);
             this.button_download.KeyDown += new System.Windows.Forms.KeyEventHandler(this.slideImage1_KeyDown);
+            this.button_download.MouseEnter += new System.EventHandler(this.button_download_MouseEnter);
+            this.button_download.MouseLeave += new System.EventHandler(this.button_download_MouseLeave);
             // 
             // button_right
             // 
@@ -230,10 +232,10 @@
             this.sizeChanger1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.sizeChanger1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.sizeChanger1.Cursor = System.Windows.Forms.Cursors.SizeNWSE;
-            this.sizeChanger1.Location = new System.Drawing.Point(610, 1008);
+            this.sizeChanger1.Location = new System.Drawing.Point(456, 456);
             this.sizeChanger1.Margin = new System.Windows.Forms.Padding(0);
             this.sizeChanger1.Name = "sizeChanger1";
-            this.sizeChanger1.Size = new System.Drawing.Size(32, 32);
+            this.sizeChanger1.Size = new System.Drawing.Size(24, 24);
             this.sizeChanger1.TabIndex = 9;
             this.sizeChanger1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_sizeChange_MouseDown);
             this.sizeChanger1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_sizeChange_MouseMove);
@@ -243,6 +245,7 @@
             // 
             this.slideImage1.BackColor = System.Drawing.SystemColors.Control;
             this.slideImage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.slideImage1.FocusDownloadImage = false;
             this.slideImage1.ForceImage = null;
             this.slideImage1.ImageDatas = null;
             this.slideImage1.Location = new System.Drawing.Point(0, 0);
@@ -280,6 +283,7 @@
             this.MinimumSize = new System.Drawing.Size(400, 240);
             this.Name = "ImageSliderForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ImageSlider";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ImageSliderForm_FormClosing);
             this.panel_menu.ResumeLayout(false);

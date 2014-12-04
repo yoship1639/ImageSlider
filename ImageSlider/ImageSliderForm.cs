@@ -89,6 +89,9 @@ namespace ImageSlider
                 // スライド方法
                 slideImage1.SlideMode = (SlideImage.ImageSlideMode)Properties.Settings.Default.SlideMode;
 
+                // サイズモード
+                slideImage1.SizeMode = (SlideImage.ImageSizeMode)Properties.Settings.Default.SizeMode;
+
                 // 保存場所
                 downloadFolder = Properties.Settings.Default.DownloadFolder;
                 if (!Directory.Exists(downloadFolder))
@@ -99,8 +102,6 @@ namespace ImageSlider
                 // サブフォルダ
                 createSubFolder = Properties.Settings.Default.CreateSubFolder;
 
-                // サイズモード
-                slideImage1.SizeMode = (SlideImage.ImageSizeMode)Properties.Settings.Default.SizeMode;
             }
 
             TimerCallback timerDelegate = new TimerCallback(Tick);
@@ -324,7 +325,8 @@ namespace ImageSlider
                 SlideMode = slideImage1.SlideMode,
                 DowloadFolder = downloadFolder,
                 CreateSubFolder = createSubFolder,
-                SizeMode = slideImage1.SizeMode
+                SizeMode = slideImage1.SizeMode,
+                FocusDownloadImage = Properties.Settings.Default.FocusDownloadImage,
             };
             config.ShowDialog(this);
             slideTime = config.SlideTime;
@@ -334,6 +336,7 @@ namespace ImageSlider
             downloadFolder = config.DowloadFolder;
             createSubFolder = config.CreateSubFolder;
             slideImage1.SizeMode = config.SizeMode;
+            Properties.Settings.Default.FocusDownloadImage = config.FocusDownloadImage;
             
             if (config.APIName != currentAPI.APIName)
             {
@@ -590,6 +593,21 @@ namespace ImageSlider
             if (no < 0 || no >= datas.Length) return;
 
             System.Diagnostics.Process.Start(datas[no].SourceURL);
+        }
+
+        private void button_download_MouseEnter(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.FocusDownloadImage)
+            {
+                slideImage1.FocusDownloadImage = true;
+                slideImage1.Repaint();
+            }
+        }
+
+        private void button_download_MouseLeave(object sender, EventArgs e)
+        {
+            slideImage1.FocusDownloadImage = false;
+            slideImage1.Repaint();
         }
     }
 }

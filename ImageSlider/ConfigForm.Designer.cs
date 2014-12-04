@@ -40,19 +40,21 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_all = new System.Windows.Forms.TabPage();
-            this.checkBox_subFolder = new System.Windows.Forms.CheckBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.button_downloadFolderChange = new System.Windows.Forms.Button();
-            this.textBox_downloadFolder = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.tabPage_search = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox_sizeMode = new System.Windows.Forms.ComboBox();
             this.comboBox_slideMode = new System.Windows.Forms.ComboBox();
+            this.tabPage_save = new System.Windows.Forms.TabPage();
+            this.checkBox_subFolder = new System.Windows.Forms.CheckBox();
+            this.button_downloadFolderChange = new System.Windows.Forms.Button();
+            this.textBox_downloadFolder = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.checkBox_focusDownloadImage = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_slideSecond)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage_all.SuspendLayout();
             this.tabPage_search.SuspendLayout();
+            this.tabPage_save.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -172,6 +174,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage_all);
+            this.tabControl1.Controls.Add(this.tabPage_save);
             this.tabControl1.Controls.Add(this.tabPage_search);
             this.tabControl1.Location = new System.Drawing.Point(9, 9);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(0);
@@ -187,11 +190,6 @@
             this.tabPage_all.Controls.Add(this.comboBox_slideMode);
             this.tabPage_all.Controls.Add(this.comboBox_sizeMode);
             this.tabPage_all.Controls.Add(this.label7);
-            this.tabPage_all.Controls.Add(this.checkBox_subFolder);
-            this.tabPage_all.Controls.Add(this.label12);
-            this.tabPage_all.Controls.Add(this.button_downloadFolderChange);
-            this.tabPage_all.Controls.Add(this.textBox_downloadFolder);
-            this.tabPage_all.Controls.Add(this.label6);
             this.tabPage_all.Controls.Add(this.label2);
             this.tabPage_all.Controls.Add(this.numericUpDown_slideSecond);
             this.tabPage_all.Controls.Add(this.label5);
@@ -204,51 +202,6 @@
             this.tabPage_all.Size = new System.Drawing.Size(438, 366);
             this.tabPage_all.TabIndex = 0;
             this.tabPage_all.Text = "全体";
-            // 
-            // checkBox_subFolder
-            // 
-            this.checkBox_subFolder.AutoSize = true;
-            this.checkBox_subFolder.Location = new System.Drawing.Point(286, 165);
-            this.checkBox_subFolder.Name = "checkBox_subFolder";
-            this.checkBox_subFolder.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_subFolder.TabIndex = 15;
-            this.checkBox_subFolder.UseVisualStyleBackColor = true;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 162);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(236, 18);
-            this.label12.TabIndex = 14;
-            this.label12.Text = "保存時に検索ワードでサブフォルダを作る";
-            // 
-            // button_downloadFolderChange
-            // 
-            this.button_downloadFolderChange.Location = new System.Drawing.Point(397, 116);
-            this.button_downloadFolderChange.Name = "button_downloadFolderChange";
-            this.button_downloadFolderChange.Size = new System.Drawing.Size(35, 27);
-            this.button_downloadFolderChange.TabIndex = 13;
-            this.button_downloadFolderChange.Text = "...";
-            this.button_downloadFolderChange.UseVisualStyleBackColor = true;
-            this.button_downloadFolderChange.Click += new System.EventHandler(this.button_downloadFolderChange_Click);
-            // 
-            // textBox_downloadFolder
-            // 
-            this.textBox_downloadFolder.Location = new System.Drawing.Point(188, 117);
-            this.textBox_downloadFolder.Name = "textBox_downloadFolder";
-            this.textBox_downloadFolder.ReadOnly = true;
-            this.textBox_downloadFolder.Size = new System.Drawing.Size(203, 25);
-            this.textBox_downloadFolder.TabIndex = 12;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 120);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(92, 18);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "画像の保存場所";
             // 
             // tabPage_search
             // 
@@ -266,7 +219,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 204);
+            this.label7.Location = new System.Drawing.Point(6, 118);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(140, 18);
             this.label7.TabIndex = 16;
@@ -282,7 +235,7 @@
             "センター",
             "ズーム",
             "フィット"});
-            this.comboBox_sizeMode.Location = new System.Drawing.Point(188, 201);
+            this.comboBox_sizeMode.Location = new System.Drawing.Point(188, 115);
             this.comboBox_sizeMode.Name = "comboBox_sizeMode";
             this.comboBox_sizeMode.Size = new System.Drawing.Size(163, 26);
             this.comboBox_sizeMode.TabIndex = 17;
@@ -295,12 +248,71 @@
             "瞬時",
             "右にスライド",
             "左にスライド",
-            "透過",
-            "フロント&サイド"});
+            "透過"});
             this.comboBox_slideMode.Location = new System.Drawing.Point(188, 77);
             this.comboBox_slideMode.Name = "comboBox_slideMode";
             this.comboBox_slideMode.Size = new System.Drawing.Size(163, 26);
             this.comboBox_slideMode.TabIndex = 18;
+            // 
+            // tabPage_save
+            // 
+            this.tabPage_save.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage_save.Controls.Add(this.checkBox_focusDownloadImage);
+            this.tabPage_save.Controls.Add(this.checkBox_subFolder);
+            this.tabPage_save.Controls.Add(this.button_downloadFolderChange);
+            this.tabPage_save.Controls.Add(this.textBox_downloadFolder);
+            this.tabPage_save.Controls.Add(this.label6);
+            this.tabPage_save.Location = new System.Drawing.Point(4, 27);
+            this.tabPage_save.Name = "tabPage_save";
+            this.tabPage_save.Size = new System.Drawing.Size(438, 366);
+            this.tabPage_save.TabIndex = 2;
+            this.tabPage_save.Text = "保存";
+            // 
+            // checkBox_subFolder
+            // 
+            this.checkBox_subFolder.AutoSize = true;
+            this.checkBox_subFolder.Location = new System.Drawing.Point(11, 63);
+            this.checkBox_subFolder.Name = "checkBox_subFolder";
+            this.checkBox_subFolder.Size = new System.Drawing.Size(207, 22);
+            this.checkBox_subFolder.TabIndex = 20;
+            this.checkBox_subFolder.Text = "検索ワードでサブフォルダを作る";
+            this.checkBox_subFolder.UseVisualStyleBackColor = true;
+            // 
+            // button_downloadFolderChange
+            // 
+            this.button_downloadFolderChange.Location = new System.Drawing.Point(379, 16);
+            this.button_downloadFolderChange.Name = "button_downloadFolderChange";
+            this.button_downloadFolderChange.Size = new System.Drawing.Size(35, 27);
+            this.button_downloadFolderChange.TabIndex = 18;
+            this.button_downloadFolderChange.Text = "...";
+            this.button_downloadFolderChange.UseVisualStyleBackColor = true;
+            // 
+            // textBox_downloadFolder
+            // 
+            this.textBox_downloadFolder.Location = new System.Drawing.Point(143, 17);
+            this.textBox_downloadFolder.Name = "textBox_downloadFolder";
+            this.textBox_downloadFolder.ReadOnly = true;
+            this.textBox_downloadFolder.Size = new System.Drawing.Size(230, 25);
+            this.textBox_downloadFolder.TabIndex = 17;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 20);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(92, 18);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "画像の保存場所";
+            // 
+            // checkBox_focusDownloadImage
+            // 
+            this.checkBox_focusDownloadImage.AutoSize = true;
+            this.checkBox_focusDownloadImage.Location = new System.Drawing.Point(11, 91);
+            this.checkBox_focusDownloadImage.Name = "checkBox_focusDownloadImage";
+            this.checkBox_focusDownloadImage.Size = new System.Drawing.Size(171, 22);
+            this.checkBox_focusDownloadImage.TabIndex = 21;
+            this.checkBox_focusDownloadImage.Text = "保存する画像を赤線で囲む";
+            this.checkBox_focusDownloadImage.UseVisualStyleBackColor = true;
             // 
             // ConfigForm
             // 
@@ -327,6 +339,8 @@
             this.tabPage_all.PerformLayout();
             this.tabPage_search.ResumeLayout(false);
             this.tabPage_search.PerformLayout();
+            this.tabPage_save.ResumeLayout(false);
+            this.tabPage_save.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -346,13 +360,14 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage_all;
         private System.Windows.Forms.TabPage tabPage_search;
-        private System.Windows.Forms.Button button_downloadFolderChange;
-        private System.Windows.Forms.TextBox textBox_downloadFolder;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox checkBox_subFolder;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox comboBox_sizeMode;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBox_slideMode;
+        private System.Windows.Forms.TabPage tabPage_save;
+        private System.Windows.Forms.CheckBox checkBox_focusDownloadImage;
+        private System.Windows.Forms.CheckBox checkBox_subFolder;
+        private System.Windows.Forms.Button button_downloadFolderChange;
+        private System.Windows.Forms.TextBox textBox_downloadFolder;
+        private System.Windows.Forms.Label label6;
     }
 }

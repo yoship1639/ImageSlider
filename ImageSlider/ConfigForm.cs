@@ -37,7 +37,15 @@ namespace ImageSlider
             set { comboBox_slideMode.SelectedIndex = (int)value; }
         }
 
-        public string DowloadFolder 
+        public SlideImage.ImageSizeMode SizeMode
+        {
+            get { return (SlideImage.ImageSizeMode)comboBox_sizeMode.SelectedIndex; }
+            set { comboBox_sizeMode.SelectedIndex = (int)value; }
+        }
+
+        #region 保存プロパティ
+
+        public string DowloadFolder
         {
             get { return textBox_downloadFolder.Text; }
             set { textBox_downloadFolder.Text = value; }
@@ -49,11 +57,13 @@ namespace ImageSlider
             set { checkBox_subFolder.Checked = value; }
         }
 
-        public SlideImage.ImageSizeMode SizeMode
+        public bool FocusDownloadImage
         {
-            get { return (SlideImage.ImageSizeMode)comboBox_sizeMode.SelectedIndex; }
-            set { comboBox_sizeMode.SelectedIndex = (int)value; }
+            get { return checkBox_focusDownloadImage.Checked; }
+            set { checkBox_focusDownloadImage.Checked = value; }
         }
+
+        #endregion
 
         IImageSearchAPI[] APIs;
 
