@@ -180,7 +180,7 @@ namespace TwitterImageSearchAPI
                             {
                                 var idx = m.MediaUrl.LocalPath.LastIndexOf('/');
                                 if(idx < 0) idx = 0;
-                                var sub = m.MediaUrl.LocalPath.Substring(idx);
+                                var sub = m.MediaUrl.LocalPath.Substring(idx + 1);
 
                                 var wc = new System.Net.WebClient();
                                 Stream stream = wc.OpenRead(m.MediaUrl.AbsoluteUri);

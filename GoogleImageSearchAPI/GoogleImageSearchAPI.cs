@@ -133,10 +133,15 @@ namespace GoogleImageSearchAPI
                                 string url = data.responseData.results[j].unescapedUrl;
                                 var wc = new System.Net.WebClient();
                                 Stream stream = wc.OpenRead(url);
+
+                                var idx = data.responseData.results[j].url.LastIndexOf('/');
+                                if (idx < 0) idx = 0;
+                                var sub = data.responseData.results[j].url.Substring(idx + 1);
+
                                 var image = new ImageData()
                                 {
                                     Bitmap = new System.Drawing.Bitmap(stream),
-                                    FileName = data.responseData.results[j].title,
+                                    FileName = sub,
                                     SourceURL = data.responseData.results[j].originalContextUrl,
                                 };
                                 lock (images)
