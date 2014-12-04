@@ -47,6 +47,8 @@
             this.textBox_downloadFolder = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage_search = new System.Windows.Forms.TabPage();
+            this.label7 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage_all.SuspendLayout();
@@ -191,6 +193,8 @@
             // tabPage_all
             // 
             this.tabPage_all.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage_all.Controls.Add(this.comboBox2);
+            this.tabPage_all.Controls.Add(this.label7);
             this.tabPage_all.Controls.Add(this.checkBox_subFolder);
             this.tabPage_all.Controls.Add(this.label12);
             this.tabPage_all.Controls.Add(this.button_downloadFolderChange);
@@ -268,14 +272,38 @@
             this.tabPage_search.TabIndex = 1;
             this.tabPage_search.Text = "検索";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 204);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(140, 18);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "画像表示のサイズモード";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "左寄せ",
+            "ストレッチ",
+            "センター",
+            "ズーム",
+            "フィット"});
+            this.comboBox2.Location = new System.Drawing.Point(188, 201);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(163, 26);
+            this.comboBox2.TabIndex = 17;
+            // 
             // ConfigForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(464, 441);
+            this.ClientSize = new System.Drawing.Size(464, 443);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button1);
-            this.Font = new System.Drawing.Font("Meiryo", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
@@ -318,5 +346,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox checkBox_subFolder;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -49,6 +49,27 @@ namespace ImageSlider
             set { checkBox_subFolder.Checked = value; }
         }
 
+        /*SlideImage.ImageSizeMode[] sizeModes = 
+        {
+            SlideImage.ImageSizeMode.Normal,
+            SlideImage.ImageSizeMode.Stretch,
+            SlideImage.ImageSizeMode.Center,
+            SlideImage.ImageSizeMode.Zoom,
+            SlideImage.ImageSizeMode.Fit
+        };*/
+
+        public SlideImage.ImageSizeMode SizeMode
+        {
+            get
+            {
+                return (SlideImage.ImageSizeMode)comboBox2.SelectedIndex;
+            }
+            set
+            {
+                comboBox2.SelectedIndex = (int)value;
+            }
+        }
+
         IImageSearchAPI[] APIs;
 
         public ConfigForm(IImageSearchAPI[] apis, IImageSearchAPI current)

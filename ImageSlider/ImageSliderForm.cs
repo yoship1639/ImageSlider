@@ -88,7 +88,7 @@ namespace ImageSlider
 
                 // 滑らかに切り替え
                 smoothSlide = Properties.Settings.Default.SmoothSlide;
-                slideImage1.SlideMode = smoothSlide ? slideImage.ImageSlideMode.Slide_Left : slideImage.ImageSlideMode.Normal;
+                slideImage1.SlideMode = smoothSlide ? SlideImage.ImageSlideMode.Slide_Left : SlideImage.ImageSlideMode.Normal;
 
                 // 保存場所
                 downloadFolder = Properties.Settings.Default.DownloadFolder;
@@ -99,6 +99,9 @@ namespace ImageSlider
 
                 // サブフォルダ
                 createSubFolder = Properties.Settings.Default.CreateSubFolder;
+
+                // サイズモード
+                slideImage1.SizeMode = (SlideImage.ImageSizeMode)Properties.Settings.Default.SizeMode;
             }
 
             TimerCallback timerDelegate = new TimerCallback(Tick);
@@ -270,7 +273,7 @@ namespace ImageSlider
         {
             if (sizeFlag)
             {
-                Size = new Size(Size.Width + e.Location.X - pivot.X, Size.Height + e.Location.Y - pivot.Y);
+                Size = new Size(Size.Width + e.Location.X - 10, Size.Height + e.Location.Y - 10);
                 slideImage1.Size = Size;
             }
         }
@@ -301,6 +304,7 @@ namespace ImageSlider
             Properties.Settings.Default.SmoothSlide = smoothSlide;
             Properties.Settings.Default.DownloadFolder = downloadFolder;
             Properties.Settings.Default.CreateSubFolder = createSubFolder;
+            Properties.Settings.Default.SizeMode = (int)slideImage1.SizeMode;
             Properties.Settings.Default.Save();
         }
 
@@ -321,6 +325,7 @@ namespace ImageSlider
                 SmoothSlide = smoothSlide,
                 DowloadFolder = downloadFolder,
                 CreateSubFolder = createSubFolder,
+                SizeMode = slideImage1.SizeMode
             };
             config.ShowDialog(this);
             slideTime = config.SlideTime;
@@ -330,7 +335,8 @@ namespace ImageSlider
             downloadFolder = config.DowloadFolder;
             createSubFolder = config.CreateSubFolder;
 
-            slideImage1.SlideMode = smoothSlide ? slideImage.ImageSlideMode.Slide_Left : slideImage.ImageSlideMode.Normal;
+            slideImage1.SlideMode = smoothSlide ? SlideImage.ImageSlideMode.Slide_Left : SlideImage.ImageSlideMode.Normal;
+            slideImage1.SizeMode = config.SizeMode;
             
             if (config.APIName != currentAPI.APIName)
             {

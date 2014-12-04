@@ -42,7 +42,7 @@
             this.button_left = new System.Windows.Forms.Button();
             this.button_moveSite = new System.Windows.Forms.Button();
             this.sizeChanger1 = new ImageSlider.SizeChanger();
-            this.slideImage1 = new ImageSlider.slideImage();
+            this.slideImage1 = new ImageSlider.SlideImage();
             this.panel_menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_search)).BeginInit();
             this.SuspendLayout();
@@ -250,8 +250,8 @@
             this.slideImage1.Name = "slideImage1";
             this.slideImage1.Rate = 0F;
             this.slideImage1.Size = new System.Drawing.Size(480, 480);
-            this.slideImage1.SizeMode = ImageSlider.slideImage.ImageSizeMode.Zoom;
-            this.slideImage1.SlideMode = ImageSlider.slideImage.ImageSlideMode.Slide_Left;
+            this.slideImage1.SizeMode = ImageSlider.SlideImage.ImageSizeMode.Zoom;
+            this.slideImage1.SlideMode = ImageSlider.SlideImage.ImageSlideMode.Slide_Left;
             this.slideImage1.TabIndex = 3;
             this.slideImage1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.slideImage1_KeyDown);
             this.slideImage1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouseDown);
@@ -297,7 +297,7 @@
         private System.Windows.Forms.Button button_close;
         private System.Windows.Forms.Button button_config;
         private System.Windows.Forms.Button button_windowStateChange;
-        private slideImage slideImage1;
+        private SlideImage slideImage1;
         private System.Windows.Forms.Button button_startStop;
         private System.Windows.Forms.Label label_imageCount;
         private System.Windows.Forms.Button button_download;

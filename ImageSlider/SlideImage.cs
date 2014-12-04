@@ -12,7 +12,7 @@ using ImageSearchAPILib;
 
 namespace ImageSlider
 {
-    public partial class slideImage : UserControl
+    public partial class SlideImage : UserControl
     {
         /// <summary>
         /// 表示する画像の変更度合い
@@ -89,12 +89,14 @@ namespace ImageSlider
         /// </summary>
         public enum ImageSizeMode
         {
-            Normal,
-            Stretch,
-            Center,
-            Zoom,
-            Fit,
+            Normal = 0,
+            Stretch = 1,
+            Center = 2,
+            Zoom = 3,
+            Fit = 4,
         }
+
+        
 
         /// <summary>
         /// 画像のサイズモード
@@ -111,7 +113,7 @@ namespace ImageSlider
             }
         }
 
-        public slideImage()
+        public SlideImage()
         {
             InitializeComponent();
         }

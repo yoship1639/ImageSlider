@@ -1,6 +1,6 @@
 ﻿namespace ImageSlider
 {
-    partial class slideImage
+    partial class SlideImage
     {
         /// <summary> 
         /// 必要なデザイナー変数です。
