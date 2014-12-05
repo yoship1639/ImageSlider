@@ -211,7 +211,15 @@ namespace ImageSlider
 
                 slideImage1.ForceImage = Properties.Resources.searching;
 
-                currentAPI.Search(textBox_search.Text);
+                try
+                {
+                    currentAPI.Search(textBox_search.Text);
+                }
+                catch
+                {
+                    currentAPI_SearchError(this, EventArgs.Empty);
+                }
+                
 
                 return;
             }
@@ -245,7 +253,7 @@ namespace ImageSlider
         /// <param name="e"></param>
         void currentAPI_SearchFinished(object sender, EventArgs e)
         {
-            if (slideImage1.ImageDatas.Length == 0)
+            if (slideImage1.ImageDatas == null || slideImage1.ImageDatas.Length == 0)
             {
                 currentAPI_SearchError(sender, e);
             }

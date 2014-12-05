@@ -64,27 +64,6 @@ namespace PixivImageSearchAPI
         {
             images.Clear();
 
-            /*
-            try
-            {
-                // セッションIDが無かったらログイン
-                if (sessionID == null)
-                {
-                    login(textBox1.Text, textBox2.Text);
-                    while (!loginEnd) ;
-                    if (sessionID == null)
-                    {
-                        SearchError(this, EventArgs.Empty);
-                        return;
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                int a = 0;
-            }
-            */
-
             Task.Factory.StartNew(() =>
             {
                 // Httpエンコード
@@ -104,41 +83,47 @@ namespace PixivImageSearchAPI
                     sb.Append(i+1);
 
                     string csv = null;
-                    //WebClientを作成
-                    using (var wc = new System.Net.WebClient())
-                    {
-                        //文字コードを指定
-                        wc.Encoding = Encoding.UTF8;
-                        //データを文字列としてダウンロードする
-                        csv = wc.DownloadString(sb.ToString());
-                    }
 
-                    // CSVの解析
-                    var datas = Deserialize(csv);
-
-                    for (int j = 0; j < datas.Length; j++)
+                    try
                     {
-                        try
+                        //WebClientを作成
+                        using (var wc = new System.Net.WebClient())
                         {
-                            string url = datas[j].IllustURL;
-                            var wc = new System.Net.WebClient();
-                            Stream stream = wc.OpenRead(url);
-                            var image = new ImageData()
-                            {
-                                Bitmap = new System.Drawing.Bitmap(stream),
-                                FileName = datas[j].Title + "." + datas[j].Extension,
-                                SourceURL = "http://www.pixiv.net/member_illust.php?mode=medium&illust_id=" + datas[j].IllustID,
-                            };
-                            lock (images)
-                            {
-                                images.Add(image);
-                                ImageLoaded(this, new ImageLoadedEventArgs() { Index = images.Count - 1, ImageData = image });
-                            }
-                            stream.Close();
+                            //文字コードを指定
+                            wc.Encoding = Encoding.UTF8;
+                            //データを文字列としてダウンロードする
+                            csv = wc.DownloadString(sb.ToString());
                         }
-                        catch { }
+
+                        // CSVの解析
+                        var datas = Deserialize(csv);
+
+                        for (int j = 0; j < datas.Length; j++)
+                        {
+                            try
+                            {
+                                string url = datas[j].IllustURL;
+                                var wc = new System.Net.WebClient();
+                                Stream stream = wc.OpenRead(url);
+                                var image = new ImageData()
+                                {
+                                    Bitmap = new System.Drawing.Bitmap(stream),
+                                    FileName = datas[j].Title + "." + datas[j].Extension,
+                                    SourceURL = "http://www.pixiv.net/member_illust.php?mode=medium&illust_id=" + datas[j].IllustID,
+                                };
+                                lock (images)
+                                {
+                                    images.Add(image);
+                                    ImageLoaded(this, new ImageLoadedEventArgs() { Index = images.Count - 1, ImageData = image });
+                                }
+                                stream.Close();
+                            }
+                            catch { }
+                        }
                     }
+                    catch { }
                 });
+                SearchFinished(this, EventArgs.Empty);
             });
         }
 

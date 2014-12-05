@@ -127,63 +127,71 @@ namespace GoogleImageSearchAPI
             {
                 Parallel.For(0, 8, i =>
                 {
-                    var data = search(query, i * 8);
-                    if (data.responseStatus == 200)
+                    GoogleImageSearchAPIJsonData data = null;
+                    try
                     {
-                        for (int j = 0; j < 8; j++)
+                        data = search(query, i * 8);
+
+                        if (data.responseStatus == 200)
                         {
-                            try
+                            for (int j = 0; j < 8; j++)
                             {
-                                string url = data.responseData.results[j].unescapedUrl;
-                                var wc = new System.Net.WebClient();
-                                Stream stream = wc.OpenRead(url);
-                                var bitmap = new System.Drawing.Bitmap(stream);
-                                stream.Close();
-
-                                /*
-                                var idx = data.responseData.results[j].url.LastIndexOf('/');
-                                if (idx < 0) idx = 0;
-                                var sub = data.responseData.results[j].url.Substring(idx + 1);
-
-                                var idx1 = sub.LastIndexOf(":large");
-                                var idx2 = sub.LastIndexOf("-large");
-                                if(idx1 > 0)
+                                try
                                 {
-                                    sub = sub.Substring(0, idx1);
-                                }
-                                else if (idx2 > 0)
-                                {
-                                    sub = sub.Substring(0, idx2);
-                                }
+                                    string url = data.responseData.results[j].unescapedUrl;
+                                    var wc = new System.Net.WebClient();
+                                    Stream stream = wc.OpenRead(url);
+                                    var bitmap = new System.Drawing.Bitmap(stream);
+                                    stream.Close();
+
+                                    /*
+                                    var idx = data.responseData.results[j].url.LastIndexOf('/');
+                                    if (idx < 0) idx = 0;
+                                    var sub = data.responseData.results[j].url.Substring(idx + 1);
+
+                                    var idx1 = sub.LastIndexOf(":large");
+                                    var idx2 = sub.LastIndexOf("-large");
+                                    if(idx1 > 0)
+                                    {
+                                        sub = sub.Substring(0, idx1);
+                                    }
+                                    else if (idx2 > 0)
+                                    {
+                                        sub = sub.Substring(0, idx2);
+                                    }
                                 
-                                var subDot = sub.LastIndexOf('.');
-                                if (subDot == -1)
-                                {
-                                    sub += "." + GetFileFormat(bitmap);
-                                }*/
+                                    var subDot = sub.LastIndexOf('.');
+                                    if (subDot == -1)
+                                    {
+                                        sub += "." + GetFileFormat(bitmap);
+                                    }*/
 
-                                //Shift-JISでURLデコードする
-                                //System.Text.Encoding enc = System.Text.Encoding.GetEncoding("shift_jis");
-                                //string urlDecSjis = System.Web.HttpUtility.UrlDecode(sub, enc);
+                                    //Shift-JISでURLデコードする
+                                    //System.Text.Encoding enc = System.Text.Encoding.GetEncoding("shift_jis");
+                                    //string urlDecSjis = System.Web.HttpUtility.UrlDecode(sub, enc);
 
-                                var image = new ImageData()
-                                {
-                                    Bitmap = bitmap,
-                                    FileName = query + "_" + i + "_" + j + "." + GetFileFormat(bitmap),
-                                    SourceURL = data.responseData.results[j].originalContextUrl,
-                                };
+                                    var image = new ImageData()
+                                    {
+                                        Bitmap = bitmap,
+                                        FileName = query + "_" + i + "_" + j + "." + GetFileFormat(bitmap),
+                                        SourceURL = data.responseData.results[j].originalContextUrl,
+                                    };
                                 
-                                lock (images)
-                                {
-                                    images.Add(image);
-                                    ImageLoaded(this, new ImageLoadedEventArgs() { Index = images.Count - 1, ImageData = image });
+                                    lock (images)
+                                    {
+                                        images.Add(image);
+                                        ImageLoaded(this, new ImageLoadedEventArgs() { Index = images.Count - 1, ImageData = image });
+                                    }
+                                
                                 }
-                                
+                                catch { }
                             }
-                            catch { }
                         }
                     }
-                    else SearchError(this, EventArgs.Empty);
+                    catch
+                    {
+                    }
+                    
                 });
                 SearchFinished(this, EventArgs.Empty);
             });
