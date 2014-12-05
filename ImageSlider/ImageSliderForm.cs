@@ -192,6 +192,7 @@ namespace ImageSlider
                 searching = true;
                 neutral = false;
                 showImageNo = 0;
+                slideImage1.Rate = 0;
 
                 slideImage1.ForceImage = Properties.Resources.searching;
 
@@ -585,8 +586,11 @@ namespace ImageSlider
                 {
                     var no = (int)Math.Round(slideImage1.Rate);
                     var datas = slideImage1.ImageDatas;
-                    var image = datas[no];
-                    saveImage(image);
+                    if (datas != null)
+                    {
+                        var image = datas[no];
+                        saveImage(image);
+                    }
                 });
             }
             else if (e.KeyCode == Keys.D)       // 進む
@@ -601,7 +605,7 @@ namespace ImageSlider
                 prevImage();
                 showImageCountLabel();
             }
-            else if (e.Control && e.KeyCode.HasFlag(Keys.O))    // サイトに飛ぶ
+            else if (e.Control && e.KeyCode.HasFlag(Keys.E))    // サイトに飛ぶ
             {
                 moveToSite();
             }
@@ -675,10 +679,13 @@ namespace ImageSlider
         private void moveToSite()
         {
             var datas = slideImage1.ImageDatas;
-            var no = (int)Math.Round(slideImage1.Rate);
-            if (no < 0 || no >= datas.Length) return;
+            if (datas != null)
+            {
+                var no = (int)Math.Round(slideImage1.Rate);
+                if (no < 0 || no >= datas.Length) return;
 
-            System.Diagnostics.Process.Start(datas[no].SourceURL);
+                System.Diagnostics.Process.Start(datas[no].SourceURL);
+            }
         }
 
         private void button_download_MouseEnter(object sender, EventArgs e)

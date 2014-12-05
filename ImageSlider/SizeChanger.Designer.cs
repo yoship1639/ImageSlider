@@ -32,8 +32,7 @@
             // 
             // SizeChanger
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.Name = "SizeChanger";
             this.Load += new System.EventHandler(this.SizeChanger_Load);
             this.ResumeLayout(false);

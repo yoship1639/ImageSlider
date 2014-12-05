@@ -49,7 +49,7 @@ namespace ImageSlider.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("255, 192, 128")]
+        [global::System.Configuration.DefaultSettingValueAttribute("LightSkyBlue")]
         public global::System.Drawing.Color MenuColor {
             get {
                 return ((global::System.Drawing.Color)(this["MenuColor"]));

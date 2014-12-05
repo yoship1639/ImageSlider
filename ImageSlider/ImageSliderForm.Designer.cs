@@ -49,7 +49,7 @@
             // 
             // panel_menu
             // 
-            this.panel_menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.panel_menu.BackColor = System.Drawing.Color.LightSkyBlue;
             this.panel_menu.Controls.Add(this.label_imageCount);
             this.panel_menu.Controls.Add(this.button_windowStateChange);
             this.panel_menu.Controls.Add(this.button_config);
@@ -157,7 +157,7 @@
             this.button_startStop.BackgroundImage = global::ImageSlider.Properties.Resources.stop3;
             this.button_startStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button_startStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_startStop.Location = new System.Drawing.Point(10000, 10000);
+            this.button_startStop.Location = new System.Drawing.Point(10000, 9880);
             this.button_startStop.Name = "button_startStop";
             this.button_startStop.Size = new System.Drawing.Size(42, 35);
             this.button_startStop.TabIndex = 4;
@@ -172,7 +172,7 @@
             this.button_download.BackgroundImage = global::ImageSlider.Properties.Resources.download;
             this.button_download.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button_download.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_download.Location = new System.Drawing.Point(10000, 10000);
+            this.button_download.Location = new System.Drawing.Point(10000, 9880);
             this.button_download.Name = "button_download";
             this.button_download.Size = new System.Drawing.Size(42, 35);
             this.button_download.TabIndex = 3;
@@ -189,7 +189,7 @@
             this.button_right.BackgroundImage = global::ImageSlider.Properties.Resources.right;
             this.button_right.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button_right.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_right.Location = new System.Drawing.Point(10000, 10000);
+            this.button_right.Location = new System.Drawing.Point(10000, 9940);
             this.button_right.Name = "button_right";
             this.button_right.Size = new System.Drawing.Size(33, 43);
             this.button_right.TabIndex = 6;
@@ -204,7 +204,7 @@
             this.button_left.BackgroundImage = global::ImageSlider.Properties.Resources.left;
             this.button_left.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button_left.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_left.Location = new System.Drawing.Point(10000, 10000);
+            this.button_left.Location = new System.Drawing.Point(10000, 9940);
             this.button_left.Name = "button_left";
             this.button_left.Size = new System.Drawing.Size(33, 43);
             this.button_left.TabIndex = 7;
@@ -219,7 +219,7 @@
             this.button_moveSite.BackgroundImage = global::ImageSlider.Properties.Resources.move;
             this.button_moveSite.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button_moveSite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_moveSite.Location = new System.Drawing.Point(10000, 10000);
+            this.button_moveSite.Location = new System.Drawing.Point(10000, 9880);
             this.button_moveSite.Name = "button_moveSite";
             this.button_moveSite.Size = new System.Drawing.Size(42, 35);
             this.button_moveSite.TabIndex = 8;
@@ -230,9 +230,9 @@
             // sizeChanger1
             // 
             this.sizeChanger1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sizeChanger1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.sizeChanger1.BackColor = System.Drawing.Color.LightSkyBlue;
             this.sizeChanger1.Cursor = System.Windows.Forms.Cursors.SizeNWSE;
-            this.sizeChanger1.Location = new System.Drawing.Point(456, 456);
+            this.sizeChanger1.Location = new System.Drawing.Point(452, 324);
             this.sizeChanger1.Margin = new System.Windows.Forms.Padding(0);
             this.sizeChanger1.Name = "sizeChanger1";
             this.sizeChanger1.Size = new System.Drawing.Size(24, 24);
@@ -252,7 +252,7 @@
             this.slideImage1.Margin = new System.Windows.Forms.Padding(0);
             this.slideImage1.Name = "slideImage1";
             this.slideImage1.Rate = 0F;
-            this.slideImage1.Size = new System.Drawing.Size(480, 480);
+            this.slideImage1.Size = new System.Drawing.Size(480, 360);
             this.slideImage1.SizeMode = ImageSlider.SlideImage.ImageSizeMode.Zoom;
             this.slideImage1.SlideMode = ImageSlider.SlideImage.ImageSlideMode.Slide_Left;
             this.slideImage1.TabIndex = 3;
@@ -265,7 +265,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(480, 480);
+            this.ClientSize = new System.Drawing.Size(480, 360);
             this.Controls.Add(this.sizeChanger1);
             this.Controls.Add(this.button_moveSite);
             this.Controls.Add(this.button_left);

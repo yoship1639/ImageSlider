@@ -9,7 +9,7 @@
       <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="MenuColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">255, 192, 128</Value>
+      <Value Profile="(Default)">LightSkyBlue</Value>
     </Setting>
     <Setting Name="SlideMode" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>

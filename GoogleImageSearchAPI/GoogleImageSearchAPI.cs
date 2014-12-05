@@ -25,11 +25,11 @@ namespace GoogleImageSearchAPI
 
         /// <summary>
         /// Params内訳
-        /// 0: string   拡張子
+        /// 0: int   拡張子
         /// 1: string   検索するサイト
-        /// 2: string   色
-        /// 3: string   サイズ
-        /// 4: string   安全性
+        /// 2: bool   色
+        /// 3: int   サイズ
+        /// 4: int   安全性
         /// </summary>
 
         string[] extensionNames =
@@ -66,21 +66,28 @@ namespace GoogleImageSearchAPI
             {
                 return new object[]
                 {
-                    extensionNames[comboBox1.SelectedIndex],
+                    comboBox1.SelectedIndex,
                     textBox1.Text,
-                    checkBox1.Checked ? "gray" : "",
-                    sizeNames[comboBox2.SelectedIndex],
-                    safeNames[comboBox3.SelectedIndex]
+                    checkBox1.Checked,
+                    comboBox2.SelectedIndex,
+                    comboBox3.SelectedIndex,
                 };
             }
             set
             {
-                comboBox1.SelectedIndex = Array.FindIndex(extensionNames, (name) => name == value[0] as string);
+                comboBox1.SelectedIndex = Clip((int)value[0], 0, 4);
                 textBox1.Text = value[1] as string;
-                checkBox1.Checked = value[2] as string == "gray";
-                comboBox2.SelectedIndex = Array.FindIndex(sizeNames, (name) => name == value[3] as string);
-                comboBox3.SelectedIndex = Array.FindIndex(safeNames, (name) => name == value[4] as string);
+                checkBox1.Checked = (bool)value[2];
+                comboBox2.SelectedIndex = Clip((int)value[3], 0, 7);
+                comboBox3.SelectedIndex = Clip((int)value[4], 0, 2);
             }
+        }
+
+        private int Clip(int value, int min, int max)
+        {
+            if (value < min) return min;
+            else if (value > max) return max;
+            return value;
         }
 
         public object[] DefaultParams
@@ -89,11 +96,11 @@ namespace GoogleImageSearchAPI
             {
                 return new object[]
                 {
+                    0,
                     "",
-                    "",
-                    "",
-                    "large",
-                    "active",
+                    false,
+                    3,
+                    0,
                 };
             }
         }
@@ -219,19 +226,18 @@ namespace GoogleImageSearchAPI
             }
 
             //ダウンロード元のURLの作成
-            var parameters = Params;
             StringBuilder sb = new StringBuilder();
             sb.Append("http://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=8");
             // 拡張子の指定があったら
-            if (parameters[0] as string != "") sb.Append("&as_filetype=" + parameters[0]);
+            if (comboBox1.SelectedIndex != 0) sb.Append("&as_filetype=" + extensionNames[comboBox1.SelectedIndex]);
             // 検索するサイトの指定があったら
-            if (parameters[1] as string != "") sb.Append("&as_sitesearch=" + parameters[1]);
+            if (!string.IsNullOrWhiteSpace(textBox1.Text)) sb.Append("&as_sitesearch=" + textBox1.Text);
             // 色の指定があったら
-            if (parameters[2] as string != "") sb.Append("&imgc=" + parameters[2]);
+            if (checkBox1.Checked) sb.Append("&imgc=gray");
             // サイズの指定があったら
-            if (parameters[3] as string != "") sb.Append("&imgsz=" + parameters[3]);
+            if (comboBox2.SelectedIndex != 0) sb.Append("&imgsz=" + sizeNames[comboBox2.SelectedIndex]);
             // 安全性の指定があったら
-            if (parameters[4] as string != "") sb.Append("&safe=" + parameters[4]);
+            if (comboBox3.SelectedIndex != 0) sb.Append("&safe=" + safeNames[comboBox3.SelectedIndex]);
 
             sb.Append("&start=" + start + "&q=");
             foreach (var word in httpWords)
