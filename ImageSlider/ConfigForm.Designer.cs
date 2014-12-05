@@ -215,6 +215,7 @@
             resources.ApplyResources(this.button_downloadFolderChange, "button_downloadFolderChange");
             this.button_downloadFolderChange.Name = "button_downloadFolderChange";
             this.button_downloadFolderChange.UseVisualStyleBackColor = true;
+            this.button_downloadFolderChange.Click += new System.EventHandler(this.button_downloadFolderChange_Click);
             // 
             // textBox_downloadFolder
             // 
