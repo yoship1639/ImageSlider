@@ -107,11 +107,6 @@ namespace TwitterImageSearchAPI
             get { return images.ToArray(); }
         }
 
-        public int ImageCount
-        {
-            get { return images.Count; }
-        }
-
         public event EventHandler SearchError = delegate { };
         public event EventHandler SearchFinished = delegate { };
         public event ImageLoadedEventHandler ImageLoaded = delegate { };

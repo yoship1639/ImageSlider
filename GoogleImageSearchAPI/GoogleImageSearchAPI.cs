@@ -106,7 +106,6 @@ namespace GoogleImageSearchAPI
         }
 
         public ImageData[] ImageDatas { get { return images.ToArray(); } }
-        public int ImageCount { get { return images.Count; } }
 
         private List<ImageData> images = new List<ImageData>();
 

@@ -5,6 +5,7 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageSlider", "ImageSlider\ImageSlider.csproj", "{47130C07-A6F1-46D4-BACE-3D6555E9C700}"
 	ProjectSection(ProjectDependencies) = postProject
+		{B8E52E45-95F0-4993-93E6-DCA3FDD33BD1} = {B8E52E45-95F0-4993-93E6-DCA3FDD33BD1}
 		{672AFA99-26CD-488E-B633-7F6D394B7D45} = {672AFA99-26CD-488E-B633-7F6D394B7D45}
 	EndProjectSection
 EndProject
@@ -17,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NicoSeigaImageSearchAPI", "NicoSeigaImageSearchAPI\NicoSeigaImageSearchAPI.csproj", "{AC92AA91-8110-4530-9E5F-374BEB14B24E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterImageSearchAPI", "TwitterImageSearchAPI\TwitterImageSearchAPI.csproj", "{672AFA99-26CD-488E-B633-7F6D394B7D45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotozouImageSearchAPI", "PhotozouImageSearchAPI\PhotozouImageSearchAPI.csproj", "{B8E52E45-95F0-4993-93E6-DCA3FDD33BD1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +51,10 @@ Global
 		{672AFA99-26CD-488E-B633-7F6D394B7D45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{672AFA99-26CD-488E-B633-7F6D394B7D45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{672AFA99-26CD-488E-B633-7F6D394B7D45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8E52E45-95F0-4993-93E6-DCA3FDD33BD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8E52E45-95F0-4993-93E6-DCA3FDD33BD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8E52E45-95F0-4993-93E6-DCA3FDD33BD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8E52E45-95F0-4993-93E6-DCA3FDD33BD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

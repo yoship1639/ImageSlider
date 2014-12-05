@@ -12,7 +12,6 @@ namespace ImageSearchAPILib
         object[] Params { get; set; }
         object[] DefaultParams { get; }
         ImageData[] ImageDatas { get; }
-        int ImageCount { get; }
 
         event EventHandler SearchError;
         event EventHandler SearchFinished;

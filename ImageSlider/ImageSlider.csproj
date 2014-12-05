@@ -158,6 +158,10 @@
       <Project>{d8563aae-779d-4bb4-95b8-f70da3bc34b0}</Project>
       <Name>ImageSearchAPILib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PhotozouImageSearchAPI\PhotozouImageSearchAPI.csproj">
+      <Project>{b8e52e45-95f0-4993-93e6-dca3fdd33bd1}</Project>
+      <Name>PhotozouImageSearchAPI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PixivImageSearchAPI\PixivImageSearchAPI.csproj">
       <Project>{5b6b0d0e-37fd-4fab-aa5c-121bd7daa197}</Project>
       <Name>PixivImageSearchAPI</Name>
