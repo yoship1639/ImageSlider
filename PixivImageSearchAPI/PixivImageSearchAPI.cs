@@ -39,7 +39,7 @@ namespace PixivImageSearchAPI
             }
             set
             {
-                numericUpDown1.Value = (decimal)value[2];
+                numericUpDown1.Value = (decimal)value[0];
             }
         }
 
@@ -49,7 +49,7 @@ namespace PixivImageSearchAPI
             {
                 return new object[]
                 {
-                    50,
+                    (decimal)50,
                 };
             }
         }

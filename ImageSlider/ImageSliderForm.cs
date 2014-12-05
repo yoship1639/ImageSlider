@@ -108,6 +108,21 @@ namespace ImageSlider
                 // サブフォルダ
                 createSubFolder = Properties.Settings.Default.CreateSubFolder;
 
+                // APIの設定を読み込む
+                try
+                {
+                    var settings = Serializer.XmlDeserialize<APISetting[]>(Path.GetDirectoryName(Application.ExecutablePath) + @"\settings.config");
+
+                    foreach (var setting in settings)
+                    {
+                        var api = imageSearchAPIs.Find(_api => _api.APIName == setting.APIName);
+                        if (api != null)
+                        {
+                            api.Params = setting.Params;
+                        }
+                    }
+                }
+                catch { }
             }
 
             TimerCallback timerDelegate = new TimerCallback(Tick);
@@ -352,6 +367,21 @@ namespace ImageSlider
             Properties.Settings.Default.CreateSubFolder = createSubFolder;
             Properties.Settings.Default.SizeMode = (int)slideImage1.SizeMode;
             Properties.Settings.Default.Save();
+
+            // APIの設定を保存
+            var paramsList = new List<APISetting>();
+            foreach (var api in imageSearchAPIs)
+            {
+                paramsList.Add(new APISetting() { APIName = api.APIName, Params = api.Params });
+            }
+            Serializer.XmlSerialize(Path.GetDirectoryName(Application.ExecutablePath) + @"\settings.config", paramsList.ToArray());
+
+        }
+
+        public class APISetting
+        {
+            public string APIName { get; set; }
+            public object[] Params { get; set; }
         }
 
         #endregion
