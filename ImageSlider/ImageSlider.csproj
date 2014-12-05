@@ -184,18 +184,6 @@
     <None Include="Resources\normal.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\start.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\stop.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\stop2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\start2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\play.png" />
   </ItemGroup>
   <ItemGroup>
@@ -215,6 +203,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\searching.png" />
     <None Include="Resources\searcherror.png" />
   </ItemGroup>
   <ItemGroup>

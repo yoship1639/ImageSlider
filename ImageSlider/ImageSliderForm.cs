@@ -193,7 +193,7 @@ namespace ImageSlider
                 neutral = false;
                 showImageNo = 0;
 
-                slideImage1.ForceImage = Properties.Resources.loader;
+                slideImage1.ForceImage = Properties.Resources.searching;
 
                 currentAPI.Search(textBox_search.Text);
 
