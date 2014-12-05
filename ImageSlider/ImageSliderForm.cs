@@ -175,7 +175,7 @@ namespace ImageSlider
 
         private void textBox_search_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter && textBox_search.Text.Length > 0)
             {
                 e.SuppressKeyPress = true;
                 searching = true;
@@ -199,10 +199,20 @@ namespace ImageSlider
             {
                 currentAPI.ImageLoaded -= currentAPI_ImageLoaded;
                 currentAPI.SearchError -= currentAPI_SearchError;
+                currentAPI.SearchFinished -= currentAPI_SearchFinished;
             }
             currentAPI = api;
             currentAPI.ImageLoaded += currentAPI_ImageLoaded;
             currentAPI.SearchError += currentAPI_SearchError;
+            currentAPI.SearchFinished += currentAPI_SearchFinished;
+        }
+
+        void currentAPI_SearchFinished(object sender, EventArgs e)
+        {
+            if (slideImage1.ImageDatas.Length == 0)
+            {
+                currentAPI_SearchError(sender, e);
+            }
         }
 
         void currentAPI_ImageLoaded(object sender, ImageLoadedEventArgs e)
