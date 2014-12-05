@@ -121,11 +121,14 @@
   <data name="dateTimePicker1.Location" type="System.Drawing.Point, System.Drawing">
     <value>185, 90</value>
   </data>
+  <data name="dateTimePicker1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 23</value>
+  </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 95</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 18</value>
+    <value>129, 15</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Search until the date</value>
@@ -134,7 +137,7 @@
     <value>20, 16</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 18</value>
+    <value>96, 15</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Search number</value>
@@ -142,11 +145,14 @@
   <data name="numericUpDown1.Location" type="System.Drawing.Point, System.Drawing">
     <value>123, 14</value>
   </data>
+  <data name="numericUpDown1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 23</value>
+  </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 55</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 18</value>
+    <value>77, 15</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Search type</value>
@@ -163,17 +169,29 @@
   <data name="comboBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>123, 52</value>
   </data>
+  <data name="comboBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 23</value>
+  </data>
   <data name="checkBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 138</value>
   </data>
   <data name="numericUpDown2.Location" type="System.Drawing.Point, System.Drawing">
     <value>146, 133</value>
   </data>
+  <data name="numericUpDown2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 23</value>
+  </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>182, -100</value>
   </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 15</value>
+  </data>
   <data name="numericUpDown3.Location" type="System.Drawing.Point, System.Drawing">
     <value>146, 174</value>
+  </data>
+  <data name="numericUpDown3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 23</value>
   </data>
   <data name="checkBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 179</value>
@@ -182,7 +200,7 @@
     <value>20, 176</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 18</value>
+    <value>49, 15</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Max ID</value>
@@ -191,12 +209,15 @@
     <value>20, 135</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 18</value>
+    <value>56, 15</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Since ID</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, -100</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 15</value>
   </data>
 </root>

@@ -86,6 +86,7 @@ namespace PhotozouImageSearchAPI
 
         public void Search(string query)
         {
+            images.Clear();
             Task.Factory.StartNew(() =>
             {
                 // htmlエンコード
