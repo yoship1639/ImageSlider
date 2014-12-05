@@ -118,68 +118,70 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>304, 290</value>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 18</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>検索件数</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>File type</value>
   </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 18</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="numericUpDown1.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Size</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 18</value>
+    <value>77, 18</value>
   </data>
-  <data name="&gt;&gt;numericUpDown1.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Safety level</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>PixivImageSearchAPI</value>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 18</value>
   </data>
-  <data name="numericUpDown1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 25</value>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Site search</value>
   </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 13</value>
+  <data name="comboBox1.Items" xml:space="preserve">
+    <value>All</value>
   </data>
-  <data name="numericUpDown1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 11</value>
+  <data name="comboBox2.Items" xml:space="preserve">
+    <value>All</value>
   </data>
-  <data name="&gt;&gt;numericUpDown1.Name" xml:space="preserve">
-    <value>numericUpDown1</value>
+  <data name="comboBox2.Items1" xml:space="preserve">
+    <value>Icon</value>
   </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Meiryo, 9pt</value>
+  <data name="comboBox2.Items2" xml:space="preserve">
+    <value>Small</value>
   </data>
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="comboBox2.Items3" xml:space="preserve">
+    <value>Medium</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="comboBox2.Items4" xml:space="preserve">
+    <value>Large</value>
+  </data>
+  <data name="comboBox2.Items5" xml:space="preserve">
+    <value>XLarge</value>
+  </data>
+  <data name="comboBox2.Items6" xml:space="preserve">
+    <value>XXLarge</value>
+  </data>
+  <data name="comboBox2.Items7" xml:space="preserve">
+    <value>Huge</value>
+  </data>
+  <data name="comboBox3.Items" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="comboBox3.Items1" xml:space="preserve">
+    <value>Moderate</value>
+  </data>
+  <data name="comboBox3.Items2" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 18</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Grayscale image</value>
+  </data>
 </root>

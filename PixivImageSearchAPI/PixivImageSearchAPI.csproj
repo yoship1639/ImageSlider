@@ -58,6 +58,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="PixivImageSearchAPI.en.resx">
+      <DependentUpon>PixivImageSearchAPI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PixivImageSearchAPI.resx">
       <DependentUpon>PixivImageSearchAPI.cs</DependentUpon>
     </EmbeddedResource>

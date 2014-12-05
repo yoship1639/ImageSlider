@@ -62,6 +62,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GoogleImageSearchAPI.en.resx">
+      <DependentUpon>GoogleImageSearchAPI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GoogleImageSearchAPI.resx">
       <DependentUpon>GoogleImageSearchAPI.cs</DependentUpon>
     </EmbeddedResource>

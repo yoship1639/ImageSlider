@@ -103,9 +103,6 @@ namespace GoogleImageSearchAPI
             InitializeComponent();
 
             Params = DefaultParams;
-            comboBox1.SelectedValue = comboBox1.Items[0];
-            comboBox2.SelectedValue = comboBox2.Items[0];
-            comboBox3.SelectedValue = comboBox3.Items[1];
         }
 
         public ImageData[] ImageDatas { get { return images.ToArray(); } }

@@ -41,6 +41,10 @@ namespace ImageSlider
         public ImageSliderForm()
         {
             InitializeComponent();
+
+            // 英語版
+            //Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo("en");
+
             TransparencyKey = BackColor;
 
             // GoogleImageSearchAPIを追加
