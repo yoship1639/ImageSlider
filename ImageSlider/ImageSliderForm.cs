@@ -127,7 +127,7 @@ namespace ImageSlider
             var up = 0.2;
             var prevRate = rate;
 
-            if ((Bounds.Contains(MousePosition) || slideImage1.ImageDatas == null) && Form.ActiveForm == this)
+            if ((Bounds.Contains(MousePosition) || slideImage1.ImageDatas == null || sizeFlag) && Form.ActiveForm == this)
             {
                 if (rate < 1)
                 {
@@ -318,7 +318,7 @@ namespace ImageSlider
         {
             if (sizeFlag)
             {
-                Size = new Size(Size.Width + e.Location.X - 10, Size.Height + e.Location.Y - 10);
+                Size = new Size(Size.Width + e.Location.X - pivot.X, Size.Height + e.Location.Y - pivot.Y);
                 slideImage1.Size = Size;
             }
         }
