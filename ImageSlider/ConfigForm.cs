@@ -191,5 +191,14 @@ namespace ImageSlider
                 textbox.Text = e.KeyCode.ToString();
             }
         }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            if (!System.IO.Directory.Exists(textBox_downloadFolder.Text))
+            {
+                MessageBox.Show(this, textBox_downloadFolder.Text + "\n上記の保存場所は存在しません!\n\n[保存]タブの 画像の保存場所 を確認してください", "保存場所の確認");
+                e.Cancel = true;
+            }
+        }
     }
 }

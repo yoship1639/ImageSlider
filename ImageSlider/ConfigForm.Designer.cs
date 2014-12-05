@@ -32,7 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_ok = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.numericUpDown_slideSecond = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
@@ -71,18 +71,18 @@
             // 
             // comboBox1
             // 
-            resources.ApplyResources(this.comboBox1, "comboBox1");
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox1, "comboBox1");
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // button1
+            // button_ok
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.button_ok, "button_ok");
+            this.button_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.button_ok.Name = "button_ok";
+            this.button_ok.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -121,8 +121,8 @@
             // 
             // button_colorSelect
             // 
-            resources.ApplyResources(this.button_colorSelect, "button_colorSelect");
             this.button_colorSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            resources.ApplyResources(this.button_colorSelect, "button_colorSelect");
             this.button_colorSelect.Name = "button_colorSelect";
             this.button_colorSelect.UseVisualStyleBackColor = false;
             this.button_colorSelect.Click += new System.EventHandler(this.button_colorSelect_Click);
@@ -144,7 +144,6 @@
             // 
             // tabPage_all
             // 
-            resources.ApplyResources(this.tabPage_all, "tabPage_all");
             this.tabPage_all.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage_all.Controls.Add(this.comboBox_slideMode);
             this.tabPage_all.Controls.Add(this.comboBox_sizeMode);
@@ -155,11 +154,11 @@
             this.tabPage_all.Controls.Add(this.label3);
             this.tabPage_all.Controls.Add(this.button_colorSelect);
             this.tabPage_all.Controls.Add(this.label4);
+            resources.ApplyResources(this.tabPage_all, "tabPage_all");
             this.tabPage_all.Name = "tabPage_all";
             // 
             // comboBox_slideMode
             // 
-            resources.ApplyResources(this.comboBox_slideMode, "comboBox_slideMode");
             this.comboBox_slideMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_slideMode.FormattingEnabled = true;
             this.comboBox_slideMode.Items.AddRange(new object[] {
@@ -167,11 +166,11 @@
             resources.GetString("comboBox_slideMode.Items1"),
             resources.GetString("comboBox_slideMode.Items2"),
             resources.GetString("comboBox_slideMode.Items3")});
+            resources.ApplyResources(this.comboBox_slideMode, "comboBox_slideMode");
             this.comboBox_slideMode.Name = "comboBox_slideMode";
             // 
             // comboBox_sizeMode
             // 
-            resources.ApplyResources(this.comboBox_sizeMode, "comboBox_sizeMode");
             this.comboBox_sizeMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_sizeMode.FormattingEnabled = true;
             this.comboBox_sizeMode.Items.AddRange(new object[] {
@@ -180,6 +179,7 @@
             resources.GetString("comboBox_sizeMode.Items2"),
             resources.GetString("comboBox_sizeMode.Items3"),
             resources.GetString("comboBox_sizeMode.Items4")});
+            resources.ApplyResources(this.comboBox_sizeMode, "comboBox_sizeMode");
             this.comboBox_sizeMode.Name = "comboBox_sizeMode";
             // 
             // label7
@@ -189,13 +189,13 @@
             // 
             // tabPage_save
             // 
-            resources.ApplyResources(this.tabPage_save, "tabPage_save");
             this.tabPage_save.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage_save.Controls.Add(this.checkBox_focusDownloadImage);
             this.tabPage_save.Controls.Add(this.checkBox_subFolder);
             this.tabPage_save.Controls.Add(this.button_downloadFolderChange);
             this.tabPage_save.Controls.Add(this.textBox_downloadFolder);
             this.tabPage_save.Controls.Add(this.label6);
+            resources.ApplyResources(this.tabPage_save, "tabPage_save");
             this.tabPage_save.Name = "tabPage_save";
             // 
             // checkBox_focusDownloadImage
@@ -221,7 +221,6 @@
             // 
             resources.ApplyResources(this.textBox_downloadFolder, "textBox_downloadFolder");
             this.textBox_downloadFolder.Name = "textBox_downloadFolder";
-            this.textBox_downloadFolder.ReadOnly = true;
             // 
             // label6
             // 
@@ -230,11 +229,11 @@
             // 
             // tabPage_search
             // 
-            resources.ApplyResources(this.tabPage_search, "tabPage_search");
             this.tabPage_search.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage_search.Controls.Add(this.comboBox1);
             this.tabPage_search.Controls.Add(this.panel1);
             this.tabPage_search.Controls.Add(this.label1);
+            resources.ApplyResources(this.tabPage_search, "tabPage_search");
             this.tabPage_search.Name = "tabPage_search";
             // 
             // ConfigForm
@@ -242,7 +241,7 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_ok);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -267,7 +266,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_ok;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numericUpDown_slideSecond;
         private System.Windows.Forms.Label label3;
