@@ -28,7 +28,6 @@ namespace ImageSlider
         bool start = true;
         int showImageNo = 0;
         int tickTime = 10;
-        //bool smoothSlide = false;
         string downloadFolder;
         bool createSubFolder;
 
@@ -38,6 +37,9 @@ namespace ImageSlider
         new delegate void SetBounds(int x, int y, int width, int height);
         delegate void voidDelegate();
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public ImageSliderForm()
         {
             InitializeComponent();
@@ -115,6 +117,10 @@ namespace ImageSlider
         int slideCount = 0;
         int slideTime = 5;
 
+        /// <summary>
+        /// 一定間隔で呼ばれる
+        /// </summary>
+        /// <param name="o"></param>
         public void Tick(object o)
         {
             slideCount++;
@@ -173,6 +179,11 @@ namespace ImageSlider
             }
         }
 
+        /// <summary>
+        /// 検索開始
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBox_search_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter && textBox_search.Text.Length > 0)
@@ -193,6 +204,10 @@ namespace ImageSlider
 
         #region カレントAPI関連
 
+        /// <summary>
+        /// カレントAPIを指定する
+        /// </summary>
+        /// <param name="api"></param>
         private void setCurrentAPI(IImageSearchAPI api)
         {
             if (currentAPI != null)
@@ -207,6 +222,11 @@ namespace ImageSlider
             currentAPI.SearchFinished += currentAPI_SearchFinished;
         }
 
+        /// <summary>
+        /// 検索終了
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void currentAPI_SearchFinished(object sender, EventArgs e)
         {
             if (slideImage1.ImageDatas.Length == 0)
@@ -215,6 +235,11 @@ namespace ImageSlider
             }
         }
 
+        /// <summary>
+        /// 画像が読み込まれた
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void currentAPI_ImageLoaded(object sender, ImageLoadedEventArgs e)
         {
             searching = false;
@@ -228,6 +253,11 @@ namespace ImageSlider
             Invoke(new voidDelegate(showImageCountLabel));
         }
 
+        /// <summary>
+        /// 検索に失敗した
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void currentAPI_SearchError(object sender, EventArgs e)
         {
             searching = false;
@@ -274,6 +304,7 @@ namespace ImageSlider
         #region ウィンドウサイズ変更
 
         bool sizeFlag = false;
+
         private void pictureBox_sizeChange_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
@@ -382,6 +413,11 @@ namespace ImageSlider
             slideImage1.Size = Size;
         }
 
+        /// <summary>
+        /// 再生、ストップを押したとき
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_startStop_Click(object sender, EventArgs e)
         {
             start = !start;
@@ -390,12 +426,19 @@ namespace ImageSlider
             else button_startStop.BackgroundImage = Properties.Resources.play;
         }
 
+        /// <summary>
+        /// 表示している画像の番号と最大数を表示
+        /// </summary>
         private void showImageCountLabel()
         {
             if (slideImage1.ImageDatas == null) return;
             label_imageCount.Text = showImageNo+1 + "/" + slideImage1.ImageDatas.Length;
         }
 
+        /// <summary>
+        /// ボタンの位置を決める
+        /// </summary>
+        /// <param name="show"></param>
         private void setButtonsBounds(bool show)
         {
             if (show)
@@ -528,6 +571,11 @@ namespace ImageSlider
             return true;
         }
 
+        /// <summary>
+        /// ショートカットキー操作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void slideImage1_KeyDown(object sender, KeyEventArgs e)
         {
             // Ctrl + Sで保存
@@ -559,6 +607,9 @@ namespace ImageSlider
             }
         }
 
+        /// <summary>
+        /// 次の画像に進む
+        /// </summary>
         private void nextImage()
         {
             if (slideImage1.ImageDatas == null) return;
@@ -570,6 +621,9 @@ namespace ImageSlider
             if (slideImage1.SlideMode == SlideImage.ImageSlideMode.Normal) slideImage1.Rate = showImageNo;
         }
 
+        /// <summary>
+        /// 前の画像に戻る
+        /// </summary>
         private void prevImage()
         {
             if (slideImage1.ImageDatas == null) return;
@@ -581,6 +635,11 @@ namespace ImageSlider
             if (slideImage1.SlideMode == SlideImage.ImageSlideMode.Normal) slideImage1.Rate = showImageNo;
         }
 
+        /// <summary>
+        /// 進むボタンを押したとき
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_right_Click(object sender, EventArgs e)
         {
             slideCount = 0;
@@ -588,6 +647,11 @@ namespace ImageSlider
             showImageCountLabel();
         }
 
+        /// <summary>
+        /// 戻るボタンを押したとき
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_left_Click(object sender, EventArgs e)
         {
             slideCount = 0;
@@ -595,11 +659,19 @@ namespace ImageSlider
             showImageCountLabel();
         }
 
+        /// <summary>
+        /// サイトに飛ぶボタンを押したとき
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_moveSite_Click(object sender, EventArgs e)
         {
             moveToSite();
         }
 
+        /// <summary>
+        /// サイトに飛ぶ
+        /// </summary>
         private void moveToSite()
         {
             var datas = slideImage1.ImageDatas;
