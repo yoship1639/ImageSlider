@@ -11,4 +11,4 @@ ImageSlider
 ## Download
 Windows 32bit [ImageSlider_v1.0_win32.zip](https://github.com/yoship1639/ImageSlider/releases/download/v1.0/ImageSlider_v1.0_win32.zip)
 
-Windows 64bit [ImageSlider_v1.0_win64.zip](https://github.com/yoship1639/ImageSlider/releases/download/v1.0/ImageSlider_v1.0_win32.zip)
+Windows 64bit [ImageSlider_v1.0_win64.zip](https://github.com/yoship1639/ImageSlider/releases/download/v1.0/ImageSlider_v1.0_win64.zip)
