@@ -23,6 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotozouImageSearchAPI", "P
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0F174AB3-F99D-409A-A963-57CEAA1A6FA7}"
 	ProjectSection(SolutionItems) = preProject
+		..\..\..\Videos\LoiLo Game Recorder\ImageSlider_20141207_172322.gif = ..\..\..\Videos\LoiLo Game Recorder\ImageSlider_20141207_172322.gif
 		license.txt = license.txt
 	EndProjectSection
 EndProject
