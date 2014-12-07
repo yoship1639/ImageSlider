@@ -343,6 +343,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Content Include="Resources\ImageSlider_20141207_172322.gif" />
     <None Include="Resources\searching.png" />
     <None Include="Resources\searcherror.png" />
   </ItemGroup>
