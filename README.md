@@ -9,6 +9,4 @@ ImageSlider
 ![](https://raw.githubusercontent.com/yoship1639/ImageSlider/master/ImageSlider/Resources/ImageSlider_20141207_172322.gif)
 
 ## Download
-Windows 32bit [ImageSlider_v1.0_win32.zip](https://github.com/yoship1639/ImageSlider/releases/download/v1.0/ImageSlider_v1.0_win32.zip)
-
-Windows 64bit [ImageSlider_v1.0_win64.zip](https://github.com/yoship1639/ImageSlider/releases/download/v1.0/ImageSlider_v1.0_win64.zip)
+[ダウンロードページ](http://puma.cis.ibaraki.ac.jp/products/imageslider/index.html)からダウンロードできます。
