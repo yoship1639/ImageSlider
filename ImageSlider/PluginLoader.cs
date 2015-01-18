@@ -25,7 +25,7 @@ namespace ImageSlider
             {
                 // ファイルパスからアセンブリを読み込む
                 Assembly asm = Assembly.LoadFrom(dll);
-                // アセンブリで定義されている型を取得（例 Namiheiクラス）
+                // アセンブリで定義されている型を取得
                 foreach (Type type in asm.GetTypes())
                 {
                     // 非クラス型、非パブリック型、抽象クラスはスキップ
@@ -34,7 +34,7 @@ namespace ImageSlider
                     Type t = type.GetInterfaces().FirstOrDefault((_t) => _t == typeof(T));
                     // default(IHogePlugin) と等しい場合は未実装なのでスキップ
                     if (t == null) continue;
-                    // 取得した型のインスタンスを作成（例 Namiheiクラス）
+                    // 取得した型のインスタンスを作成
                     object obj = Activator.CreateInstance(type);
                     plugins.Add((T)obj);
                 }

@@ -98,6 +98,9 @@ namespace ImageSlider
                 // サイズモード
                 slideImage1.SizeMode = (SlideImage.ImageSizeMode)Properties.Settings.Default.SizeMode;
 
+                // ToolTipを表示するか
+                toolTip1.Active = Properties.Settings.Default.ShowToolTip;
+
                 // 保存場所
                 downloadFolder = Properties.Settings.Default.DownloadFolder;
                 if (!Directory.Exists(downloadFolder))
@@ -411,6 +414,7 @@ namespace ImageSlider
                 CreateSubFolder = createSubFolder,
                 SizeMode = slideImage1.SizeMode,
                 FocusDownloadImage = Properties.Settings.Default.FocusDownloadImage,
+                ShowToolTip = Properties.Settings.Default.ShowToolTip,
             };
             config.ShowDialog(this);
             slideTime = config.SlideTime;
@@ -421,7 +425,7 @@ namespace ImageSlider
             createSubFolder = config.CreateSubFolder;
             slideImage1.SizeMode = config.SizeMode;
             Properties.Settings.Default.FocusDownloadImage = config.FocusDownloadImage;
-            
+            toolTip1.Active = (Properties.Settings.Default.ShowToolTip = config.ShowToolTip);
             if (config.APIName != currentAPI.APIName)
             {
                 setCurrentAPI(imageSearchAPIs.Find((api) => api.APIName == config.APIName));

@@ -136,23 +136,23 @@
   <data name="label3.Text" xml:space="preserve">
     <value>Sec</value>
   </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 46</value>
-  </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 15</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Menu Color</value>
   </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 78</value>
-  </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 15</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Slide Mode</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 15</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Show ToolTip</value>
   </data>
   <data name="comboBox_slideMode.Items" xml:space="preserve">
     <value>Normal</value>
@@ -165,9 +165,6 @@
   </data>
   <data name="comboBox_slideMode.Items3" xml:space="preserve">
     <value>Alpha</value>
-  </data>
-  <data name="comboBox_slideMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>188, 75</value>
   </data>
   <data name="comboBox_sizeMode.Items" xml:space="preserve">
     <value>Normal</value>
@@ -183,12 +180,6 @@
   </data>
   <data name="comboBox_sizeMode.Items4" xml:space="preserve">
     <value>Fit</value>
-  </data>
-  <data name="comboBox_sizeMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>188, 107</value>
-  </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 110</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 15</value>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImageSliderForm));
             this.panel_menu = new System.Windows.Forms.Panel();
             this.label_imageCount = new System.Windows.Forms.Label();
@@ -41,6 +42,7 @@
             this.button_right = new System.Windows.Forms.Button();
             this.button_left = new System.Windows.Forms.Button();
             this.button_moveSite = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.sizeChanger1 = new ImageSlider.SizeChanger();
             this.slideImage1 = new ImageSlider.SlideImage();
             this.panel_menu.SuspendLayout();
@@ -90,6 +92,7 @@
             this.button_windowStateChange.Name = "button_windowStateChange";
             this.button_windowStateChange.Size = new System.Drawing.Size(34, 23);
             this.button_windowStateChange.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.button_windowStateChange, "画面をフルスクリーンにしたり、元に戻します");
             this.button_windowStateChange.UseVisualStyleBackColor = false;
             this.button_windowStateChange.Click += new System.EventHandler(this.button_windowStateChange_Click);
             // 
@@ -106,6 +109,7 @@
             this.button_config.Name = "button_config";
             this.button_config.Size = new System.Drawing.Size(34, 23);
             this.button_config.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.button_config, "設定ウィンドウを開きます");
             this.button_config.UseVisualStyleBackColor = false;
             this.button_config.Click += new System.EventHandler(this.button_config_Click);
             // 
@@ -122,6 +126,7 @@
             this.button_close.Name = "button_close";
             this.button_close.Size = new System.Drawing.Size(34, 23);
             this.button_close.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.button_close, "終了します");
             this.button_close.UseVisualStyleBackColor = false;
             this.button_close.Click += new System.EventHandler(this.button_close_Click);
             // 
@@ -148,6 +153,7 @@
             this.textBox_search.Name = "textBox_search";
             this.textBox_search.Size = new System.Drawing.Size(155, 25);
             this.textBox_search.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.textBox_search, "検索ワードを入力し、Enterで検索を開始します");
             this.textBox_search.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_search_KeyDown);
             // 
             // button_startStop
@@ -161,6 +167,7 @@
             this.button_startStop.Name = "button_startStop";
             this.button_startStop.Size = new System.Drawing.Size(42, 35);
             this.button_startStop.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.button_startStop, "スライドショーを開始、停止します");
             this.button_startStop.UseVisualStyleBackColor = false;
             this.button_startStop.Click += new System.EventHandler(this.button_startStop_Click);
             this.button_startStop.KeyDown += new System.Windows.Forms.KeyEventHandler(this.slideImage1_KeyDown);
@@ -176,6 +183,7 @@
             this.button_download.Name = "button_download";
             this.button_download.Size = new System.Drawing.Size(42, 35);
             this.button_download.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.button_download, "表示されている画像を指定のフォルダに保存します");
             this.button_download.UseVisualStyleBackColor = false;
             this.button_download.Click += new System.EventHandler(this.button_download_Click);
             this.button_download.KeyDown += new System.Windows.Forms.KeyEventHandler(this.slideImage1_KeyDown);
@@ -193,6 +201,7 @@
             this.button_right.Name = "button_right";
             this.button_right.Size = new System.Drawing.Size(33, 43);
             this.button_right.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.button_right, "次の画像を表示します");
             this.button_right.UseVisualStyleBackColor = false;
             this.button_right.Click += new System.EventHandler(this.button_right_Click);
             this.button_right.KeyDown += new System.Windows.Forms.KeyEventHandler(this.slideImage1_KeyDown);
@@ -208,6 +217,7 @@
             this.button_left.Name = "button_left";
             this.button_left.Size = new System.Drawing.Size(33, 43);
             this.button_left.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.button_left, "前の画像を表示します");
             this.button_left.UseVisualStyleBackColor = false;
             this.button_left.Click += new System.EventHandler(this.button_left_Click);
             this.button_left.KeyDown += new System.Windows.Forms.KeyEventHandler(this.slideImage1_KeyDown);
@@ -223,9 +233,16 @@
             this.button_moveSite.Name = "button_moveSite";
             this.button_moveSite.Size = new System.Drawing.Size(42, 35);
             this.button_moveSite.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.button_moveSite, "表示されている画像が配置されているサイトをブラウザで開きます");
             this.button_moveSite.UseVisualStyleBackColor = false;
             this.button_moveSite.Click += new System.EventHandler(this.button_moveSite_Click);
             this.button_moveSite.KeyDown += new System.Windows.Forms.KeyEventHandler(this.slideImage1_KeyDown);
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.AutoPopDelay = 5000;
+            this.toolTip1.InitialDelay = 500;
+            this.toolTip1.ReshowDelay = 100;
             // 
             // sizeChanger1
             // 
@@ -237,6 +254,7 @@
             this.sizeChanger1.Name = "sizeChanger1";
             this.sizeChanger1.Size = new System.Drawing.Size(24, 24);
             this.sizeChanger1.TabIndex = 9;
+            this.toolTip1.SetToolTip(this.sizeChanger1, "画面の大きさを調整します");
             this.sizeChanger1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_sizeChange_MouseDown);
             this.sizeChanger1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_sizeChange_MouseMove);
             this.sizeChanger1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox_sizeChange_MouseUp);
@@ -309,6 +327,7 @@
         private System.Windows.Forms.Button button_left;
         private System.Windows.Forms.Button button_moveSite;
         private SizeChanger sizeChanger1;
+        private System.Windows.Forms.ToolTip toolTip1;
 
     }
 }

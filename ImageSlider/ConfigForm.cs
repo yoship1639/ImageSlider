@@ -31,6 +31,12 @@ namespace ImageSlider
             set { button_colorSelect.BackColor = value; }
         }
 
+        public bool ShowToolTip
+        {
+            get { return checkBox_showToolTip.Checked; }
+            set { checkBox_showToolTip.Checked = value; }
+        }
+
         public SlideImage.ImageSlideMode SlideMode
         {
             get { return (SlideImage.ImageSlideMode)comboBox_slideMode.SelectedIndex; }
@@ -200,5 +206,11 @@ namespace ImageSlider
                 e.Cancel = true;
             }
         }
+
+        private void checkBox_showToolTip_CheckedChanged(object sender, EventArgs e)
+        {
+            toolTip_config.Active = checkBox_showToolTip.Checked;
+        }
+
     }
 }

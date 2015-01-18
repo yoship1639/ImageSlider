@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfigForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,6 +42,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_all = new System.Windows.Forms.TabPage();
+            this.checkBox_showToolTip = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.comboBox_slideMode = new System.Windows.Forms.ComboBox();
             this.comboBox_sizeMode = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -51,6 +54,7 @@
             this.textBox_downloadFolder = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage_search = new System.Windows.Forms.TabPage();
+            this.toolTip_config = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_slideSecond)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage_all.SuspendLayout();
@@ -68,6 +72,7 @@
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
+            this.toolTip_config.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
             // 
             // comboBox1
             // 
@@ -75,6 +80,7 @@
             this.comboBox1.FormattingEnabled = true;
             resources.ApplyResources(this.comboBox1, "comboBox1");
             this.comboBox1.Name = "comboBox1";
+            this.toolTip_config.SetToolTip(this.comboBox1, resources.GetString("comboBox1.ToolTip"));
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // button_ok
@@ -82,12 +88,14 @@
             resources.ApplyResources(this.button_ok, "button_ok");
             this.button_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button_ok.Name = "button_ok";
+            this.toolTip_config.SetToolTip(this.button_ok, resources.GetString("button_ok.ToolTip"));
             this.button_ok.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
+            this.toolTip_config.SetToolTip(this.label2, resources.GetString("label2.ToolTip"));
             // 
             // numericUpDown_slideSecond
             // 
@@ -103,6 +111,7 @@
             0,
             0});
             this.numericUpDown_slideSecond.Name = "numericUpDown_slideSecond";
+            this.toolTip_config.SetToolTip(this.numericUpDown_slideSecond, resources.GetString("numericUpDown_slideSecond.ToolTip"));
             this.numericUpDown_slideSecond.Value = new decimal(new int[] {
             5,
             0,
@@ -118,12 +127,14 @@
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
+            this.toolTip_config.SetToolTip(this.label4, resources.GetString("label4.ToolTip"));
             // 
             // button_colorSelect
             // 
             this.button_colorSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             resources.ApplyResources(this.button_colorSelect, "button_colorSelect");
             this.button_colorSelect.Name = "button_colorSelect";
+            this.toolTip_config.SetToolTip(this.button_colorSelect, resources.GetString("button_colorSelect.ToolTip"));
             this.button_colorSelect.UseVisualStyleBackColor = false;
             this.button_colorSelect.Click += new System.EventHandler(this.button_colorSelect_Click);
             // 
@@ -131,6 +142,7 @@
             // 
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
+            this.toolTip_config.SetToolTip(this.label5, resources.GetString("label5.ToolTip"));
             // 
             // tabControl1
             // 
@@ -145,6 +157,8 @@
             // tabPage_all
             // 
             this.tabPage_all.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage_all.Controls.Add(this.checkBox_showToolTip);
+            this.tabPage_all.Controls.Add(this.label8);
             this.tabPage_all.Controls.Add(this.comboBox_slideMode);
             this.tabPage_all.Controls.Add(this.comboBox_sizeMode);
             this.tabPage_all.Controls.Add(this.label7);
@@ -157,6 +171,20 @@
             resources.ApplyResources(this.tabPage_all, "tabPage_all");
             this.tabPage_all.Name = "tabPage_all";
             // 
+            // checkBox_showToolTip
+            // 
+            resources.ApplyResources(this.checkBox_showToolTip, "checkBox_showToolTip");
+            this.checkBox_showToolTip.Name = "checkBox_showToolTip";
+            this.toolTip_config.SetToolTip(this.checkBox_showToolTip, resources.GetString("checkBox_showToolTip.ToolTip"));
+            this.checkBox_showToolTip.UseVisualStyleBackColor = true;
+            this.checkBox_showToolTip.CheckedChanged += new System.EventHandler(this.checkBox_showToolTip_CheckedChanged);
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            this.toolTip_config.SetToolTip(this.label8, resources.GetString("label8.ToolTip"));
+            // 
             // comboBox_slideMode
             // 
             this.comboBox_slideMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -168,6 +196,7 @@
             resources.GetString("comboBox_slideMode.Items3")});
             resources.ApplyResources(this.comboBox_slideMode, "comboBox_slideMode");
             this.comboBox_slideMode.Name = "comboBox_slideMode";
+            this.toolTip_config.SetToolTip(this.comboBox_slideMode, resources.GetString("comboBox_slideMode.ToolTip"));
             // 
             // comboBox_sizeMode
             // 
@@ -181,11 +210,13 @@
             resources.GetString("comboBox_sizeMode.Items4")});
             resources.ApplyResources(this.comboBox_sizeMode, "comboBox_sizeMode");
             this.comboBox_sizeMode.Name = "comboBox_sizeMode";
+            this.toolTip_config.SetToolTip(this.comboBox_sizeMode, resources.GetString("comboBox_sizeMode.ToolTip"));
             // 
             // label7
             // 
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
+            this.toolTip_config.SetToolTip(this.label7, resources.GetString("label7.ToolTip"));
             // 
             // tabPage_save
             // 
@@ -202,18 +233,21 @@
             // 
             resources.ApplyResources(this.checkBox_focusDownloadImage, "checkBox_focusDownloadImage");
             this.checkBox_focusDownloadImage.Name = "checkBox_focusDownloadImage";
+            this.toolTip_config.SetToolTip(this.checkBox_focusDownloadImage, resources.GetString("checkBox_focusDownloadImage.ToolTip"));
             this.checkBox_focusDownloadImage.UseVisualStyleBackColor = true;
             // 
             // checkBox_subFolder
             // 
             resources.ApplyResources(this.checkBox_subFolder, "checkBox_subFolder");
             this.checkBox_subFolder.Name = "checkBox_subFolder";
+            this.toolTip_config.SetToolTip(this.checkBox_subFolder, resources.GetString("checkBox_subFolder.ToolTip"));
             this.checkBox_subFolder.UseVisualStyleBackColor = true;
             // 
             // button_downloadFolderChange
             // 
             resources.ApplyResources(this.button_downloadFolderChange, "button_downloadFolderChange");
             this.button_downloadFolderChange.Name = "button_downloadFolderChange";
+            this.toolTip_config.SetToolTip(this.button_downloadFolderChange, resources.GetString("button_downloadFolderChange.ToolTip"));
             this.button_downloadFolderChange.UseVisualStyleBackColor = true;
             this.button_downloadFolderChange.Click += new System.EventHandler(this.button_downloadFolderChange_Click);
             // 
@@ -221,11 +255,13 @@
             // 
             resources.ApplyResources(this.textBox_downloadFolder, "textBox_downloadFolder");
             this.textBox_downloadFolder.Name = "textBox_downloadFolder";
+            this.toolTip_config.SetToolTip(this.textBox_downloadFolder, resources.GetString("textBox_downloadFolder.ToolTip"));
             // 
             // label6
             // 
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
+            this.toolTip_config.SetToolTip(this.label6, resources.GetString("label6.ToolTip"));
             // 
             // tabPage_search
             // 
@@ -235,6 +271,12 @@
             this.tabPage_search.Controls.Add(this.label1);
             resources.ApplyResources(this.tabPage_search, "tabPage_search");
             this.tabPage_search.Name = "tabPage_search";
+            // 
+            // toolTip_config
+            // 
+            this.toolTip_config.AutoPopDelay = 10000;
+            this.toolTip_config.InitialDelay = 500;
+            this.toolTip_config.ReshowDelay = 100;
             // 
             // ConfigForm
             // 
@@ -285,5 +327,8 @@
         private System.Windows.Forms.Button button_downloadFolderChange;
         private System.Windows.Forms.TextBox textBox_downloadFolder;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox checkBox_showToolTip;
+        private System.Windows.Forms.ToolTip toolTip_config;
     }
 }

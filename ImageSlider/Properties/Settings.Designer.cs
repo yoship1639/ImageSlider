@@ -118,5 +118,17 @@ namespace ImageSlider.Properties {
                 this["FocusDownloadImage"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowToolTip {
+            get {
+                return ((bool)(this["ShowToolTip"]));
+            }
+            set {
+                this["ShowToolTip"] = value;
+            }
+        }
     }
 }
