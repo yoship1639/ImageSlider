@@ -26,7 +26,7 @@ namespace PixivImageSearchAPI
             InitializeComponent();
         }
 
-        public string APIName { get { return "PixivAPI"; } }
+        public string APIName { get { return "Pixiv"; } }
 
         public object[] Params
         {

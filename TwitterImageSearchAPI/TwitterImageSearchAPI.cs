@@ -29,7 +29,7 @@ namespace TwitterImageSearchAPI
             Params = DefaultParams;
         }
 
-        public string APIName { get { return "TwitterAPI"; } }
+        public string APIName { get { return "Twitter"; } }
 
         /// <summary>
         /// 0: int 検索方法 0:mixed 1:recent 2:popular

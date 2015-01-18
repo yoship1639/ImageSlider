@@ -30,7 +30,7 @@ namespace PhotozouImageSearchAPI
             Params = DefaultParams;
         }
 
-        public string APIName { get { return "PhotozouAPI"; } }
+        public string APIName { get { return "Photozou"; } }
 
         /// <summary>
         /// 0: decimal limit

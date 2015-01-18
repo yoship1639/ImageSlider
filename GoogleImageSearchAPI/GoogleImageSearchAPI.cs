@@ -21,7 +21,7 @@ namespace GoogleImageSearchAPI
         UserControl,
         IImageSearchAPI
     {
-        public string APIName { get { return "GoogleImageSearchAPI"; } }
+        public string APIName { get { return "GoogleImageSearch"; } }
 
         /// <summary>
         /// Params内訳
