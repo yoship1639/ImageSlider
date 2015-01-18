@@ -12,7 +12,7 @@
       <Value Profile="(Default)">LightSkyBlue</Value>
     </Setting>
     <Setting Name="SlideMode" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="DownloadFolder" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
