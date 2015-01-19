@@ -81,6 +81,7 @@
             this.comboBox_history.Name = "comboBox_history";
             this.comboBox_history.Size = new System.Drawing.Size(16, 26);
             this.comboBox_history.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.comboBox_history, "検索ワードの履歴一覧を表示します");
             this.comboBox_history.SelectedIndexChanged += new System.EventHandler(this.comboBox_history_SelectedIndexChanged);
             // 
             // label_imageCount
@@ -88,9 +89,8 @@
             this.label_imageCount.AutoSize = true;
             this.label_imageCount.Location = new System.Drawing.Point(200, 7);
             this.label_imageCount.Name = "label_imageCount";
-            this.label_imageCount.Size = new System.Drawing.Size(41, 18);
+            this.label_imageCount.Size = new System.Drawing.Size(0, 18);
             this.label_imageCount.TabIndex = 5;
-            this.label_imageCount.Text = "ready";
             this.label_imageCount.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouseDown);
             this.label_imageCount.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouseMove);
             this.label_imageCount.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouseUp);
