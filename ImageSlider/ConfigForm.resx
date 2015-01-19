@@ -234,9 +234,6 @@
   <data name="&gt;&gt;button_ok.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="toolTip_config.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -266,11 +263,8 @@
     <value>tabPage_all</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
-  <metadata name="toolTip_config.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="numericUpDown_slideSecond.Location" type="System.Drawing.Point, System.Drawing">
     <value>188, 12</value>
   </data>
@@ -294,7 +288,7 @@
     <value>tabPage_all</value>
   </data>
   <data name="&gt;&gt;numericUpDown_slideSecond.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -321,7 +315,7 @@
     <value>tabPage_all</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -351,7 +345,7 @@
     <value>tabPage_all</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="button_colorSelect.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -378,7 +372,7 @@
     <value>tabPage_all</value>
   </data>
   <data name="&gt;&gt;button_colorSelect.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -412,236 +406,98 @@
     <value>tabPage_all</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="tabControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="&gt;&gt;checkBox_showToolTip.Name" xml:space="preserve">
-    <value>checkBox_showToolTip</value>
+  <data name="button_deleteHistory.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 206</value>
   </data>
-  <data name="&gt;&gt;checkBox_showToolTip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="button_deleteHistory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 23</value>
   </data>
-  <data name="&gt;&gt;checkBox_showToolTip.Parent" xml:space="preserve">
-    <value>tabPage_all</value>
+  <data name="button_deleteHistory.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
   </data>
-  <data name="&gt;&gt;checkBox_showToolTip.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="button_deleteHistory.Text" xml:space="preserve">
+    <value>検索履歴をすべて削除する</value>
   </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
+  <data name="&gt;&gt;button_deleteHistory.Name" xml:space="preserve">
+    <value>button_deleteHistory</value>
   </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>tabPage_all</value>
-  </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;comboBox_slideMode.Name" xml:space="preserve">
-    <value>comboBox_slideMode</value>
-  </data>
-  <data name="&gt;&gt;comboBox_slideMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBox_slideMode.Parent" xml:space="preserve">
-    <value>tabPage_all</value>
-  </data>
-  <data name="&gt;&gt;comboBox_slideMode.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;comboBox_sizeMode.Name" xml:space="preserve">
-    <value>comboBox_sizeMode</value>
-  </data>
-  <data name="&gt;&gt;comboBox_sizeMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBox_sizeMode.Parent" xml:space="preserve">
-    <value>tabPage_all</value>
-  </data>
-  <data name="&gt;&gt;comboBox_sizeMode.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>tabPage_all</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tabPage_all.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="tabPage_all.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPage_all.Size" type="System.Drawing.Size, System.Drawing">
-    <value>438, 369</value>
-  </data>
-  <data name="tabPage_all.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabPage_all.Text" xml:space="preserve">
-    <value>全体</value>
-  </data>
-  <data name="&gt;&gt;tabPage_all.Name" xml:space="preserve">
-    <value>tabPage_all</value>
-  </data>
-  <data name="&gt;&gt;tabPage_all.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPage_all.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabPage_all.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;checkBox_focusDownloadImage.Name" xml:space="preserve">
-    <value>checkBox_focusDownloadImage</value>
-  </data>
-  <data name="&gt;&gt;checkBox_focusDownloadImage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox_focusDownloadImage.Parent" xml:space="preserve">
-    <value>tabPage_save</value>
-  </data>
-  <data name="&gt;&gt;checkBox_focusDownloadImage.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;checkBox_subFolder.Name" xml:space="preserve">
-    <value>checkBox_subFolder</value>
-  </data>
-  <data name="&gt;&gt;checkBox_subFolder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox_subFolder.Parent" xml:space="preserve">
-    <value>tabPage_save</value>
-  </data>
-  <data name="&gt;&gt;checkBox_subFolder.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;button_downloadFolderChange.Name" xml:space="preserve">
-    <value>button_downloadFolderChange</value>
-  </data>
-  <data name="&gt;&gt;button_downloadFolderChange.Type" xml:space="preserve">
+  <data name="&gt;&gt;button_deleteHistory.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button_downloadFolderChange.Parent" xml:space="preserve">
-    <value>tabPage_save</value>
+  <data name="&gt;&gt;button_deleteHistory.Parent" xml:space="preserve">
+    <value>tabPage_all</value>
   </data>
-  <data name="&gt;&gt;button_downloadFolderChange.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;textBox_downloadFolder.Name" xml:space="preserve">
-    <value>textBox_downloadFolder</value>
-  </data>
-  <data name="&gt;&gt;textBox_downloadFolder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBox_downloadFolder.Parent" xml:space="preserve">
-    <value>tabPage_save</value>
-  </data>
-  <data name="&gt;&gt;textBox_downloadFolder.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>tabPage_save</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tabPage_save.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="tabPage_save.Size" type="System.Drawing.Size, System.Drawing">
-    <value>438, 369</value>
-  </data>
-  <data name="tabPage_save.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tabPage_save.Text" xml:space="preserve">
-    <value>保存</value>
-  </data>
-  <data name="&gt;&gt;tabPage_save.Name" xml:space="preserve">
-    <value>tabPage_save</value>
-  </data>
-  <data name="&gt;&gt;tabPage_save.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPage_save.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabPage_save.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabPage_search.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="tabPage_search.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPage_search.Size" type="System.Drawing.Size, System.Drawing">
-    <value>438, 369</value>
-  </data>
-  <data name="tabPage_search.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tabPage_search.Text" xml:space="preserve">
-    <value>検索</value>
-  </data>
-  <data name="&gt;&gt;tabPage_search.Name" xml:space="preserve">
-    <value>tabPage_search</value>
-  </data>
-  <data name="&gt;&gt;tabPage_search.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPage_search.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabPage_search.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 9</value>
-  </data>
-  <data name="tabControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>446, 397</value>
-  </data>
-  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;button_deleteHistory.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="toolTip_config.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="checkBox_AutoComplete.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_AutoComplete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBox_AutoComplete.Location" type="System.Drawing.Point, System.Drawing">
+    <value>188, 175</value>
+  </data>
+  <data name="checkBox_AutoComplete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 14</value>
+  </data>
+  <data name="checkBox_AutoComplete.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="checkBox_AutoComplete.ToolTip" xml:space="preserve">
+    <value>検索ワードを入力するときに候補を表示させるか決めます</value>
+  </data>
+  <data name="&gt;&gt;checkBox_AutoComplete.Name" xml:space="preserve">
+    <value>checkBox_AutoComplete</value>
+  </data>
+  <data name="&gt;&gt;checkBox_AutoComplete.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_AutoComplete.Parent" xml:space="preserve">
+    <value>tabPage_all</value>
+  </data>
+  <data name="&gt;&gt;checkBox_AutoComplete.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 174</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 15</value>
+  </data>
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>オートコンプリートを利用する</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>検索ワードを入力するときに候補を表示させるか決めます</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>tabPage_all</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="checkBox_showToolTip.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -667,7 +523,7 @@
     <value>tabPage_all</value>
   </data>
   <data name="&gt;&gt;checkBox_showToolTip.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -697,7 +553,7 @@
     <value>tabPage_all</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="comboBox_slideMode.Items" xml:space="preserve">
     <value>瞬時</value>
@@ -737,11 +593,8 @@
     <value>tabPage_all</value>
   </data>
   <data name="&gt;&gt;comboBox_slideMode.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
-  <metadata name="toolTip_config.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="comboBox_sizeMode.Items" xml:space="preserve">
     <value>左寄せ</value>
   </data>
@@ -785,7 +638,7 @@
     <value>tabPage_all</value>
   </data>
   <data name="&gt;&gt;comboBox_sizeMode.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -821,11 +674,35 @@
     <value>tabPage_all</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
-  <metadata name="toolTip_config.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="tabPage_all.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="tabPage_all.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPage_all.Size" type="System.Drawing.Size, System.Drawing">
+    <value>438, 369</value>
+  </data>
+  <data name="tabPage_all.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPage_all.Text" xml:space="preserve">
+    <value>全体</value>
+  </data>
+  <data name="&gt;&gt;tabPage_all.Name" xml:space="preserve">
+    <value>tabPage_all</value>
+  </data>
+  <data name="&gt;&gt;tabPage_all.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage_all.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPage_all.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="checkBox_focusDownloadImage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -969,6 +846,81 @@
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="tabPage_save.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="tabPage_save.Size" type="System.Drawing.Size, System.Drawing">
+    <value>438, 369</value>
+  </data>
+  <data name="tabPage_save.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tabPage_save.Text" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="&gt;&gt;tabPage_save.Name" xml:space="preserve">
+    <value>tabPage_save</value>
+  </data>
+  <data name="&gt;&gt;tabPage_save.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage_save.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPage_save.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabPage_search.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="tabPage_search.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPage_search.Size" type="System.Drawing.Size, System.Drawing">
+    <value>438, 369</value>
+  </data>
+  <data name="tabPage_search.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabPage_search.Text" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="&gt;&gt;tabPage_search.Name" xml:space="preserve">
+    <value>tabPage_search</value>
+  </data>
+  <data name="&gt;&gt;tabPage_search.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage_search.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPage_search.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 9</value>
+  </data>
+  <data name="tabControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>446, 397</value>
+  </data>
+  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

@@ -29,6 +29,7 @@ namespace ImageSlider
         int showImageNo = 0;
         int tickTime = 10;
         Properties.Settings settings = Properties.Settings.Default;
+        AutoCompleteStringCollection autoCompList = new AutoCompleteStringCollection();
 
         List<IImageSearchAPI> imageSearchAPIs = new List<IImageSearchAPI>();
         IImageSearchAPI currentAPI;
@@ -99,6 +100,18 @@ namespace ImageSlider
 
                 // ToolTipを表示するか
                 toolTip1.Active = settings.ShowToolTip;
+
+                // オートコンプリートを使用するか
+                if (settings.AutoCompleteStrings != null)
+                {
+                    foreach (var str in settings.AutoCompleteStrings)
+                    {
+                        textBox_search.AutoCompleteCustomSource.Add(str);
+                        comboBox_history.Items.Add(str);
+                    }
+                }
+                else settings.AutoCompleteStrings = new System.Collections.Specialized.StringCollection();
+                textBox_search.AutoCompleteMode = settings.AutoComplete ? AutoCompleteMode.SuggestAppend : AutoCompleteMode.None;
 
                 // 保存場所
                 if (!Directory.Exists(settings.DownloadFolder))
@@ -201,6 +214,13 @@ namespace ImageSlider
             // Enter + 文字列がNullorSpaceでない
             if (e.KeyCode == Keys.Enter && !string.IsNullOrWhiteSpace(textBox_search.Text))
             {
+                // オートコンプリートに文字列を追加
+                if (!textBox_search.AutoCompleteCustomSource.Contains(textBox_search.Text))
+                {
+                    textBox_search.AutoCompleteCustomSource.Add(textBox_search.Text);
+                    comboBox_history.Items.Insert(0, textBox_search.Text);
+                }
+
                 e.SuppressKeyPress = true;
                 searching = true;
                 neutral = false;
@@ -368,6 +388,13 @@ namespace ImageSlider
             timer.Dispose();
             timer = null;
 
+            // オートコンプリート
+            settings.AutoCompleteStrings.Clear();
+            foreach (string str in comboBox_history.Items)
+            {
+                settings.AutoCompleteStrings.Add(str);
+            }
+
             // 設定の保存
             settings.Save();
 
@@ -407,6 +434,12 @@ namespace ImageSlider
                 SizeMode = slideImage1.SizeMode,
                 FocusDownloadImage = settings.FocusDownloadImage,
                 ShowToolTip = settings.ShowToolTip,
+                AutoComplete = settings.AutoComplete,
+            };
+            config.ClearRetrievalHistory += (s, ev) =>
+            {
+                textBox_search.AutoCompleteCustomSource.Clear();
+                comboBox_history.Items.Clear();
             };
             config.ShowDialog(this);
 
@@ -418,6 +451,8 @@ namespace ImageSlider
             settings.SlideMode = (int)(slideImage1.SlideMode = config.SlideMode);
             settings.SizeMode = (int)(slideImage1.SizeMode = config.SizeMode);
             settings.ShowToolTip = (toolTip1.Active = config.ShowToolTip);
+            settings.AutoComplete = config.AutoComplete;
+            textBox_search.AutoCompleteMode = settings.AutoComplete ? AutoCompleteMode.SuggestAppend : AutoCompleteMode.None;
 
             if (config.APIName != currentAPI.APIName)
             {
@@ -736,6 +771,17 @@ namespace ImageSlider
         {
             slideImage1.FocusDownloadImage = false;
             slideImage1.Repaint();
+        }
+
+        /// <summary>
+        /// 履歴ボックスを選択したら
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void comboBox_history_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBox_search.Text = (string)comboBox_history.SelectedItem;
+            textBox_search.Focus();
         }
     }
 }

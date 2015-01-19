@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImageSliderForm));
             this.panel_menu = new System.Windows.Forms.Panel();
+            this.comboBox_history = new System.Windows.Forms.ComboBox();
             this.label_imageCount = new System.Windows.Forms.Label();
             this.button_windowStateChange = new System.Windows.Forms.Button();
             this.button_config = new System.Windows.Forms.Button();
@@ -52,6 +53,7 @@
             // panel_menu
             // 
             this.panel_menu.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel_menu.Controls.Add(this.comboBox_history);
             this.panel_menu.Controls.Add(this.label_imageCount);
             this.panel_menu.Controls.Add(this.button_windowStateChange);
             this.panel_menu.Controls.Add(this.button_config);
@@ -68,13 +70,27 @@
             this.panel_menu.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouseMove);
             this.panel_menu.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouseUp);
             // 
+            // comboBox_history
+            // 
+            this.comboBox_history.BackColor = System.Drawing.Color.White;
+            this.comboBox_history.DropDownWidth = 200;
+            this.comboBox_history.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.comboBox_history.FormattingEnabled = true;
+            this.comboBox_history.Location = new System.Drawing.Point(168, 3);
+            this.comboBox_history.MaxDropDownItems = 64;
+            this.comboBox_history.Name = "comboBox_history";
+            this.comboBox_history.Size = new System.Drawing.Size(16, 26);
+            this.comboBox_history.TabIndex = 6;
+            this.comboBox_history.SelectedIndexChanged += new System.EventHandler(this.comboBox_history_SelectedIndexChanged);
+            // 
             // label_imageCount
             // 
             this.label_imageCount.AutoSize = true;
-            this.label_imageCount.Location = new System.Drawing.Point(214, 7);
+            this.label_imageCount.Location = new System.Drawing.Point(200, 7);
             this.label_imageCount.Name = "label_imageCount";
-            this.label_imageCount.Size = new System.Drawing.Size(0, 18);
+            this.label_imageCount.Size = new System.Drawing.Size(41, 18);
             this.label_imageCount.TabIndex = 5;
+            this.label_imageCount.Text = "ready";
             this.label_imageCount.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouseDown);
             this.label_imageCount.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouseMove);
             this.label_imageCount.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouseUp);
@@ -147,11 +163,12 @@
             // 
             // textBox_search
             // 
-            this.textBox_search.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBox_search.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox_search.Font = new System.Drawing.Font("Meiryo", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBox_search.Location = new System.Drawing.Point(39, 4);
             this.textBox_search.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_search.Name = "textBox_search";
-            this.textBox_search.Size = new System.Drawing.Size(155, 25);
+            this.textBox_search.Size = new System.Drawing.Size(129, 25);
             this.textBox_search.TabIndex = 0;
             this.toolTip1.SetToolTip(this.textBox_search, "検索ワードを入力し、Enterで検索を開始します");
             this.textBox_search.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_search_KeyDown);
@@ -292,7 +309,7 @@
             this.Controls.Add(this.button_startStop);
             this.Controls.Add(this.panel_menu);
             this.Controls.Add(this.slideImage1);
-            this.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Font = new System.Drawing.Font("Meiryo", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -328,6 +345,7 @@
         private System.Windows.Forms.Button button_moveSite;
         private SizeChanger sizeChanger1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ComboBox comboBox_history;
 
     }
 }

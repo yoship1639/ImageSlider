@@ -14,40 +14,69 @@ namespace ImageSlider
 {
     public partial class ConfigForm : Form
     {
+        /// <summary>
+        /// APIの名前
+        /// </summary>
         public string APIName
         {
             get { return comboBox1.SelectedItem as string; }
         }
 
+        /// <summary>
+        /// スライドにかかる時間
+        /// </summary>
         public int SlideTime
         { 
             get { return (int)numericUpDown_slideSecond.Value; }
             set { numericUpDown_slideSecond.Value = value; }
         }
 
+        /// <summary>
+        /// メニューバーの色
+        /// </summary>
         public Color MenuColor
         {
             get { return button_colorSelect.BackColor; }
             set { button_colorSelect.BackColor = value; }
         }
 
+        /// <summary>
+        /// ツールチップを利用するか
+        /// </summary>
         public bool ShowToolTip
         {
             get { return checkBox_showToolTip.Checked; }
             set { checkBox_showToolTip.Checked = value; }
         }
 
+        /// <summary>
+        /// オートコンプリートの有効化
+        /// </summary>
+        public bool AutoComplete
+        {
+            get { return checkBox_AutoComplete.Checked; }
+            set { checkBox_AutoComplete.Checked = value; }
+        }
+
+        /// <summary>
+        /// スライドの方法
+        /// </summary>
         public SlideImage.ImageSlideMode SlideMode
         {
             get { return (SlideImage.ImageSlideMode)comboBox_slideMode.SelectedIndex; }
             set { comboBox_slideMode.SelectedIndex = (int)value; }
         }
 
+        /// <summary>
+        /// サイズ・表示の仕方
+        /// </summary>
         public SlideImage.ImageSizeMode SizeMode
         {
             get { return (SlideImage.ImageSizeMode)comboBox_sizeMode.SelectedIndex; }
             set { comboBox_sizeMode.SelectedIndex = (int)value; }
         }
+
+        public event EventHandler ClearRetrievalHistory = delegate { }; // 検索履歴を削除するイベント
 
         #region 保存プロパティ
 
@@ -210,6 +239,14 @@ namespace ImageSlider
         private void checkBox_showToolTip_CheckedChanged(object sender, EventArgs e)
         {
             toolTip_config.Active = checkBox_showToolTip.Checked;
+        }
+
+        private void button_deleteHistory_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(this, "検索履歴をすべて削除します。\nオートコンプリートのワードもすべて削除されます。", "検索履歴の削除", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            {
+                ClearRetrievalHistory(this, EventArgs.Empty);
+            }
         }
 
     }

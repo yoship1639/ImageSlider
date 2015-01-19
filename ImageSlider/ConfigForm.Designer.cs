@@ -42,6 +42,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_all = new System.Windows.Forms.TabPage();
+            this.button_deleteHistory = new System.Windows.Forms.Button();
+            this.checkBox_AutoComplete = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.checkBox_showToolTip = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.comboBox_slideMode = new System.Windows.Forms.ComboBox();
@@ -157,6 +160,9 @@
             // tabPage_all
             // 
             this.tabPage_all.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage_all.Controls.Add(this.button_deleteHistory);
+            this.tabPage_all.Controls.Add(this.checkBox_AutoComplete);
+            this.tabPage_all.Controls.Add(this.label9);
             this.tabPage_all.Controls.Add(this.checkBox_showToolTip);
             this.tabPage_all.Controls.Add(this.label8);
             this.tabPage_all.Controls.Add(this.comboBox_slideMode);
@@ -170,6 +176,26 @@
             this.tabPage_all.Controls.Add(this.label4);
             resources.ApplyResources(this.tabPage_all, "tabPage_all");
             this.tabPage_all.Name = "tabPage_all";
+            // 
+            // button_deleteHistory
+            // 
+            resources.ApplyResources(this.button_deleteHistory, "button_deleteHistory");
+            this.button_deleteHistory.Name = "button_deleteHistory";
+            this.button_deleteHistory.UseVisualStyleBackColor = true;
+            this.button_deleteHistory.Click += new System.EventHandler(this.button_deleteHistory_Click);
+            // 
+            // checkBox_AutoComplete
+            // 
+            resources.ApplyResources(this.checkBox_AutoComplete, "checkBox_AutoComplete");
+            this.checkBox_AutoComplete.Name = "checkBox_AutoComplete";
+            this.toolTip_config.SetToolTip(this.checkBox_AutoComplete, resources.GetString("checkBox_AutoComplete.ToolTip"));
+            this.checkBox_AutoComplete.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            this.toolTip_config.SetToolTip(this.label9, resources.GetString("label9.ToolTip"));
             // 
             // checkBox_showToolTip
             // 
@@ -330,5 +356,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox checkBox_showToolTip;
         private System.Windows.Forms.ToolTip toolTip_config;
+        private System.Windows.Forms.CheckBox checkBox_AutoComplete;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button_deleteHistory;
     }
 }
