@@ -28,8 +28,7 @@ namespace ImageSlider
         bool start = true;
         int showImageNo = 0;
         int tickTime = 10;
-        string downloadFolder;
-        bool createSubFolder;
+        Properties.Settings settings = Properties.Settings.Default;
 
         List<IImageSearchAPI> imageSearchAPIs = new List<IImageSearchAPI>();
         IImageSearchAPI currentAPI;
@@ -81,42 +80,38 @@ namespace ImageSlider
             // 設定の読み込み
             {
                 // カレントAPIを設定
-                var tmp = imageSearchAPIs.Find((api) => api.APIName == Properties.Settings.Default.SearchAPI);
+                var tmp = imageSearchAPIs.Find((api) => api.APIName == settings.SearchAPI);
                 if (tmp == null) tmp = imageSearchAPIs[0];
                 setCurrentAPI(tmp);
 
                 // 切り替わり時間
-                slideTime = Properties.Settings.Default.SlideTime;
+                //slideTime = Properties.Settings.Default.SlideTime;
 
                 // メニュー色
-                panel_menu.BackColor = Properties.Settings.Default.MenuColor;
-                sizeChanger1.BackColor = panel_menu.BackColor;
+                panel_menu.BackColor = settings.MenuColor;
+                sizeChanger1.BackColor = settings.MenuColor;
 
                 // スライド方法
-                slideImage1.SlideMode = (SlideImage.ImageSlideMode)Properties.Settings.Default.SlideMode;
+                slideImage1.SlideMode = (SlideImage.ImageSlideMode)settings.SlideMode;
 
                 // サイズモード
-                slideImage1.SizeMode = (SlideImage.ImageSizeMode)Properties.Settings.Default.SizeMode;
+                slideImage1.SizeMode = (SlideImage.ImageSizeMode)settings.SizeMode;
 
                 // ToolTipを表示するか
-                toolTip1.Active = Properties.Settings.Default.ShowToolTip;
+                toolTip1.Active = settings.ShowToolTip;
 
                 // 保存場所
-                downloadFolder = Properties.Settings.Default.DownloadFolder;
-                if (!Directory.Exists(downloadFolder))
+                if (!Directory.Exists(settings.DownloadFolder))
                 {
-                    downloadFolder = System.Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+                    settings.DownloadFolder = System.Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
                 }
-
-                // サブフォルダ
-                createSubFolder = Properties.Settings.Default.CreateSubFolder;
 
                 // APIの設定を読み込む
                 try
                 {
-                    var settings = Serializer.XmlDeserialize<APISetting[]>(Path.GetDirectoryName(Application.ExecutablePath) + @"\settings.config");
+                    var s = Serializer.XmlDeserialize<APISetting[]>(Path.GetDirectoryName(Application.ExecutablePath) + @"\settings.config");
 
-                    foreach (var setting in settings)
+                    foreach (var setting in s)
                     {
                         var api = imageSearchAPIs.Find(_api => _api.APIName == setting.APIName);
                         if (api != null)
@@ -133,7 +128,6 @@ namespace ImageSlider
         }
 
         int slideCount = 0;
-        int slideTime = 5;
 
         /// <summary>
         /// 一定間隔で呼ばれる
@@ -182,7 +176,7 @@ namespace ImageSlider
 
             if (!searching && !neutral)
             {
-                if (start && slideCount > slideTime * 1000 / tickTime)
+                if (start && slideCount > settings.SlideTime * 1000 / tickTime)
                 {
                     slideCount = 0;
                     nextImage();
@@ -204,7 +198,8 @@ namespace ImageSlider
         /// <param name="e"></param>
         private void textBox_search_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && textBox_search.Text.Length > 0)
+            // Enter + 文字列がNullorSpaceでない
+            if (e.KeyCode == Keys.Enter && !string.IsNullOrWhiteSpace(textBox_search.Text))
             {
                 e.SuppressKeyPress = true;
                 searching = true;
@@ -222,7 +217,6 @@ namespace ImageSlider
                 {
                     currentAPI_SearchError(this, EventArgs.Empty);
                 }
-                
 
                 return;
             }
@@ -364,20 +358,18 @@ namespace ImageSlider
             Close();
         }
 
+        /// <summary>
+        /// 閉じる直前
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ImageSliderForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             timer.Dispose();
             timer = null;
 
             // 設定の保存
-            Properties.Settings.Default.SearchAPI = currentAPI.APIName;
-            Properties.Settings.Default.SlideTime = slideTime;
-            Properties.Settings.Default.MenuColor = panel_menu.BackColor;
-            Properties.Settings.Default.SlideMode = (int)slideImage1.SlideMode;
-            Properties.Settings.Default.DownloadFolder = downloadFolder;
-            Properties.Settings.Default.CreateSubFolder = createSubFolder;
-            Properties.Settings.Default.SizeMode = (int)slideImage1.SizeMode;
-            Properties.Settings.Default.Save();
+            settings.Save();
 
             // APIの設定を保存
             var paramsList = new List<APISetting>();
@@ -407,25 +399,26 @@ namespace ImageSlider
             // 設定フォームの作成
             ConfigForm config = new ConfigForm(imageSearchAPIs.ToArray(), currentAPI)
             {
-                SlideTime = slideTime,
+                SlideTime = settings.SlideTime,
                 MenuColor = panel_menu.BackColor,
                 SlideMode = slideImage1.SlideMode,
-                DowloadFolder = downloadFolder,
-                CreateSubFolder = createSubFolder,
+                DowloadFolder = settings.DownloadFolder,
+                CreateSubFolder = settings.CreateSubFolder,
                 SizeMode = slideImage1.SizeMode,
-                FocusDownloadImage = Properties.Settings.Default.FocusDownloadImage,
-                ShowToolTip = Properties.Settings.Default.ShowToolTip,
+                FocusDownloadImage = settings.FocusDownloadImage,
+                ShowToolTip = settings.ShowToolTip,
             };
             config.ShowDialog(this);
-            slideTime = config.SlideTime;
-            panel_menu.BackColor = config.MenuColor;
-            sizeChanger1.BackColor = panel_menu.BackColor;
-            slideImage1.SlideMode = config.SlideMode;
-            downloadFolder = config.DowloadFolder;
-            createSubFolder = config.CreateSubFolder;
-            slideImage1.SizeMode = config.SizeMode;
-            Properties.Settings.Default.FocusDownloadImage = config.FocusDownloadImage;
-            toolTip1.Active = (Properties.Settings.Default.ShowToolTip = config.ShowToolTip);
+
+            settings.SlideTime = config.SlideTime;
+            settings.DownloadFolder = config.DowloadFolder;
+            settings.CreateSubFolder = config.CreateSubFolder;
+            settings.FocusDownloadImage = config.FocusDownloadImage;
+            settings.MenuColor = (panel_menu.BackColor = (sizeChanger1.BackColor = config.MenuColor));
+            settings.SlideMode = (int)(slideImage1.SlideMode = config.SlideMode);
+            settings.SizeMode = (int)(slideImage1.SizeMode = config.SizeMode);
+            settings.ShowToolTip = (toolTip1.Active = config.ShowToolTip);
+
             if (config.APIName != currentAPI.APIName)
             {
                 setCurrentAPI(imageSearchAPIs.Find((api) => api.APIName == config.APIName));
@@ -591,8 +584,8 @@ namespace ImageSlider
             try
             {
                 // 保存パス
-                var path = downloadFolder + "\\";
-                if (createSubFolder)
+                var path = settings.DownloadFolder + "\\";
+                if (settings.CreateSubFolder)
                 {
                     path += textBox_search.Text;
                     if (!Directory.Exists(path))
